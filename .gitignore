@@ -132,3 +132,6 @@ dist
 # IDEA
 .idea
 /MAS_WE2_NoteApp.iml
+
+# Database file
+*.db
