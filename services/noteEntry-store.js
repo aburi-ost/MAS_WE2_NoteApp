@@ -28,10 +28,6 @@ export class NoteEntryStore {
         return this.get(id); // Retrieving the updated NoteEntry and returning it
     }
 
-    async get(id) { // Defining an asynchronous function to retrieve an noteEntry from the datastore based on its ID
-        return this.db.findOne({_id: id}); // Finding and returning the NoteEntry with the specified ID
-    }
-
     async all() { // Defining an asynchronous function to retrieve all NoteEntries from the datastore
         return this.db.find({}); // Finding and returning all NoteEntry in the datastore
     }
