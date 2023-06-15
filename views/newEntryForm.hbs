@@ -23,7 +23,7 @@
     }
 </style>
 
-<form action="/entries" method="POST">
+<form id="createEntryForm" action="/entries" method="POST">
     <label for="title">Title:</label>
     <input type="text" id="title" name="noteTitle" required>
 
@@ -39,9 +39,55 @@
     <label for="description">Description:</label>
     <textarea id="description" name="noteDescription"></textarea>
 
-    <button type="submit" name="action" value="create">Create</button>
-    <!-- <button type="submit" name="action" value="create-overview">Create & Overview</button> -->
-    <!-- <button type="submit" name="action" value="overview">Overview</button> -->
+    <button id="createButton" type="submit">Create</button>
+    <button id="createAndOverviewButton" type="submit" >Create & Overview</button>
+</form>
+<!--------------------------------------------------------------------------------------------------------------------->
+
+
+<form id="overviewForm" action="/index" method="GET" >
+    <input type="hidden" name="fetchData" value="false">
 </form>
 
-<form action='/index' method='get'><input type='submit' value='Overview'></form>
+
+<button id="overviewButton" type="submit"> Overview </button>
+
+
+
+<script>
+    // this script is newly instanciated and executed every time the newEntryForm page is loaded
+    // therefore all script variables (such as dbDataHasChanged) will be lost on reload
+    let dbDataHasChanged = null;
+
+    const overviewForm = document.getElementById('overviewForm');
+    const createEntryForm = document.getElementById('createEntryForm');
+
+    // Event listener for create button
+    const createButton = document.getElementById('createButton');
+    createButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        dbDataHasChanged = true;
+        createEntryForm.submit();
+    });
+
+    const overviewButton = document.getElementById('overviewButton');
+    overviewButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        if (dbDataHasChanged === true) {
+            overviewForm.elements['fetchData'].value = "true"; // Change the value of the 'fetchData' field
+            dbDataHasChanged = false;
+        } /* else {
+            overviewForm.elements['fetchData'].value = "false"; // Change the value of the 'fetchData' field
+        } */
+        overviewForm.submit();    // Manually submit the form
+    });
+
+    const createAndOverviewButton = document.getElementById('createAndOverviewButton');
+    createAndOverviewButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        createEntryForm.submit();
+        overviewForm.elements['fetchData'].value = 'true'; // Change the value of the 'fetchData' field
+        overviewForm.submit();
+    });
+
+</script>

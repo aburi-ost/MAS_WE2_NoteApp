@@ -1,7 +1,7 @@
-import Datastore from 'nedb-promises'; // Importing the 'nedb-promises' library, which allows the use of promises with NeDB
+import Datastore from 'nedb-promises';
 
 export class NoteEntry {
-    constructor(dueDate, title, importance, state, description) { // Defining the Entry class constructor
+    constructor(dueDate, title, importance, state, description) {
         this.dueDate = dueDate;
         this.title = title;
         this.importance = importance;
@@ -11,25 +11,23 @@ export class NoteEntry {
 }
 
 export class NoteEntryStore {
-    constructor(db) { // Defining the NoteEntryStore class constructor
-        // Creating a new NeDB datastore instance with the specified filename and enabling automatic loading
+    constructor(db) {
         this.db = db || new Datastore({filename: './data/NoteEntries.db', autoload: true});
     }
 
-    add(dueDate, title, importance, state, description) { // Defining an asynchronous function to add an NoteEntry to the datastore
-        let newNoteEntry = new NoteEntry(dueDate, title, importance, state, description); // Creating a new NoteEntry instance with the provided pizza name and orderer
-        // Inserting the NoteEntry into the datastore and returning the inserted NoteEntry
-        // There's no need to use 'await' here because the 'insert' method returns a promise that is handled in the calling instance
+    async add(dueDate, title, importance, state, description) {
+        let newNoteEntry = new NoteEntry(dueDate, title, importance, state, description);
         return this.db.insert(newNoteEntry);
     }
 
-    async delete(id) { // Defining an asynchronous function to delete an NoteEntry from the datastore
-        await this.db.update({_id: id}, {$set: {"state": "COMPLETED"}}); // Updating the NoteEntry's state to "COMPLETED" in the datastore
-        return this.get(id); // Retrieving the updated NoteEntry and returning it
+    async delete(id) {
+        await this.db.update({_id: id}, {$set: {"state": "COMPLETED"}});
+        return this.get(id);
     }
 
-    async all() { // Defining an asynchronous function to retrieve all NoteEntries from the datastore
-        return this.db.find({}); // Finding and returning all NoteEntry in the datastore
+    async all() {
+        console.log("Fetching all data from DB");
+        return this.db.find({});
     }
 }
 
