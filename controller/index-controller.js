@@ -2,6 +2,7 @@ import { noteEntryStore } from "../services/noteEntry-store.js";
 
 export class IndexController {
   DataBaseEntries = [];
+
   FilteredDataBaseEntries = [];
 
   filterCompleted = () => {
@@ -51,6 +52,7 @@ export class IndexController {
       return 0; // a and b are equal in terms of sorting
     });
   };
+
 
   index = async (req, res) => {
     if (req.query.fetchData === "true") {
