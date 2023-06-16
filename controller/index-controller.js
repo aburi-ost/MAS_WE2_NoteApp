@@ -53,6 +53,10 @@ export class IndexController {
     });
   };
 
+  indexWithFetch = async (req, res) => {
+    this.DataBaseEntries = await noteEntryStore.all();
+    res.render("index", { data: this.DataBaseEntries, dark: false });
+  }
 
   index = async (req, res) => {
     if (req.query.fetchData === "true") {
@@ -78,6 +82,20 @@ export class IndexController {
 
     res.render("index", { data: this.FilteredDataBaseEntries, dark: false });
   };
+
+  createNoteEntryAndRenderData = async (req, res) => {
+    await noteEntryStore.add(
+        req.body.noteDueDate,
+        req.body.noteTitle,
+        req.body.noteImportance,
+        req.body.noteState,
+        req.body.noteDescription
+    );
+    this.DataBaseEntries = await noteEntryStore.all();
+    res.render("index", { data: this.DataBaseEntries, dark: false });
+  }
 }
+
+
 
 export const indexController = new IndexController();

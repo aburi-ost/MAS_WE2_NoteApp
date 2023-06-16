@@ -16,13 +16,11 @@ export class NewEntryController {
       req.body.noteDescription
     );
     // no render is executed to keep the state of the dbDataHasChanged for the overview button in newEntryForm
-    //res.render("newEntryForm");
   };
 
   deleteOrder = async (req, res) => {
     // Todo Gfeller: Same here as in createNoteEntry. had to make noteEntryStore.delete synchronous  Todo: include and use in delete functionality
     await noteEntryStore.delete(req.params.noteId);
-    //res.render("index", { data: await noteEntryStore.all(), dark: true });
   };
 }
 

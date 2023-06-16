@@ -38,7 +38,6 @@ export class NoteEntryStore {
   }
 
   async all() {
-    console.log("Fetching all data from DB");
     return this.db.find({});
   }
 }

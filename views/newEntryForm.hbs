@@ -35,7 +35,7 @@
     <label for="date">Due Date:</label>
     <input type="date" id="date" name="noteDueDate" required>
 
-    <label for="finished">Finished:</label>
+    <label for="state">Finished:</label>
     <input type="checkbox" id="state" name="noteState" value="COMPLETED">
 
 
@@ -58,6 +58,7 @@
 <button id="overviewButton" type="submit"> Overview </button>
 
 <script>
+    // Todo Gfeller: Installing event listeners to control database fetching seems not like a very nice solution. Is it really necessary to do situational fetches or can the fetch for this project take place whenever index is loaded?
     // this script is newly instanciated and executed every time the newEntryForm page is loaded
     // therefore all script variables (such as dbDataHasChanged) will be lost on reload
     let dbDataHasChanged = null;
@@ -79,17 +80,14 @@
         if (dbDataHasChanged === true) {
             overviewForm.elements['fetchData'].value = "true"; // Change the value of the 'fetchData' field
             dbDataHasChanged = false;
-        } /* else {
-            overviewForm.elements['fetchData'].value = "false"; // Change the value of the 'fetchData' field
-        } */
+        }
         overviewForm.submit();    // Manually submit the form
     });
 
     const createAndOverviewButton = document.getElementById('createAndOverviewButton');
     createAndOverviewButton.addEventListener('click', (event) => {
         event.preventDefault();
+        createEntryForm.action = '/index';  // change target from /entries to /index for post
         createEntryForm.submit();
-        overviewForm.elements['fetchData'].value = 'true'; // Change the value of the 'fetchData' field
-        overviewForm.submit();
     });
 </script>

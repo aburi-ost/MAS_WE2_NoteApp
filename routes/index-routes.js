@@ -5,8 +5,10 @@ import { indexController } from "../controller/index-controller.js";
 
 import { newEntryController } from "../controller/newEntry-controller.js";
 
-router.get("/", indexController.index.bind(indexController));
+//router.get("/", indexController.index.bind(indexController));
+router.get("/", indexController.indexWithFetch.bind(indexController));
 router.get("/index", indexController.index);
+router.post("/index", indexController.createNoteEntryAndRenderData);
 //=====================================================
 router.get("/entries", newEntryController.newNoteEntry);
 router.post("/entries", newEntryController.createNoteEntry);
