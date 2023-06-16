@@ -3,36 +3,80 @@ import { noteEntryStore } from "../services/noteEntry-store.js";
 export class IndexController {
   DataBaseEntries = [];
 
+  FilteredDataBaseEntries = [];
+
+  filterCompleted = () => {
+    this.FilteredDataBaseEntries = this.DataBaseEntries.filter(
+      (entry) => entry.state != "COMPLETED"
+    );
+  };
+
+  sortByTitle = () => {
+    this.FilteredDataBaseEntries = this.DataBaseEntries.sort((a, b) => {
+      const nameA = a.title.toUpperCase();
+      const nameB = b.title.toUpperCase();
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+  };
+
+  sortByImportance = () => {
+    this.FilteredDataBaseEntries = this.DataBaseEntries.sort((a, b) => {
+      const nameA = a.importance;
+      const nameB = b.importance;
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+  };
+
+  sortByDueDate = () => {
+    this.FilteredDataBaseEntries = this.DataBaseEntries.sort((a, b) => {
+      const nameA = a.dueDate;
+      const nameB = b.dueDate;
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0; // a and b are equal in terms of sorting
+    });
+  };
+
+
   index = async (req, res) => {
     if (req.query.fetchData === "true") {
       // If fetchData is not included or set to any value other than 'true', the noteEntryStore.all() method will not be executed and data will remain an empty array.
       this.DataBaseEntries = await noteEntryStore.all();
     }
-    res.render("index", { data: this.DataBaseEntries, dark: false });
-    console.log("Rendered index.");
-  };
 
-  newNoteEntry = (req, res) => {
-    res.render("newEntryForm");
-  };
+    this.FilteredDataBaseEntries = this.DataBaseEntries;
 
-  createNoteEntry = async (req, res) => {
-    // Todo Gfeller: please check this for validity.
+    // Todo: manage with cookies instead of query. See: utils/session-middleware.index.js
+    if (req.query.filterCompleted === "true") {
+      this.filterCompleted();
+    }
 
-    await noteEntryStore.add(
-      req.body.noteDueDate,
-      req.body.noteTitle,
-      req.body.noteImportance,
-      req.body.noteState,
-      req.body.noteDescription
-    );
-    // no render is executed to keep the state of the dbDataHasChanged for the overview button in newEntryForm
-    //res.render("newEntryForm");
-  };
-  deleteOrder = async (req, res) => {
-    // Todo Gfeller: Same here as in createNoteEntry. had to make noteEntryStore.delete synchronous  Todo: include and use in delete functionality
-    await noteEntryStore.delete(req.params.noteId);
-    res.render("index", { data: await noteEntryStore.all(), dark: true });
+    // Todo: manage with cookies instead of query. See: utils/session-middleware.index.js
+    if (req.query.sortDataBy === "title") {
+      this.sortByTitle();
+    } else if (req.query.sortDataBy === "importance") {
+      this.sortByImportance();
+    } else if (req.query.sortDataBy === "dueDate") {
+      this.sortByDueDate();
+    }
+
+    res.render("index", { data: this.FilteredDataBaseEntries, dark: false });
   };
 }
 

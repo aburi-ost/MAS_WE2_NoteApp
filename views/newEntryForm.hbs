@@ -1,3 +1,5 @@
+
+
 <style>
     form {
         display: flex;
@@ -34,7 +36,8 @@
     <input type="date" id="date" name="noteDueDate" required>
 
     <label for="finished">Finished:</label>
-    <input type="checkbox" id="state" name="noteState"> <!-- Todo: add functionality-->
+    <input type="checkbox" id="state" name="noteState" value="COMPLETED">
+
 
     <label for="description">Description:</label>
     <textarea id="description" name="noteDescription"></textarea>
@@ -47,12 +50,12 @@
 
 <form id="overviewForm" action="/index" method="GET" >
     <input type="hidden" name="fetchData" value="false">
+
 </form>
+<!--------------------------------------------------------------------------------------------------------------------->
 
 
 <button id="overviewButton" type="submit"> Overview </button>
-
-
 
 <script>
     // this script is newly instanciated and executed every time the newEntryForm page is loaded
@@ -89,5 +92,4 @@
         overviewForm.elements['fetchData'].value = 'true'; // Change the value of the 'fetchData' field
         overviewForm.submit();
     });
-
 </script>
