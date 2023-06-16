@@ -4,6 +4,7 @@
         border: 1px solid red;
         padding: 8px;
     }
+
     .mainButtonTable {
         display: grid;
         grid-template-columns: auto 1fr auto;
@@ -23,6 +24,11 @@
         display: grid;
         grid-template-columns: auto 1fr auto;
     }
+    
+    .grayed-out {
+        background-color: #888;
+        opacity: 0.5;
+    }
 
     .data-entry {
         text-align: center;
@@ -34,34 +40,70 @@
 </style>
 
 <div class="mainButtonTable">
-    <div class="button-container"> <form action='/entries' method='get'><input type='submit' value='Create new Todo'></form> </div>
+    <div class="button-container"> <form action='/entries' method='GET'><input type='submit' value='Create new Todo'></form> </div>
     <div class="button-container"> </div>
     <div class="button-container"> <button>Toggle Style</button> </div>     <!-- Todo: add functionality -->
 </div>
 
 <div class="sortFilterButtonTable">
-    <div class="button-container"> <button>By Name</button> </div>     <!-- Todo: add functionality -->
-    <div class="button-container"> <button>By Due Date</button> </div>     <!-- Todo: add functionality -->
+    <div class="button-container">
+        <form action="/index" method="GET" >
+            <input type="hidden" name="sortDataBy" value="title">
+            <button id="sortByName" type="submit"> By Name </button>
+        </form>
+    </div>
+    
+    <div class="button-container">
+        <form action="/index" method="GET" >
+            <input type="hidden" name="sortDataBy" value="dueDate">
+            <button id="sortByDueDate" type="submit"> By Due Date </button>
+        </form>
+    </div>
+    
     <div class="button-container"> <button>By Creation Date</button> </div>     <!-- Todo: add functionality -->
-    <div class="button-container"> <button>By Importance</button> </div>     <!-- Todo: add functionality -->
+        <div class="button-container">
+        <form action="/index" method="GET" >
+            <input type="hidden" name="sortDataBy" value="importance">
+            <button id="sortByImportance" type="submit"> By Importance </button>
+        </form>
+    </div>
     <div class="button-container"> </div>
-    <div class="button-container"> <button>Filter Completed</button> </div>     <!-- Todo: add functionality -->
+    <div class="button-container">
+        <form action="/index" method="GET" >
+            <input type="hidden" name="filterCompleted" value="true">
+            <button id="filterCompleted" type="submit"> Filter Completed </button>
+        </form>
+    </div>
 </div>
 
 <div class="mainTable">
     {{#each data}} <!-- Iterate over each entry in the data array -->
-        <div class="data-container">
-            <div class="data-entry"> {{this.dueDate}} </div> <!-- Display the title parameter -->
-            <div class="data-entry"> {{this.title}} </div> <!-- Display the importance parameter -->
-            <div class="data-entry"> {{this.importance}} </div> <!-- Display the date parameter -->
-            <div class="data-entry"> {{this.state}} </div> <!-- Display the finished parameter -->
-            <div class="data-entry"> {{this.description}} </div> <!-- Display the description parameter -->
-            <div class="data-entry">   </div>
-        </div>
-
+        {{#if_eq this.state "COMPLETED"}}
+            <div class="data-container grayed-out">
+                <div class="data-entry"> {{this.dueDate}} </div> 
+                <div class="data-entry"> {{this.title}} </div> 
+                <div class="data-entry"> {{this.importance}} </div>
+                <div class="data-entry"> {{this.state}} </div> 
+                <div class="data-entry"> {{this.description}} </div> 
+                <div class="data-entry">   </div>
+            </div>
+        {{else}}
+            <div class="data-container">
+                <div class="data-entry"> {{this.dueDate}} </div> 
+                <div class="data-entry"> {{this.title}} </div> 
+                <div class="data-entry"> {{this.importance}} </div>
+                <div class="data-entry"> {{this.state}} </div> 
+                <div class="data-entry"> {{this.description}} </div> 
+                <div class="data-entry">   </div>
+            </div>
+        {{/if_eq}}
         <div class="button-container">
             <button>Edit</button>   <!-- Todo: add functionality -->
         </div>
     {{/each}}
 </div>
 
+<form id="overviewForm" action="/index" method="GET" >
+    <input type="hidden" name="fetchData" value="true">
+    <button id="overviewButton" type="submit"> Reload Data </button>
+</form>
