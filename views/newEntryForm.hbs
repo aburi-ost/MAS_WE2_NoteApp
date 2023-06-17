@@ -25,7 +25,7 @@
     }
 </style>
 
-<form id="createEntryForm" action="/entries" method="POST">
+<form id="createEntryForm">
     <label for="title">Title:</label>
     <input type="text" id="title" name="noteTitle" required>
 
@@ -42,21 +42,21 @@
     <label for="description">Description:</label>
     <textarea id="description" name="noteDescription"></textarea>
 
-    <button id="createButton" type="submit">Create</button>
-    <button id="createAndOverviewButton" type="submit" >Create & Overview</button>
 </form>
 <!--------------------------------------------------------------------------------------------------------------------->
-
-
 <form id="overviewForm" action="/index" method="GET" >
-    <input type="hidden" name="fetchData" value="false">
-
+    <input type="hidden" name="fetchData" value="true">
 </form>
+<!--------------------------------------------------------------------------------------------------------------------->
+<button id="createButton" form="createEntryForm" type="submit" formaction="/entries" formmethod="POST">Create</button>
+<button id="createAndOverviewButton" form="createEntryForm" type="submit" formaction="/index" formmethod="POST">Create & Overview</button>
+<!-- // Todo Gfeller: resolve situation fetchData depending on situation, if necessary. See JavaScript event handler below -->
+<button id="overviewButton" form="overviewForm" type="submit"> Overview </button>
 <!--------------------------------------------------------------------------------------------------------------------->
 
 
-<button id="overviewButton" type="submit"> Overview </button>
 
+<!--
 <script>
     // Todo Gfeller: Installing event listeners to control database fetching seems not like a very nice solution. Is it really necessary to do situational fetches or can the fetch for this project take place whenever index is loaded?
     // this script is newly instanciated and executed every time the newEntryForm page is loaded
@@ -71,6 +71,8 @@
     createButton.addEventListener('click', (event) => {
         event.preventDefault();
         dbDataHasChanged = true;
+        createEntryForm.action = "/entries";
+        createEntryForm.method = "POST";
         createEntryForm.submit();
     });
 
@@ -84,10 +86,5 @@
         overviewForm.submit();    // Manually submit the form
     });
 
-    const createAndOverviewButton = document.getElementById('createAndOverviewButton');
-    createAndOverviewButton.addEventListener('click', (event) => {
-        event.preventDefault();
-        createEntryForm.action = '/index';  // change target from /entries to /index for post
-        createEntryForm.submit();
-    });
 </script>
+-->

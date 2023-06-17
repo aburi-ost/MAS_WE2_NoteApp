@@ -15,7 +15,8 @@ export class NewEntryController {
       req.body.noteState,
       req.body.noteDescription
     );
-    // no render is executed to keep the state of the dbDataHasChanged for the overview button in newEntryForm
+    // Todo: Contents of form needs to persist on simple create and create button needs to change to "Update"
+    res.render("newEntryForm");
   };
 
   deleteOrder = async (req, res) => {
