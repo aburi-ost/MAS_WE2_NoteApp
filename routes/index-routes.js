@@ -1,11 +1,17 @@
-import express from 'express';
+import express from "express";
 
 const router = express.Router();
-import {indexController} from '../controller/index-controller.js';
+import { indexController } from "../controller/index-controller.js";
 
-router.get("/", indexController.index.bind(indexController));   // Todo: What's the difference between bind and non bind? apparently its about contextual execution
-router.get("/index", indexController.index); // Defining a GET route for the '/index' URL that invokes the createPizza method of the ordersController
-router.get("/entries", indexController.newNoteEntry); // Defining a GET route for the '/entries' URL that invokes the createPizza method of the ordersController
-router.post("/entries", indexController.createNoteEntry); // Defining a POST route for the '/entries' URL that invokes the createNoteEntry method of the ordersController
+import { newEntryController } from "../controller/newEntry-controller.js";
+
+//router.get("/", indexController.index.bind(indexController));
+router.get("/", indexController.indexWithFetch.bind(indexController));
+router.get("/index", indexController.index);
+router.post("/index", indexController.createNoteEntryAndRenderData);
+//=====================================================
+router.get("/entries", newEntryController.newNoteEntry);
+router.post("/entries", newEntryController.createNoteEntry);
+
 
 export const indexRoutes = router;

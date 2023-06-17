@@ -23,5 +23,8 @@
     "mocha": "^9.0.3",
     "nedb-promises": "^6.1.0",
     "sinon": "^11.1.2"
+  },
+  "devDependencies": {
+    "prettier": "2.8.8"
   }
 }
