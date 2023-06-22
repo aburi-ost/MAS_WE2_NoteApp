@@ -2,7 +2,6 @@ import { noteEntryStore } from "../services/noteEntry-store.js";
 
 export class IndexController {
   DataBaseEntries = [];
-
   FilteredDataBaseEntries = [];
 
   filterCompleted = () => {
@@ -62,6 +61,8 @@ export class IndexController {
     if (req.query.fetchData === "true") {
       // If fetchData is not included or set to any value other than 'true', the noteEntryStore.all() method will not be executed and data will remain an empty array.
       this.DataBaseEntries = await noteEntryStore.all();
+      // Sortierfunktion muss ins .all() --> .getAll(ParameterToOrderBy)
+      // gehört zur Modell-Logik!
     }
 
     this.FilteredDataBaseEntries = this.DataBaseEntries;
