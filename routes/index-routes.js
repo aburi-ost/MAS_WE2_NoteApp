@@ -5,8 +5,9 @@ import { indexController } from "../controller/index-controller.js";
 
 import { newEntryController } from "../controller/newEntry-controller.js";
 
-//router.get("/", indexController.index.bind(indexController));
-router.get("/", indexController.indexWithFetch.bind(indexController));  // JavaScript kann "this" verloren gehen und mit bind instanz von indexController wird garantiert auf this gelink
+// Todo: Each controller should have its own rooter --> create rooter for NoteEntry
+// JavaScript kann "this" verloren gehen und mit bind instanz von indexController wird garantiert auf this verbunden. --> erlaubt sichere verwendung von this innerhalb der Klasse. ist aber im projekt nicht nötig
+router.get("/", indexController.indexWithFetch.bind(indexController));
 router.get("/index", indexController.index);
 router.post("/index", indexController.createNoteEntryAndRenderData);
 //=====================================================

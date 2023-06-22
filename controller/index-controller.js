@@ -1,6 +1,7 @@
 import { noteEntryStore } from "../services/noteEntry-store.js";
 
 export class IndexController {
+  // Todo: DataBaseEntries and FilteredDataBaseEntries must be eliminated. These would be perpetually overwritten on multi user access and also violate statelessness of REST-application
   DataBaseEntries = [];
   FilteredDataBaseEntries = [];
 
@@ -53,26 +54,26 @@ export class IndexController {
   };
 
   indexWithFetch = async (req, res) => {
+    // Todo: Eliminate this function and replace with normal index render, as database must be read on any render of index
     this.DataBaseEntries = await noteEntryStore.all();
     res.render("index", { data: this.DataBaseEntries, dark: false });
   }
 
   index = async (req, res) => {
+    // Todo: On every get to /index the database must be read! --> no situational database access
     if (req.query.fetchData === "true") {
       // If fetchData is not included or set to any value other than 'true', the noteEntryStore.all() method will not be executed and data will remain an empty array.
       this.DataBaseEntries = await noteEntryStore.all();
-      // Sortierfunktion muss ins .all() --> .getAll(ParameterToOrderBy)
-      // gehört zur Modell-Logik!
     }
 
     this.FilteredDataBaseEntries = this.DataBaseEntries;
 
-    // Todo: manage with cookies instead of query. See: utils/session-middleware.index.js
+    // Todo: all the sorting algorithms are part of the model logic! --> move to noteEntryStore. e.g. replace .all() function with something like .getAll(ParameterToOrderBy) and pass the order or filter criteria as parameter
+    // Note: For this project, the newly sorted table can be displayed through a re-render. Using AJAX is not necessary
     if (req.query.filterCompleted === "true") {
       this.filterCompleted();
     }
 
-    // Todo: manage with cookies instead of query. See: utils/session-middleware.index.js
     if (req.query.sortDataBy === "title") {
       this.sortByTitle();
     } else if (req.query.sortDataBy === "importance") {
