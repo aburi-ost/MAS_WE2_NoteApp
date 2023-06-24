@@ -1,12 +1,13 @@
 import { noteEntryStore } from "../services/noteEntry-store.js";
 
+// Todo: rename from "NewEntry" to "details"
 export class NewEntryController {
   newNoteEntry = async (req, res) => {
     res.render("newEntryForm");
   };
 
   createNoteEntry = async (req, res) => {
-    // Todo Gfeller: please check this for validity.
+    // Todo: In case of "Create & Overview" this function must redirect to "/" --> Res.redirect("/")
 
     await noteEntryStore.add(
       req.body.noteDueDate,
