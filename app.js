@@ -38,4 +38,4 @@ app.use(bodyParser.json());
 
 // Todo: is this the right way to do? Both routers link to the root of the website?
 app.use("/", indexRoutes);
-app.use("/", detailsRoutes);
+app.use("/details", detailsRoutes);
