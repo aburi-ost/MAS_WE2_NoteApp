@@ -13,7 +13,8 @@ export class NoteEntry {
 export class NoteEntryStore {
 
   // Helper functions
-  // Todo move helper functions to a different file if necessary
+  // Todo move helper functions to a dedicated file if necessary (or adjust visibility)
+  // Todo implement descending sorting algorithms
   //--------------------------------------
   filterCompleted = (DataBaseEntries) => {
     return DataBaseEntries.filter(
@@ -89,7 +90,14 @@ export class NoteEntryStore {
 
   async delete(id) {
     await this.db.update({ _id: id }, { $set: { state: "COMPLETED" } });
-    return this.get(id);
+  }
+
+  async update(id, dueDate, title, importance, state, description) {
+    await this.db.update({ _id: id }, { $set: { dueDate: dueDate, title: title, importance: importance, state: state, description: description } });
+  }
+
+  async getSingle(id) {
+    return this.db.find({ _id: id },);
   }
 
   async getAll(ParameterToOrderBy) {

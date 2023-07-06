@@ -34,6 +34,7 @@
     <label for="date">Due Date:</label>
     <input type="date" id="date" name="noteDueDate" required>
 
+    <!-- Todo add correct handling for checkbox. A set checkbox should set the value to "COMPLETED", an unticked one to "OPEN"-->
     <label for="state">Finished:</label>
     <input type="checkbox" id="state" name="noteState" value="COMPLETED">
 
@@ -45,7 +46,6 @@
 
 <!-- // Todo separate, hidden form for overview bad practice? -->
 <form id="overviewForm" action="/index" method="GET" >
-    <input type="hidden" name="fetchData" value="true">
 </form>
 
 <!--------------------------------------------------------------------------------------------------------------------->
@@ -54,4 +54,3 @@
 <button id="createAndOverviewButton" form="createEntryForm" type="submit" formaction="/details?redirect=true" formmethod="POST">Create & Overview</button>
 <button id="overviewButton" form="overviewForm" type="submit"> Overview </button>
 <!--------------------------------------------------------------------------------------------------------------------->
-
