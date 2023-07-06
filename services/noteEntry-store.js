@@ -13,11 +13,10 @@ export class NoteEntry {
 export class NoteEntryStore {
 
   // Helper functions
-  // Todo: move them to a different file?
+  // Todo move helper functions to a different file if necessary
   //--------------------------------------
   filterCompleted = (DataBaseEntries) => {
-    // Todo: Doesn't work
-    DataBaseEntries.filter(
+    return DataBaseEntries.filter(
         (entry) => entry.state !== "COMPLETED"
     );
   };
@@ -98,7 +97,7 @@ export class NoteEntryStore {
     let dataBaseEntries = await this.db.find({});
 
     if (ParameterToOrderBy === "filterCompleted") {
-      this.filterCompleted(dataBaseEntries);
+      dataBaseEntries = this.filterCompleted(dataBaseEntries);
     } else if (ParameterToOrderBy === "title") {
       this.sortByTitle(dataBaseEntries);
     } else if (ParameterToOrderBy === "importance") {

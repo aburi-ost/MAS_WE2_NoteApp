@@ -7,18 +7,6 @@ export class IndexController {
     let ParameterToOrderBy = req.query.sortDataBy;
     res.render("index", { data: await noteEntryStore.getAll(ParameterToOrderBy), dark: false });
   };
-
-  createNoteEntryAndRenderData = async (req, res) => {
-    await noteEntryStore.add(
-        req.body.noteDueDate,
-        req.body.noteTitle,
-        req.body.noteImportance,
-        req.body.noteState,
-        req.body.noteDescription
-    );
-    this.DataBaseEntries = await noteEntryStore.getAll();
-    res.render("index", { data: this.DataBaseEntries, dark: false });
-  }
 }
 
 

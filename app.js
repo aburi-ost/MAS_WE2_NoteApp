@@ -24,7 +24,7 @@ app.set("views", path.resolve("views"));
 
 
 app.use(express.static(path.resolve("public")));
-// Todo: use session middleware to memorize user settings like "OrderByName" or filters etc.
+// Todo use session middleware to memorize user settings like "OrderByName" or filters etc.
 app.use(
   session({
     secret: "casduichasidbnuwezrfinasdcvjkadfhsuilfuzihfioda",
@@ -36,6 +36,5 @@ app.use(sessionUserSettings);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// Todo: is this the right way to do? Both routers link to the root of the website?
 app.use("/", indexRoutes);
 app.use("/details", detailsRoutes);
