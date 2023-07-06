@@ -4,7 +4,7 @@ const indexRouter = express.Router();
 import { indexController } from "../controller/index-controller.js";
 
 // JavaScript kann "this" verloren gehen und mit bind instanz von indexController wird garantiert auf this verbunden. --> erlaubt sichere verwendung von this innerhalb der Klasse. ist aber im projekt nicht nötig
-indexRouter.get("/", indexController.indexWithFetch.bind(indexController));
+indexRouter.get("/", indexController.index.bind(indexController));
 indexRouter.get("/index", indexController.index);
 indexRouter.post("/index", indexController.createNoteEntryAndRenderData);
 

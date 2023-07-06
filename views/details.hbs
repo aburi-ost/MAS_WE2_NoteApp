@@ -42,15 +42,17 @@
     <textarea id="description" name="noteDescription"></textarea>
 
 </form>
-<!--------------------------------------------------------------------------------------------------------------------->
-<!-- // Todo: remove situation fetchData depending on situation. Every GET on /index always reads the entire database. overviewForm is not necessary, simple button is enoug -->
+
+<!-- // Todo: separate, hidden form for overview bad practice? -->
 <form id="overviewForm" action="/index" method="GET" >
     <input type="hidden" name="fetchData" value="true">
 </form>
+
 <!--------------------------------------------------------------------------------------------------------------------->
-<!-- // Todo: rename '/entries' to '/details' -->
+<!-- Todo write functionality for create entry form without redirect-->
 <button id="createButton" form="createEntryForm" type="submit" formaction="/details" formmethod="POST">Create</button>
 <!-- // Todo: Replace POST to /index with POST to /details and add redirect to "/" on "Create & OVerview"-->
 <button id="createAndOverviewButton" form="createEntryForm" type="submit" formaction="/index" formmethod="POST">Create & Overview</button>
 <button id="overviewButton" form="overviewForm" type="submit"> Overview </button>
 <!--------------------------------------------------------------------------------------------------------------------->
+

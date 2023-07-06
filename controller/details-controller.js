@@ -1,8 +1,7 @@
 import { noteEntryStore } from "../services/noteEntry-store.js";
 
-// Todo: rename from "NewEntry" to "details"
 export class DetailsController {
-  newNoteEntry = async (req, res) => {
+  details = async (req, res) => {
     res.render("details");
   };
 

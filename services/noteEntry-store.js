@@ -11,6 +11,62 @@ export class NoteEntry {
 }
 
 export class NoteEntryStore {
+
+  // Helper functions
+  // Todo: move them to a different file?
+  //--------------------------------------
+  filterCompleted = (DataBaseEntries) => {
+    // Todo: Doesn't work
+    DataBaseEntries.filter(
+        (entry) => entry.state !== "COMPLETED"
+    );
+  };
+
+  sortByTitle = (DataBaseEntries) => {
+    DataBaseEntries.sort((a, b) => {
+      const nameA = a.title.toUpperCase();
+      const nameB = b.title.toUpperCase();
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+  };
+
+  sortByImportance = (DataBaseEntries) => {
+    DataBaseEntries.sort((a, b) => {
+      const nameA = a.importance;
+      const nameB = b.importance;
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0;
+    });
+
+  };
+
+  sortByDueDate = (DataBaseEntries) => {
+    DataBaseEntries.sort((a, b) => {
+      const nameA = a.dueDate;
+      const nameB = b.dueDate;
+      if (nameA < nameB) {
+        return -1;
+      }
+      if (nameA > nameB) {
+        return 1;
+      }
+      return 0; // a and b are equal in terms of sorting
+    });
+  };
+  //--------------------------
+
+
   constructor(db) {
     this.db =
       db ||
@@ -37,8 +93,21 @@ export class NoteEntryStore {
     return this.get(id);
   }
 
-  async all() {
-    return this.db.find({});
+  async getAll(ParameterToOrderBy) {
+
+    let dataBaseEntries = await this.db.find({});
+
+    if (ParameterToOrderBy === "filterCompleted") {
+      this.filterCompleted(dataBaseEntries);
+    } else if (ParameterToOrderBy === "title") {
+      this.sortByTitle(dataBaseEntries);
+    } else if (ParameterToOrderBy === "importance") {
+      this.sortByImportance(dataBaseEntries);
+    } else if (ParameterToOrderBy === "dueDate") {
+      this.sortByDueDate(dataBaseEntries);
+    }
+
+    return dataBaseEntries;
   }
 }
 
