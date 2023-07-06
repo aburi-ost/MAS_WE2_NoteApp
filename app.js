@@ -6,6 +6,7 @@ import exphbs from "express-handlebars";
 
 import { indexRoutes } from "./routes/index-routes.js";
 import { detailsRoutes } from "./routes/details-routes.js";
+import { updateRoutes } from "./routes/update-routes.js";
 import { helpers } from "./utils/handlebar-util.js";
 import { sessionUserSettings } from "./utils/session-middleware.index.js";
 
@@ -38,3 +39,4 @@ app.use(bodyParser.json());
 
 app.use("/", indexRoutes);
 app.use("/details", detailsRoutes);
+app.use("/update", updateRoutes);
