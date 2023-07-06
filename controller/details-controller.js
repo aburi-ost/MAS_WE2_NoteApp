@@ -5,7 +5,7 @@ export class DetailsController {
     res.render("details");
   };
 
-  createNoteEntry = async (req, res) => {
+  createEntry = async (req, res) => {
     await noteEntryStore.add(
       req.body.noteDueDate,
       req.body.noteTitle,
@@ -17,11 +17,11 @@ export class DetailsController {
     if (req.query.redirect === "true") {
       res.redirect("/");
     } else {
-      res.render("details");
+      res.redirect("/update");
     }
   };
 
-  deleteEntry = async (req, res) => {
+  setEntryCompleted = async (req, res) => {
     // Todo implement functionality (delete & reload) and add appropriate redirection
     await noteEntryStore.delete(req.params.noteId);
   };
