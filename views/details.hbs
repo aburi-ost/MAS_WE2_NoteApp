@@ -1,5 +1,4 @@
 
-<!-- Todo: rename from "NewEntryForm" to "details" -->
 <style>
     form {
         display: flex;
@@ -35,6 +34,7 @@
     <label for="date">Due Date:</label>
     <input type="date" id="date" name="noteDueDate" required>
 
+    <!-- Todo add correct handling for checkbox. A set checkbox should set the value to "COMPLETED", an unticked one to "OPEN"-->
     <label for="state">Finished:</label>
     <input type="checkbox" id="state" name="noteState" value="COMPLETED">
 
@@ -43,15 +43,14 @@
     <textarea id="description" name="noteDescription"></textarea>
 
 </form>
-<!--------------------------------------------------------------------------------------------------------------------->
-<!-- // Todo: remove situation fetchData depending on situation. Every GET on /index always reads the entire database. overviewForm is not necessary, simple button is enoug -->
+
+<!-- // Todo separate, hidden form for overview bad practice? -->
 <form id="overviewForm" action="/index" method="GET" >
-    <input type="hidden" name="fetchData" value="true">
 </form>
+
 <!--------------------------------------------------------------------------------------------------------------------->
-<!-- // Todo: rename '/entries' to '/details' -->
-<button id="createButton" form="createEntryForm" type="submit" formaction="/entries" formmethod="POST">Create</button>
-<!-- // Todo: Replace POST to /index with POST to /details and add redirect to "/" on "Create & OVerview"-->
-<button id="createAndOverviewButton" form="createEntryForm" type="submit" formaction="/index" formmethod="POST">Create & Overview</button>
+<!-- Todo createButton should not redirect to index or reload details-->
+<button id="createButton" form="createEntryForm" type="submit" formaction="/details?redirect=false" formmethod="POST">Create</button>
+<button id="createAndOverviewButton" form="createEntryForm" type="submit" formaction="/details?redirect=true" formmethod="POST">Create & Overview</button>
 <button id="overviewButton" form="overviewForm" type="submit"> Overview </button>
 <!--------------------------------------------------------------------------------------------------------------------->

@@ -40,7 +40,7 @@
 </style>
 
 <div class="mainButtonTable">
-    <div class="button-container"> <form action='/entries' method='GET'><input type='submit' value='Create new Todo'></form> </div>
+    <div class="button-container"> <form action='/details' method='GET'><input type='submit' value='Create new Todo'></form> </div>
     <div class="button-container"> </div>
     <div class="button-container"> <button>Toggle Style</button> </div>     <!-- Todo: add functionality -->
 </div>
@@ -60,7 +60,7 @@
         </form>
     </div>
     
-    <div class="button-container"> <button>By Creation Date</button> </div>     <!-- Todo: add functionality -->
+    <div class="button-container"> <button>By Creation Date</button> </div>     <!-- Todo add functionality -->
         <div class="button-container">
         <form action="/index" method="GET" >
             <input type="hidden" name="sortDataBy" value="importance">
@@ -70,13 +70,14 @@
     <div class="button-container"> </div>
     <div class="button-container">
         <form action="/index" method="GET" >
-            <input type="hidden" name="filterCompleted" value="true">
+            <input type="hidden" name="sortDataBy" value="filterCompleted">
             <button id="filterCompleted" type="submit"> Filter Completed </button>
         </form>
     </div>
 </div>
 
 <div class="mainTable">
+    <!-- Todo: Add "Completed" tickbox -->
     {{#each data}} <!-- Iterate over each entry in the data array -->
         {{#if_eq this.state "COMPLETED"}}
             <div class="data-container grayed-out">
@@ -97,13 +98,12 @@
                 <div class="data-entry">   </div>
             </div>
         {{/if_eq}}
+        <!-- todo: i don't like that this needs a form and a hidden id field for the GET query -->
         <div class="button-container">
-            <button>Edit</button>   <!-- Todo: add functionality -->
+            <form id="editForm" action="/update" method="GET">
+                <input type="hidden" name="id" value="{{this._id}}">
+                <button type="submit">Edit</button>
+            </form>
         </div>
     {{/each}}
 </div>
-
-<form id="overviewForm" action="/index" method="GET" >
-    <input type="hidden" name="fetchData" value="true">
-    <button id="overviewButton" type="submit"> Reload Data </button>
-</form>
