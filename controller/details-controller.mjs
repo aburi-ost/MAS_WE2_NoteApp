@@ -1,4 +1,4 @@
-import { noteEntryStore } from "../services/noteEntry-store.js";
+import { noteEntryStore } from "../services/noteEntry-store.mjs";
 
 export class DetailsController {
   details = async (req, res) => {

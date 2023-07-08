@@ -4,11 +4,11 @@ import path from "path";
 import session from "express-session";
 import exphbs from "express-handlebars";
 
-import { indexRoutes } from "./routes/index-routes.js";
-import { detailsRoutes } from "./routes/details-routes.js";
-import { updateRoutes } from "./routes/update-routes.js";
-import { helpers } from "./utils/handlebar-util.js";
-import { sessionUserSettings } from "./utils/session-middleware.index.js";
+import { indexRoutes } from "./routes/index-routes.mjs";
+import { detailsRoutes } from "./routes/details-routes.mjs";
+import { updateRoutes } from "./routes/update-routes.mjs";
+import { helpers } from "./utils/handlebar-util.mjs";
+import { sessionUserSettings } from "./utils/session-middleware.index.mjs";
 
 export const app = express();
 const hbs = exphbs.create({
@@ -22,7 +22,6 @@ const hbs = exphbs.create({
 app.engine("hbs", hbs.engine);
 app.set("view engine", "hbs");
 app.set("views", path.resolve("views"));
-
 
 app.use(express.static(path.resolve("public")));
 // Todo use session middleware to memorize user settings like "OrderByName" or filters etc.
