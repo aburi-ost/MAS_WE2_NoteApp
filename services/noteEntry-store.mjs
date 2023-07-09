@@ -11,15 +11,12 @@ export class NoteEntry {
 }
 
 export class NoteEntryStore {
-
   // Helper functions
   // Todo move helper functions to a dedicated file if necessary (or adjust visibility)
   // Todo implement descending sorting algorithms
   //--------------------------------------
   filterCompleted = (DataBaseEntries) => {
-    return DataBaseEntries.filter(
-        (entry) => entry.state !== "COMPLETED"
-    );
+    return DataBaseEntries.filter((entry) => entry.state !== "COMPLETED");
   };
 
   sortByTitle = (DataBaseEntries) => {
@@ -48,7 +45,6 @@ export class NoteEntryStore {
       }
       return 0;
     });
-
   };
 
   sortByDueDate = (DataBaseEntries) => {
@@ -65,7 +61,6 @@ export class NoteEntryStore {
     });
   };
   //--------------------------
-
 
   constructor(db) {
     this.db =
@@ -85,6 +80,7 @@ export class NoteEntryStore {
       state,
       description
     );
+    // TODO: checken ob es hier kein await braucht
     return this.db.insert(newNoteEntry);
   }
 
@@ -93,15 +89,25 @@ export class NoteEntryStore {
   }
 
   async update(id, dueDate, title, importance, state, description) {
-    await this.db.update({ _id: id }, { $set: { dueDate: dueDate, title: title, importance: importance, state: state, description: description } });
+    await this.db.update(
+      { _id: id },
+      {
+        $set: {
+          dueDate: dueDate,
+          title: title,
+          importance: importance,
+          state: state,
+          description: description,
+        },
+      }
+    );
   }
 
   async getSingle(id) {
-    return this.db.find({ _id: id },);
+    return await this.db.find({ _id: id });
   }
 
   async getAll(ParameterToOrderBy) {
-
     let dataBaseEntries = await this.db.find({});
 
     if (ParameterToOrderBy === "filterCompleted") {

@@ -2,10 +2,10 @@
   "name": "demo",
   "version": "1.0.0",
   "description": "Vorlage",
-  "main": "index.js",
+  "main": "index.mjs",
   "scripts": {
-    "start": "node index.js",
-    "test": "mocha tests/*.test.js"
+    "start": "node index.mjs",
+    "test": "mocha tests/*.test.mjs"
   },
   "type": "module",
   "author": "mgfeller",
