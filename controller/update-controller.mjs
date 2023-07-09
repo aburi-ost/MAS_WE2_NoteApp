@@ -4,7 +4,7 @@ export class UpdateController {
   update = async (req, res) => {
     // Todo: implement dark mode
     res.render("update", {
-      data: await noteEntryStore.getSingle(req.query.id),
+      data: noteEntryStore.getSingle(req.query.id),
       dark: false,
     });
   };
