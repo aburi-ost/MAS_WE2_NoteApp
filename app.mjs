@@ -24,7 +24,6 @@ app.set('view engine', 'hbs')
 app.set('views', path.resolve('views'))
 
 app.use(express.static(path.resolve('public')))
-// Todo use session middleware to memorize user settings like "OrderByName" or filters etc.
 app.use(
     session({
         secret: 'casduichasidbnuwezrfinasdcvjkadfhsuilfuzihfioda',
