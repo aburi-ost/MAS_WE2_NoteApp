@@ -104,19 +104,21 @@ export class NoteEntryStore {
         return this.db.find({ _id: id })
     }
 
-    async getAll(orderBy, orderDirection) {
+    async getAll(userSettings) {
         let dataBaseEntries = await this.db.find({})
 
-        if (orderBy === 'filterCompleted') {
-            dataBaseEntries = this.filterCompleted(dataBaseEntries, orderDirection)
-        } else if (orderBy === OrderBy.Title) {
-            this.orderByTitle(dataBaseEntries, orderDirection)
-        } else if (orderBy === OrderBy.Importance) {
-            this.orderByImportance(dataBaseEntries, orderDirection)
-        } else if (orderBy === OrderBy.DueDate) {
-            this.orderByDueDate(dataBaseEntries, orderDirection)
-        } else if (orderBy === OrderBy.CreationDate) {
-            this.orderByCreationDate(dataBaseEntries, orderDirection)
+        if (userSettings.filterCompleted === true) {
+            dataBaseEntries = this.filterCompleted(dataBaseEntries, userSettings.orderDirection)
+        }
+
+        if (userSettings.orderBy === OrderBy.Title) {
+            this.orderByTitle(dataBaseEntries, userSettings.orderDirection)
+        } else if (userSettings.orderBy === OrderBy.Importance) {
+            this.orderByImportance(dataBaseEntries, userSettings.orderDirection)
+        } else if (userSettings.orderBy === OrderBy.DueDate) {
+            this.orderByDueDate(dataBaseEntries, userSettings.orderDirection)
+        } else if (userSettings.orderBy === OrderBy.CreationDate) {
+            this.orderByCreationDate(dataBaseEntries, userSettings.orderDirection)
         }
         return dataBaseEntries
     }
