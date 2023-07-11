@@ -1,4 +1,6 @@
 import Datastore from 'nedb-promises'
+import { OrderBy } from '../const/OrderBy.mjs'
+import { OrderDirection } from '../const/OrderDirection.mjs'
 
 export class NoteEntry {
     constructor(dueDate, title, importance, state, description) {
@@ -6,7 +8,7 @@ export class NoteEntry {
         this.dueDate = dueDate;
         this.title = title;
         this.importance = importance;
-        this.state = state;
+        this.state = state; // Todo: replace with predefined constant value (like in OrderBy) instead of assigning strings in business logic
         this.description = description;
     }
 }
@@ -21,10 +23,10 @@ export class NoteEntryStore {
 
     orderLogic = (nameA, nameB, orderDirection) => {
         if (nameA < nameB) {
-            return (orderDirection === 'asc') ? -1 : 1
+            return (orderDirection === OrderDirection.Ascending) ? -1 : 1
         }
         if (nameA > nameB) {
-            return (orderDirection === 'asc') ? 1 : -1
+            return (orderDirection === OrderDirection.Ascending) ? 1 : -1
         }
         return 0
     }
@@ -107,13 +109,13 @@ export class NoteEntryStore {
 
         if (orderBy === 'filterCompleted') {
             dataBaseEntries = this.filterCompleted(dataBaseEntries, orderDirection)
-        } else if (orderBy === 'title') {
+        } else if (orderBy === OrderBy.Title) {
             this.orderByTitle(dataBaseEntries, orderDirection)
-        } else if (orderBy === 'importance') {
+        } else if (orderBy === OrderBy.Importance) {
             this.orderByImportance(dataBaseEntries, orderDirection)
-        } else if (orderBy === 'dueDate') {
+        } else if (orderBy === OrderBy.DueDate) {
             this.orderByDueDate(dataBaseEntries, orderDirection)
-        } else if (orderBy === 'creationDate') {
+        } else if (orderBy === OrderBy.CreationDate) {
             this.orderByCreationDate(dataBaseEntries, orderDirection)
         }
         return dataBaseEntries
