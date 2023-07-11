@@ -87,8 +87,7 @@
         {{/if_eq}}
         <!-- todo: i don't like that this needs a form and a hidden id field for the GET query -->
         <div class='button-container'>
-            <form id='editForm' action='/update' method='GET'>
-                <input type='hidden' name='id' value='{{this._id}}' />
+            <form id='editForm' action='/details/{{_id}}' method='GET'>
                 <button type='submit'>Edit</button>
             </form>
         </div>

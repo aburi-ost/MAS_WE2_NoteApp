@@ -1,29 +1,58 @@
 import { noteEntryStore } from '../services/noteEntry-store.mjs'
 
 export class DetailsController {
-    details = async (req, res) => {
+
+    redirect = (req, res, id) => {
+        if ('update_overview_button' in req.body || 'create_overview_button' in req.body) {
+            res.redirect('/')
+        } else if ('update_button' in req.body || 'create_button' in req.body) {
+            res.redirect(`/details/${id}`)
+        } else {
+            // Todo: default case may interfere with error middle ware -> check
+            res.redirect('/')
+        }
+    }
+
+    detailsEmpty = async (req, res) => {
+        // Todo: implement dark mode
         res.render('details')
     }
 
+    detailsByID = async (req, res) => {
+            // Todo: implement dark moded
+            // Todo: replace update with subcategory of details
+            res.render('update', {
+                data: await noteEntryStore.getSingle(req.params.id),
+                dark: false,
+            });
+    }
+
     createEntry = async (req, res) => {
-        await noteEntryStore.add(
+        let retVal = await noteEntryStore.add(
             req.body.noteDueDate,
             req.body.noteTitle,
             req.body.noteImportance,
             req.body.noteState,
             req.body.noteDescription
         )
-        // Todo Contents of form needs to persist on simple create and create button needs to change to "Update"
-        if (req.query.redirect === 'true') {
-            res.redirect('/')
-        } else {
-            res.redirect('/update')
-        }
+        this.redirect(req,res, retVal._id);
     }
-
     setEntryCompleted = async (req, res) => {
         // Todo implement functionality (delete & reload) and add appropriate redirection
-        await noteEntryStore.delete(req.params.noteId)
+        await noteEntryStore.delete(req.params.id)
+    }
+
+
+    updateEntry = async (req, res) => {
+        await noteEntryStore.update(
+            req.params.id,
+            req.body.noteDueDate,
+            req.body.noteTitle,
+            req.body.noteImportance,
+            req.body.noteState,
+            req.body.noteDescription
+        )
+        this.redirect(req,res, req.params.id);
     }
 }
 

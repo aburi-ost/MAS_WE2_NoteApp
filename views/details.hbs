@@ -4,7 +4,7 @@
     0; } input, textarea { width: 100%; } button { margin-top: 10px; }
 </style>
 
-<form id='createEntryForm'>
+<form id='updateEntryForm' action='/details' method='post'>
     <label for='title'>Title:</label>
     <input type='text' id='title' name='noteTitle' required />
 
@@ -28,28 +28,17 @@
     <label for='description'>Description:</label>
     <textarea id='description' name='noteDescription'></textarea>
 
-</form>
+    <!--------------------------------------------------------------------------------------------------------------------->
+    <input type='submit' name='create_button' value='Create' />
+    <input
+            type='submit'
+            name='create_overview_button'
+            value='Create & Overview'
+    />
 
+</form>
+<!--------------------------------------------------------------------------------------------------------------------->
 <!-- // Todo separate, hidden form for overview bad practice? -->
 <form id='overviewForm' action='/index' method='GET'>
+    <input type='submit' value='Overview'>
 </form>
-
-<!--------------------------------------------------------------------------------------------------------------------->
-<!-- Todo createButton should not redirect to index or reload details-->
-<button
-    id='createButton'
-    form='createEntryForm'
-    type='submit'
-    formaction='/details?redirect=false'
-    formmethod='POST'
->Create</button>
-<button
-    id='createAndOverviewButton'
-    form='createEntryForm'
-    type='submit'
-    formaction='/details?redirect=true'
-    formmethod='POST'
->Create & Overview</button>
-<button id='overviewButton' form='overviewForm' type='submit'>
-    Overview
-</button>
