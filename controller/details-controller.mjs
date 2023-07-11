@@ -14,14 +14,12 @@ export class DetailsController {
     }
 
     detailsEmpty = async (req, res) => {
-        // Todo: implement dark mode
         res.render('details', {
             dark: req.userSettings.darkMode,
         })
     }
 
     detailsByID = async (req, res) => {
-            // Todo: implement dark moded
             // Todo: replace update with subcategory of details
             res.render('update', {
                 data: await noteEntryStore.getSingle(req.params.id),
