@@ -16,6 +16,7 @@ export const sessionUserSettings = (req, res, next) => {
             userSettings.orderDirection = (userSettings.orderDirection === OrderDirection.Ascending) ? OrderDirection.Descending : OrderDirection.Ascending;
         } else {
             userSettings.orderBy = orderBy
+            userSettings.orderDirection = OrderDirection.Ascending; // reset order direction on change of order criteria
         }
         // Todo: Changing the order by criterion seems to clear the filterCompleted settings
     }
