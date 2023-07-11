@@ -1,7 +1,7 @@
 <style>
 
     div { border: 1px solid red; padding: 8px; } .mainButtonTable { display:
-    grid; grid-template-columns: auto 1fr auto; } .sortFilterButtonTable {
+    grid; grid-template-columns: auto 1fr auto; } .orderFilterButtonTable {
     display: grid; grid-template-columns: auto auto auto auto 1fr auto; }
     .mainTable { display: grid; grid-template-columns: 1fr auto; }
     .data-container { display: grid; grid-template-columns: auto 1fr auto; }
@@ -17,22 +17,27 @@
             /></form>
     </div>
     <div class='button-container'> </div>
-    <div class='button-container'> <button>Toggle Style</button> </div>
+    <div class='button-container'>
+        <form action='/index' method='GET'>
+            <input type='hidden' name='darkMode' value='true' />
+            <button id='toggleStyle' type='submit'>Toggle Style</button>
+        </form>
+    </div>
     <!-- Todo: add functionality -->
 </div>
 <!-- Note: For this project, the newly sorted table can be displayed through a re-render. Using AJAX is not necessary -->
-<div class='sortFilterButtonTable'>
+<div class='orderFilterButtonTable'>
     <div class='button-container'>
         <form action='/index' method='GET'>
-            <input type='hidden' name='sortDataBy' value='title' />
-            <button id='sortByName' type='submit'> By Name </button>
+            <input type='hidden' name='orderBy' value='title' />
+            <button id='orderByName' type='submit'> By Name </button>
         </form>
     </div>
 
     <div class='button-container'>
         <form action='/index' method='GET'>
-            <input type='hidden' name='sortDataBy' value='dueDate' />
-            <button id='sortByDueDate' type='submit'> By Due Date </button>
+            <input type='hidden' name='orderBy' value='dueDate' />
+            <button id='orderByDueDate' type='submit'> By Due Date </button>
         </form>
     </div>
 
@@ -40,14 +45,16 @@
     <!-- Todo add functionality -->
     <div class='button-container'>
         <form action='/index' method='GET'>
-            <input type='hidden' name='sortDataBy' value='importance' />
-            <button id='sortByImportance' type='submit'> By Importance </button>
+            <input type='hidden' name='orderBy' value='importance' />
+            <button id='orderByImportance' type='submit'>
+                By Importance
+            </button>
         </form>
     </div>
     <div class='button-container'> </div>
     <div class='button-container'>
         <form action='/index' method='GET'>
-            <input type='hidden' name='sortDataBy' value='filterCompleted' />
+            <input type='hidden' name='orderBy' value='filterCompleted' />
             <button id='filterCompleted' type='submit'>
                 Filter Completed
             </button>

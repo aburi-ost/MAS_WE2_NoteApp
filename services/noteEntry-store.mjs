@@ -19,7 +19,7 @@ export class NoteEntryStore {
         return DataBaseEntries.filter((entry) => entry.state !== 'COMPLETED')
     }
 
-    sortByTitle = (DataBaseEntries) => {
+    orderByTitle = (DataBaseEntries) => {
         DataBaseEntries.sort((a, b) => {
             const nameA = a.title.toUpperCase()
             const nameB = b.title.toUpperCase()
@@ -33,7 +33,7 @@ export class NoteEntryStore {
         })
     }
 
-    sortByImportance = (DataBaseEntries) => {
+    orderByImportance = (DataBaseEntries) => {
         DataBaseEntries.sort((a, b) => {
             const nameA = a.importance
             const nameB = b.importance
@@ -47,7 +47,7 @@ export class NoteEntryStore {
         })
     }
 
-    sortByDueDate = (DataBaseEntries) => {
+    orderByDueDate = (DataBaseEntries) => {
         DataBaseEntries.sort((a, b) => {
             const nameA = a.dueDate
             const nameB = b.dueDate
@@ -113,11 +113,11 @@ export class NoteEntryStore {
         if (ParameterToOrderBy === 'filterCompleted') {
             dataBaseEntries = this.filterCompleted(dataBaseEntries)
         } else if (ParameterToOrderBy === 'title') {
-            this.sortByTitle(dataBaseEntries)
+            this.orderByTitle(dataBaseEntries)
         } else if (ParameterToOrderBy === 'importance') {
-            this.sortByImportance(dataBaseEntries)
+            this.orderByImportance(dataBaseEntries)
         } else if (ParameterToOrderBy === 'dueDate') {
-            this.sortByDueDate(dataBaseEntries)
+            this.orderByDueDate(dataBaseEntries)
         }
 
         return dataBaseEntries
