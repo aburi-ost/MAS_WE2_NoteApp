@@ -4,12 +4,13 @@
     0; } input, textarea { width: 100%; } button { margin-top: 10px; }
 </style>
 
-<form id='updateEntryForm'>
-    <!-- Todo: option without "each" as there is always only one dataset here -->
-    {{#each data}}
-
-        <input type='hidden' name='id' value='{{this._id}}' />
-
+<!-- Todo: option without "each" as there is always only one dataset here -->
+{{#each data}}
+    <form id='updateEntryForm' action='/details/{{this._id}}' method='post'>
+        <!--------------------------------------------------------------------------------------------------------------------->
+        <!-- override method with put -->
+        <input type='hidden' name='_method' value='put'>
+        <!--------------------------------------------------------------------------------------------------------------------->
         <label for='title'>Title:</label>
         <input
             type='text'
@@ -49,29 +50,19 @@
             id='description'
             name='noteDescription'
         >{{this.description}}</textarea>
-    {{/each}}
-</form>
 
-<!-- // Todo separate, hidden form for overview bad practice? -->
-<form id='overviewForm' action='/index' method='GET'>
-</form>
+        <!--------------------------------------------------------------------------------------------------------------------->
+        <input type='submit' name='update_button' value='Update' />
+        <input
+            type='submit'
+            name='update_overview_button'
+            value='Update & Overview'
+        />
 
+    </form>
+{{/each}}
 <!--------------------------------------------------------------------------------------------------------------------->
-<!-- Todo updateButton should not redirect to index or reload details-->
-<button
-    id='updateButton'
-    form='updateEntryForm'
-    type='submit'
-    formaction='/update?redirect=false'
-    formmethod='POST'
->Update</button>
-<button
-    id='updateAndOverviewButton'
-    form='updateEntryForm'
-    type='submit'
-    formaction='/update?redirect=true'
-    formmethod='POST'
->Update & Overview</button>
-<button id='overviewButton' form='overviewForm' type='submit'>
-    Overview
-</button>
+<form id='overviewForm' action='/index' method='GET'>
+    <input type='submit' value='Overview'>
+</form>
+

@@ -1,63 +1,56 @@
 import Datastore from 'nedb-promises'
+import { OrderBy } from '../const/OrderBy.mjs'
+import { OrderDirection } from '../const/OrderDirection.mjs'
 
 export class NoteEntry {
     constructor(dueDate, title, importance, state, description) {
-        this.dueDate = dueDate
-        this.title = title
-        this.importance = importance
-        this.state = state
-        this.description = description
+        this.creationDate = new Date();
+        this.dueDate = dueDate;
+        this.title = title;
+        this.importance = importance;
+        this.state = state; // Todo: replace with predefined constant value (like in OrderBy) instead of assigning strings in business logic
+        this.description = description;
     }
 }
 
 export class NoteEntryStore {
     // Helper functions
     // Todo move helper functions to a dedicated file if necessary (or adjust visibility)
-    // Todo implement descending sorting algorithms
     //--------------------------------------
-    filterCompleted = (DataBaseEntries) => {
+    filterCompleted = (DataBaseEntries, orderDirection) => {
         return DataBaseEntries.filter((entry) => entry.state !== 'COMPLETED')
     }
 
-    orderByTitle = (DataBaseEntries) => {
+    orderLogic = (nameA, nameB, orderDirection) => {
+        if (nameA < nameB) {
+            return (orderDirection === OrderDirection.Ascending) ? -1 : 1
+        }
+        if (nameA > nameB) {
+            return (orderDirection === OrderDirection.Ascending) ? 1 : -1
+        }
+        return 0
+    }
+
+    orderByTitle = (DataBaseEntries, orderDirection) => {
         DataBaseEntries.sort((a, b) => {
-            const nameA = a.title.toUpperCase()
-            const nameB = b.title.toUpperCase()
-            if (nameA < nameB) {
-                return -1
-            }
-            if (nameA > nameB) {
-                return 1
-            }
-            return 0
+            return this.orderLogic(a.title.toUpperCase(), b.title.toUpperCase(), orderDirection)
         })
     }
 
-    orderByImportance = (DataBaseEntries) => {
+    orderByImportance = (DataBaseEntries, orderDirection) => {
         DataBaseEntries.sort((a, b) => {
-            const nameA = a.importance
-            const nameB = b.importance
-            if (nameA < nameB) {
-                return -1
-            }
-            if (nameA > nameB) {
-                return 1
-            }
-            return 0
+            return this.orderLogic(a.importance, b.importance, orderDirection)
         })
     }
 
-    orderByDueDate = (DataBaseEntries) => {
+    orderByDueDate = (DataBaseEntries, orderDirection) => {
         DataBaseEntries.sort((a, b) => {
-            const nameA = a.dueDate
-            const nameB = b.dueDate
-            if (nameA < nameB) {
-                return -1
-            }
-            if (nameA > nameB) {
-                return 1
-            }
-            return 0 // a and b are equal in terms of sorting
+            return this.orderLogic(a.dueDate,  b.dueDate, orderDirection)
+        })
+    }
+    orderByCreationDate = (DataBaseEntries, orderDirection) => {
+        DataBaseEntries.sort((a, b) => {
+            return this.orderLogic(a.creationDate, b.creationDate, orderDirection)
         })
     }
     //--------------------------
@@ -104,22 +97,27 @@ export class NoteEntryStore {
     }
 
     async getSingle(id) {
-        return await this.db.find({ _id: id })
+        //Todo: This await was redundant --> needs to be placed on function call or make method sync instead of async
+        // return await this.db.find({ _id: id })
+        return this.db.find({ _id: id })
     }
 
-    async getAll(ParameterToOrderBy) {
+    async getAll(userSettings) {
         let dataBaseEntries = await this.db.find({})
 
-        if (ParameterToOrderBy === 'filterCompleted') {
-            dataBaseEntries = this.filterCompleted(dataBaseEntries)
-        } else if (ParameterToOrderBy === 'title') {
-            this.orderByTitle(dataBaseEntries)
-        } else if (ParameterToOrderBy === 'importance') {
-            this.orderByImportance(dataBaseEntries)
-        } else if (ParameterToOrderBy === 'dueDate') {
-            this.orderByDueDate(dataBaseEntries)
+        if (userSettings.filterCompleted === true) {
+            dataBaseEntries = this.filterCompleted(dataBaseEntries, userSettings.orderDirection)
         }
 
+        if (userSettings.orderBy === OrderBy.Title) {
+            this.orderByTitle(dataBaseEntries, userSettings.orderDirection)
+        } else if (userSettings.orderBy === OrderBy.Importance) {
+            this.orderByImportance(dataBaseEntries, userSettings.orderDirection)
+        } else if (userSettings.orderBy === OrderBy.DueDate) {
+            this.orderByDueDate(dataBaseEntries, userSettings.orderDirection)
+        } else if (userSettings.orderBy === OrderBy.CreationDate) {
+            this.orderByCreationDate(dataBaseEntries, userSettings.orderDirection)
+        }
         return dataBaseEntries
     }
 }

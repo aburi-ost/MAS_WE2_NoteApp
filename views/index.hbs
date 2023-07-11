@@ -41,8 +41,15 @@
         </form>
     </div>
 
-    <div class='button-container'> <button>By Creation Date</button> </div>
-    <!-- Todo add functionality -->
+    <div class='button-container'>
+        <form action='/index' method='GET'>
+            <input type='hidden' name='orderBy' value='creationDate' />
+            <button id='orderCreationDate' type='submit'>
+                By Creation Date
+            </button>
+        </form>
+    </div>
+
     <div class='button-container'>
         <form action='/index' method='GET'>
             <input type='hidden' name='orderBy' value='importance' />
@@ -68,8 +75,10 @@
         <!-- Iterate over each entry in the data array -->
         {{#if_eq this.state 'COMPLETED'}}
             <div class='data-container grayed-out'>
+                <!-- Todo: dueDate needs to be displayed as "in 7 days" or "3 days ago" format -->
                 <div class='data-entry'> {{this.dueDate}} </div>
                 <div class='data-entry'> {{this.title}} </div>
+                <!-- Todo: importance needs to be displayed as number of icons -->
                 <div class='data-entry'> {{this.importance}} </div>
                 <div class='data-entry'> {{this.state}} </div>
                 <div class='data-entry'> {{this.description}} </div>
@@ -77,18 +86,18 @@
             </div>
         {{else}}
             <div class='data-container'>
+                <!-- Todo: dueDate needs to be displayed as "in 7 days" or "3 days ago" format -->
                 <div class='data-entry'> {{this.dueDate}} </div>
                 <div class='data-entry'> {{this.title}} </div>
+                <!-- Todo: importance needs to be displayed as number of icons -->
                 <div class='data-entry'> {{this.importance}} </div>
                 <div class='data-entry'> {{this.state}} </div>
                 <div class='data-entry'> {{this.description}} </div>
                 <div class='data-entry'> </div>
             </div>
         {{/if_eq}}
-        <!-- todo: i don't like that this needs a form and a hidden id field for the GET query -->
         <div class='button-container'>
-            <form id='editForm' action='/update' method='GET'>
-                <input type='hidden' name='id' value='{{this._id}}' />
+            <form id='editForm' action='/details/{{_id}}' method='GET'>
                 <button type='submit'>Edit</button>
             </form>
         </div>
