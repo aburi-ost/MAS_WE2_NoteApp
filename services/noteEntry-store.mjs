@@ -15,51 +15,59 @@ export class NoteEntryStore {
     // Todo move helper functions to a dedicated file if necessary (or adjust visibility)
     // Todo implement descending sorting algorithms
     //--------------------------------------
-    filterCompleted = (DataBaseEntries) => {
+    filterCompleted = (DataBaseEntries, orderDirection) => {
         return DataBaseEntries.filter((entry) => entry.state !== 'COMPLETED')
     }
 
-    orderByTitle = (DataBaseEntries) => {
+    orderByTitle = (DataBaseEntries, orderDirection) => {
         DataBaseEntries.sort((a, b) => {
             const nameA = a.title.toUpperCase()
             const nameB = b.title.toUpperCase()
             if (nameA < nameB) {
-                return -1
+                return (orderDirection === 'asc') ? -1 : 1
+                //return -1
             }
             if (nameA > nameB) {
-                return 1
+                return (orderDirection === 'asc') ? 1 : -1
+                //return 1
             }
             return 0
         })
     }
 
-    orderByImportance = (DataBaseEntries) => {
+    orderByImportance = (DataBaseEntries, orderDirection) => {
         DataBaseEntries.sort((a, b) => {
             const nameA = a.importance
             const nameB = b.importance
             if (nameA < nameB) {
-                return -1
+                return (orderDirection === 'asc') ? -1 : 1
+                //return -1
             }
             if (nameA > nameB) {
-                return 1
+                return (orderDirection === 'asc') ? 1 : -1
+                //return 1
             }
             return 0
         })
     }
 
-    orderByDueDate = (DataBaseEntries) => {
+    orderByDueDate = (DataBaseEntries, orderDirection) => {
         DataBaseEntries.sort((a, b) => {
             const nameA = a.dueDate
             const nameB = b.dueDate
             if (nameA < nameB) {
-                return -1
+                return (orderDirection === 'asc') ? -1 : 1
+                //return -1
             }
             if (nameA > nameB) {
-                return 1
+                return (orderDirection === 'asc') ? 1 : -1
+                //return 1
             }
             return 0 // a and b are equal in terms of sorting
         })
     }
+
+
     //--------------------------
 
     constructor(db) {
@@ -109,19 +117,20 @@ export class NoteEntryStore {
         return this.db.find({ _id: id })
     }
 
-    async getAll(ParameterToOrderBy) {
+    async getAll(orderBy, orderDirection) {
         let dataBaseEntries = await this.db.find({})
 
-        if (ParameterToOrderBy === 'filterCompleted') {
-            dataBaseEntries = this.filterCompleted(dataBaseEntries)
-        } else if (ParameterToOrderBy === 'title') {
-            this.orderByTitle(dataBaseEntries)
-        } else if (ParameterToOrderBy === 'importance') {
-            this.orderByImportance(dataBaseEntries)
-        } else if (ParameterToOrderBy === 'dueDate') {
-            this.orderByDueDate(dataBaseEntries)
+        if (orderBy === 'filterCompleted') {
+            dataBaseEntries = this.filterCompleted(dataBaseEntries, orderDirection)
+        } else if (orderBy === 'title') {
+            this.orderByTitle(dataBaseEntries, orderDirection)
+        } else if (orderBy === 'importance') {
+            this.orderByImportance(dataBaseEntries, orderDirection)
+        } else if (orderBy === 'dueDate') {
+            this.orderByDueDate(dataBaseEntries, orderDirection)
+        } else if (orderBy === 'creationDate') {
+            this.orderByCreationDate(dataBaseEntries, orderDirection)
         }
-
         return dataBaseEntries
     }
 }

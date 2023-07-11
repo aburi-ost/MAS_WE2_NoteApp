@@ -6,7 +6,7 @@ export class IndexController {
         // Note: For this project, the newly sorted table can be displayed through a re-render. Using AJAX is not necessary
         let ParameterToOrderBy = req.query.orderBy
         res.render('index', {
-            data: await noteEntryStore.getAll(ParameterToOrderBy),
+            data: await noteEntryStore.getAll(req.userSettings.orderBy, req.userSettings.orderDirection),
             dark: req.userSettings.darkMode,
         })
     }

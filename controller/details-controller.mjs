@@ -42,7 +42,6 @@ export class DetailsController {
         await noteEntryStore.delete(req.params.id)
     }
 
-
     updateEntry = async (req, res) => {
         await noteEntryStore.update(
             req.params.id,
