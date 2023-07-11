@@ -8,7 +8,7 @@ import { indexRoutes } from './routes/index-routes.mjs'
 import { detailsRoutes } from './routes/details-routes.mjs'
 import { helpers } from './utils/handlebar-util.mjs'
 import { sessionUserSettings } from './utils/session-middleware.index.mjs'
-import {overrideMiddleware} from "./utils/method-override.js"; // Importing the overrideMiddleware from the './utils/method-override.js' file, which handles method overriding
+import {overrideMiddleware} from "./utils/method-override.mjs"; // Importing the overrideMiddleware from the './utils/method-override.mjs' file, which handles method overriding
 
 export const app = express()
 const hbs = exphbs.create({
