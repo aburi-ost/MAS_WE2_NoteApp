@@ -2,72 +2,57 @@ import Datastore from 'nedb-promises'
 
 export class NoteEntry {
     constructor(dueDate, title, importance, state, description) {
-        this.dueDate = dueDate
-        this.title = title
-        this.importance = importance
-        this.state = state
-        this.description = description
+        this.creationDate = new Date();
+        this.dueDate = dueDate;
+        this.title = title;
+        this.importance = importance;
+        this.state = state;
+        this.description = description;
     }
 }
 
 export class NoteEntryStore {
     // Helper functions
     // Todo move helper functions to a dedicated file if necessary (or adjust visibility)
-    // Todo implement descending sorting algorithms
     //--------------------------------------
     filterCompleted = (DataBaseEntries, orderDirection) => {
         return DataBaseEntries.filter((entry) => entry.state !== 'COMPLETED')
     }
 
+    orderLogic = (nameA, nameB, orderDirection) => {
+        if (nameA < nameB) {
+            return (orderDirection === 'asc') ? -1 : 1
+        }
+        if (nameA > nameB) {
+            return (orderDirection === 'asc') ? 1 : -1
+        }
+        return 0
+    }
+
     orderByTitle = (DataBaseEntries, orderDirection) => {
         DataBaseEntries.sort((a, b) => {
-            const nameA = a.title.toUpperCase()
-            const nameB = b.title.toUpperCase()
-            if (nameA < nameB) {
-                return (orderDirection === 'asc') ? -1 : 1
-                //return -1
-            }
-            if (nameA > nameB) {
-                return (orderDirection === 'asc') ? 1 : -1
-                //return 1
-            }
-            return 0
+            return this.orderLogic(a.title.toUpperCase(), b.title.toUpperCase(), orderDirection)
         })
     }
 
     orderByImportance = (DataBaseEntries, orderDirection) => {
         DataBaseEntries.sort((a, b) => {
-            const nameA = a.importance
-            const nameB = b.importance
-            if (nameA < nameB) {
-                return (orderDirection === 'asc') ? -1 : 1
-                //return -1
-            }
-            if (nameA > nameB) {
-                return (orderDirection === 'asc') ? 1 : -1
-                //return 1
-            }
-            return 0
+            return this.orderLogic(a.importance, b.importance, orderDirection)
         })
     }
 
     orderByDueDate = (DataBaseEntries, orderDirection) => {
         DataBaseEntries.sort((a, b) => {
-            const nameA = a.dueDate
-            const nameB = b.dueDate
-            if (nameA < nameB) {
-                return (orderDirection === 'asc') ? -1 : 1
-                //return -1
-            }
-            if (nameA > nameB) {
-                return (orderDirection === 'asc') ? 1 : -1
-                //return 1
-            }
-            return 0 // a and b are equal in terms of sorting
+            return this.orderLogic(a.dueDate,  b.dueDate, orderDirection)
         })
     }
-
-
+    orderByCreationDate = (DataBaseEntries, orderDirection) => {
+        DataBaseEntries.sort((a, b) => {
+            const nameA = a.creationDate
+            const nameB = b.creationDate
+            return this.orderLogic(nameA, nameB, orderDirection)
+        })
+    }
     //--------------------------
 
     constructor(db) {
