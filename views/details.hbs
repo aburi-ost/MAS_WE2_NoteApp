@@ -30,9 +30,8 @@
     <label for='date'>Due Date:</label>
     <input type='date' id='date' name='noteDueDate' required />
 
-    <!-- Todo add correct handling for checkbox. A set checkbox should set the value to "COMPLETED", an unticked one to "OPEN"-->
     <div class='checkbox-container'>
-        <input type='checkbox' id='state' name='noteState' value='COMPLETED' />
+        <input type='checkbox' id='state' name='noteState' value='{{get_EntryState_Completed}}' />
         <label for='state'>Finished</label>
     </div>
 

@@ -1,6 +1,7 @@
 import Datastore from 'nedb-promises'
 import { OrderBy } from '../const/OrderBy.mjs'
 import { OrderDirection } from '../const/OrderDirection.mjs'
+import { EntryState } from '../const/EntryState.mjs'
 
 export class NoteEntry {
     constructor(dueDate, title, importance, state, description) {
@@ -8,7 +9,7 @@ export class NoteEntry {
         this.dueDate = dueDate;
         this.title = title;
         this.importance = importance;
-        this.state = state; // Todo: replace with predefined constant value (like in OrderBy) instead of assigning strings in business logic
+        this.state = (state === EntryState.Completed) ? EntryState.Completed : EntryState.Open;
         this.description = description;
     }
 }
@@ -18,7 +19,7 @@ export class NoteEntryStore {
     // Todo move helper functions to a dedicated file if necessary (or adjust visibility)
     //--------------------------------------
     filterCompleted = (DataBaseEntries, orderDirection) => {
-        return DataBaseEntries.filter((entry) => entry.state !== 'COMPLETED')
+        return DataBaseEntries.filter((entry) => entry.state !== EntryState.Completed)
     }
 
     orderLogic = (nameA, nameB, orderDirection) => {
@@ -62,10 +63,7 @@ export class NoteEntryStore {
     }
 
     async add(dueDate, title, importance, state, description) {
-        if (typeof state === 'undefined') {
-            state = 'OPEN'
-        }
-
+        // Create temporary note entry to enforce constructor invaraince
         let newNoteEntry = new NoteEntry(
             dueDate,
             title,
@@ -78,19 +76,27 @@ export class NoteEntryStore {
     }
 
     async delete(id) {
-        await this.db.update({ _id: id }, { $set: { state: 'COMPLETED' } })
+        await this.db.update({ _id: id }, { $set: { state: EntryState.Completed } })
     }
 
     async update(id, dueDate, title, importance, state, description) {
+        // Create temporary note entry to enforce constructor invaraince
+        const tempNoteEntry = new NoteEntry(
+            dueDate,
+            title,
+            importance,
+            state,
+            description
+        )
         await this.db.update(
             { _id: id },
             {
                 $set: {
-                    dueDate: dueDate,
-                    title: title,
-                    importance: importance,
-                    state: state,
-                    description: description,
+                    dueDate: tempNoteEntry.dueDate,
+                    title: tempNoteEntry.title,
+                    importance: tempNoteEntry.importance,
+                    state: tempNoteEntry.state,
+                    description: tempNoteEntry.description,
                 },
             }
         )

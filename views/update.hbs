@@ -49,12 +49,18 @@
             value={{this.dueDate}}
         />
 
-        <!-- Todo add correct handling for checkbox. A set checkbox should set the value to "COMPLETED", an unticked one to "OPEN"-->
-        <!-- Todo the state needs to be set according to the read data here -> something like #if_eq -->
-        <div class='checkbox-container'>
-            <input type='checkbox' id='state' name='noteState' value='COMPLETED' />
-            <label for='state'>Finished</label>
-        </div>
+        {{#if_eq this.state (get_EntryState_Completed)}}
+            <div class='checkbox-container'>
+                <input type='checkbox' id='state' name='noteState' value='{{get_EntryState_Completed}}' checked />
+                <label for='state'>Finished</label>
+            </div>
+        {{else}}
+            <div class='checkbox-container'>
+                <input type='checkbox' id='state' name='noteState' value='{{get_EntryState_Completed}}' />
+                <label for='state'>Finished</label>
+            </div>
+        {{/if_eq}}
+
 
         <label for='description'>Description:</label>
         <textarea
