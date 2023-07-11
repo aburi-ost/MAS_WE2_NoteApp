@@ -50,9 +50,7 @@ export class NoteEntryStore {
     }
     orderByCreationDate = (DataBaseEntries, orderDirection) => {
         DataBaseEntries.sort((a, b) => {
-            const nameA = a.creationDate
-            const nameB = b.creationDate
-            return this.orderLogic(nameA, nameB, orderDirection)
+            return this.orderLogic(a.creationDate, b.creationDate, orderDirection)
         })
     }
     //--------------------------

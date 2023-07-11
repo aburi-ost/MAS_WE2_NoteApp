@@ -3,14 +3,14 @@ import { noteEntryStore } from '../services/noteEntry-store.mjs'
 export class DetailsController {
 
     redirect = (req, res, id) => {
-        if ('update_overview_button' in req.body || 'create_overview_button' in req.body) {
-            res.redirect('/')
-        } else if ('update_button' in req.body || 'create_button' in req.body) {
-            res.redirect(`/details/${id}`)
-        } else {
-            // Todo: default case may interfere with error middle ware -> check
-            res.redirect('/')
-        }
+        if (req.body.update_overview_button === 'Update & Overview' || req.body.create_overview_button === 'Create & Overview' ) {
+                res.redirect('/')
+            } else if (req.body.update_button === 'Update' || req.body.create_button === 'Create') {
+                res.redirect(`/details/${id}`)
+            } else {
+                // Todo: default case may interfere with error middle ware -> check
+                res.redirect('/')
+            }
     }
 
     detailsEmpty = async (req, res) => {
