@@ -6,7 +6,9 @@
     .mainTable { display: grid; grid-template-columns: 1fr auto; }
     .data-container { display: grid; grid-template-columns: auto 1fr auto; }
     .grayed-out { background-color: #888; opacity: 0.5; } .data-entry {
-    text-align: center; } .button-container { }
+    text-align: center; } .button-container { } .checkbox-container { display:
+    flex; align-items: center; justify-content: flex-start; }
+    input[type="checkbox"] { margin-left: 0; margin-right: 5px; }
 </style>
 
 <div class='mainButtonTable'>
@@ -78,9 +80,12 @@
                 <!-- Todo: dueDate needs to be displayed as "in 7 days" or "3 days ago" format -->
                 <div class='data-entry'> {{this.dueDate}} </div>
                 <div class='data-entry'> {{this.title}} </div>
-                <!-- Todo: importance needs to be displayed as number of icons -->
+                <!-- Todo (Optional): importance needs to be displayed as number of icons -->
                 <div class='data-entry'> {{this.importance}} </div>
-                <div class='data-entry'> {{this.state}} </div>
+                <div class='checkbox-container'>
+                    <input type='checkbox' disabled checked />
+                    <label for='state'>Completed</label>
+                </div>
                 <div class='data-entry'> {{this.description}} </div>
                 <div class='data-entry'> </div>
             </div>
@@ -89,9 +94,12 @@
                 <!-- Todo: dueDate needs to be displayed as "in 7 days" or "3 days ago" format -->
                 <div class='data-entry'> {{this.dueDate}} </div>
                 <div class='data-entry'> {{this.title}} </div>
-                <!-- Todo: importance needs to be displayed as number of icons -->
+                <!-- Todo (Optional): importance needs to be displayed as number of icons -->
                 <div class='data-entry'> {{this.importance}} </div>
-                <div class='data-entry'> {{this.state}} </div>
+                <div class='checkbox-container'>
+                    <input type='checkbox' disabled />
+                    <label for='state'>Open</label>
+                </div>
                 <div class='data-entry'> {{this.description}} </div>
                 <div class='data-entry'> </div>
             </div>

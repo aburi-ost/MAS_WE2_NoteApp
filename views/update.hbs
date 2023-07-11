@@ -2,6 +2,15 @@
     form { display: flex; flex-direction: column; align-items: flex-start;
     margin: 20px; } label { width: 100%; } input[type="checkbox"] { margin-left:
     0; } input, textarea { width: 100%; } button { margin-top: 10px; }
+    .checkbox-container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    input[type="checkbox"] {
+        margin-left: 0;
+        margin-right: 5px;
+    }
 </style>
 
 <!-- Todo: option without "each" as there is always only one dataset here -->
@@ -42,8 +51,10 @@
 
         <!-- Todo add correct handling for checkbox. A set checkbox should set the value to "COMPLETED", an unticked one to "OPEN"-->
         <!-- Todo the state needs to be set according to the read data here -> something like #if_eq -->
-        <label for='state'>Finished:</label>
-        <input type='checkbox' id='state' name='noteState' value='COMPLETED' />
+        <div class='checkbox-container'>
+            <input type='checkbox' id='state' name='noteState' value='COMPLETED' />
+            <label for='state'>Finished</label>
+        </div>
 
         <label for='description'>Description:</label>
         <textarea
