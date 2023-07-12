@@ -3,9 +3,10 @@
     grid; grid-template-columns: auto 1fr auto; } .orderFilterButtonTable {
     display: grid; grid-template-columns: auto auto auto auto 1fr auto; }
     .mainTable { display: grid; grid-template-columns: 1fr auto; }
-    .data-container { display: grid; grid-template-columns: auto 1fr auto; }
-    .grayed-out { background-color: #888; opacity: 0.5; } .data-entry {
-    text-align: center; word-break: break-all;} .button-container { }
+    .data-container { display: grid; grid-template-columns: 7em 1fr 7em; }
+    .grayed-out { background-color: #888; opacity: 0.5; } .data-entry-center {
+    text-align: center; word-break: break-all;} .data-entry-left { text-align:
+    left;} .data-entry-right { text-align: right;} .button-container { }
     .checkbox-container { display: flex; align-items: center; justify-content:
     flex-start; } input[type="checkbox"] { margin-left: 0; margin-right: 5px; }
 </style>
@@ -75,33 +76,35 @@
         <!-- Iterate over each entry in the data array -->
         {{#if_eq this.state (get_EntryState_Completed)}}
             <div class='data-container grayed-out'>
-                <div class='data-entry'> {{dueDate_in_Days this.dueDate}} </div>
-                <div class='data-entry'> {{this.title}} </div>
-                <!-- Todo (Optional): importance needs to be displayed as number of icons -->
-                <div class='data-entry'>
+                <div class='data-entry-left'>
+                    {{dueDate_in_Days this.dueDate}}
+                </div>
+                <div class='data-entry-center'> {{this.title}} </div>
+                <div class='data-entry-right'>
                     {{get_importance_icons this.importance}}
                 </div>
                 <div class='checkbox-container'>
                     <input type='checkbox' disabled checked />
                     <label for='state'>Completed</label>
                 </div>
-                <div class='data-entry'> {{this.description}} </div>
-                <div class='data-entry'> </div>
+                <div class='data-entry-center'> {{this.description}} </div>
+                <div class='data-entry-center'> </div>
             </div>
         {{else}}
             <div class='data-container'>
-                <div class='data-entry'> {{dueDate_in_Days this.dueDate}} </div>
-                <div class='data-entry'> {{this.title}} </div>
-                <!-- Todo (Optional): importance needs to be displayed as number of icons -->
-                <div class='data-entry'>
+                <div class='data-entry-left'>
+                    {{dueDate_in_Days this.dueDate}}
+                </div>
+                <div class='data-entry-center'> {{this.title}} </div>
+                <div class='data-entry-right'>
                     {{get_importance_icons this.importance}}
                 </div>
                 <div class='checkbox-container'>
                     <input type='checkbox' disabled />
                     <label for='state'>Open</label>
                 </div>
-                <div class='data-entry'> {{this.description}} </div>
-                <div class='data-entry'> </div>
+                <div class='data-entry-center'> {{this.description}} </div>
+                <div class='data-entry-center'> </div>
             </div>
         {{/if_eq}}
         <div class='button-container'>
