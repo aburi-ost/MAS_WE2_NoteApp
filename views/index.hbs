@@ -78,7 +78,9 @@
                 <div class='data-entry'> {{dueDate_in_Days this.dueDate}} </div>
                 <div class='data-entry'> {{this.title}} </div>
                 <!-- Todo (Optional): importance needs to be displayed as number of icons -->
-                <div class='data-entry'> {{this.importance}} </div>
+                <div class='data-entry'>
+                    {{get_importance_icons this.importance}}
+                </div>
                 <div class='checkbox-container'>
                     <input type='checkbox' disabled checked />
                     <label for='state'>Completed</label>
@@ -91,7 +93,9 @@
                 <div class='data-entry'> {{dueDate_in_Days this.dueDate}} </div>
                 <div class='data-entry'> {{this.title}} </div>
                 <!-- Todo (Optional): importance needs to be displayed as number of icons -->
-                <div class='data-entry'> {{this.importance}} </div>
+                <div class='data-entry'>
+                    {{get_importance_icons this.importance}}
+                </div>
                 <div class='checkbox-container'>
                     <input type='checkbox' disabled />
                     <label for='state'>Open</label>

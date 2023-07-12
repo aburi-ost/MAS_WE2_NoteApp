@@ -3,9 +3,9 @@ import { noteEntryStore } from '../services/noteEntry-store.mjs'
 export class DetailsController {
 
     redirect = (req, res, id) => {
-        if (req.body.update_overview_button === 'Update & Overview' || req.body.create_overview_button === 'Create & Overview' ) {
+            if ('update_overview_button' in req.body || 'create_overview_button' in req.body) {
                 res.redirect('/')
-            } else if (req.body.update_button === 'Update' || req.body.create_button === 'Create') {
+            } else if ('update_button' in req.body || 'create_button' in req.body) {
                 res.redirect(`/details/${id}`)
             } else {
                 // Todo: default case may interfere with error middle ware -> check

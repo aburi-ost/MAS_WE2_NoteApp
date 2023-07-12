@@ -8,22 +8,35 @@ export const helpers = {
         return EntryState.Completed
     },
     dueDate_in_Days: function (dueDate) {
-        const currentDate = new Date().setUTCHours(0, 0, 0, 0)
         const inputDate = new Date(dueDate).setUTCHours(0, 0, 0, 0)
-        const daysUntilDate = (inputDate - currentDate) / (1000 * 60 * 60 * 24)
+        if (isNaN(inputDate)) {
+            return 'Someday';
+        }
+        const today = new Date().setUTCHours(0, 0, 0, 0)
+        const daysUntilDueDate = (inputDate - today) / (1000 * 60 * 60 * 24)
+
         switch (true) {
-            case daysUntilDate === 0:
+            case daysUntilDueDate === 0:
                 return 'now'
-            case daysUntilDate === -1:
+            case daysUntilDueDate === -1:
                 return 'a day ago'
-            case daysUntilDate === 1:
+            case daysUntilDueDate === 1:
                 return 'in a day'
-            case daysUntilDate > 1:
-                return `in ${daysUntilDate} days`
-            case daysUntilDate < 1:
-                return `${Math.abs(daysUntilDate)} days ago`
+            case daysUntilDueDate > 1:
+                return `in ${daysUntilDueDate} days`
+            case daysUntilDueDate < 1:
+                return `${Math.abs(daysUntilDueDate)} days ago`
             default:
                 return 'Someday'
         }
     },
+    get_importance_icons: function (value) {
+        /*
+        // Todo: Some sort of safety check?
+        if (typeof value !== 'number' || isNaN(value)) {
+            return 'Invalid value';
+        }
+         */
+        return '🗲'.repeat(value);
+    }
 }
