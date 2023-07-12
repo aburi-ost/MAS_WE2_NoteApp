@@ -21,10 +21,15 @@ export class DetailsController {
 
     detailsByID = async (req, res) => {
             // Todo: replace update with subcategory of details
+        const readEntry = await noteEntryStore.getSingle(req.params.id)
+        if (readEntry.length === 0) {
+            res.status(404).send('Entry not found.');
+        } else {
             res.render('update', {
-                data: await noteEntryStore.getSingle(req.params.id),
+                data: readEntry,
                 dark: req.userSettings.darkMode,
             });
+        }
     }
 
     createEntry = async (req, res) => {
@@ -39,6 +44,7 @@ export class DetailsController {
     }
     setEntryCompleted = async (req, res) => {
         // Todo implement functionality (delete & reload) and add appropriate redirection
+        // Todo: Check weether functionality is even needed
         await noteEntryStore.delete(req.params.id)
     }
 
