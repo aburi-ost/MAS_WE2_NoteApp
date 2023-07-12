@@ -77,7 +77,8 @@
         {{#if_eq this.state (get_EntryState_Completed)}}
             <div class='data-container grayed-out'>
                 <!-- Todo: dueDate needs to be displayed as "in 7 days" or "3 days ago" format -->
-                <div class='data-entry'> {{this.dueDate}} </div>
+                <!-- <div class='data-entry'> {{this.dueDate}} </div> -->
+                <div class='data-entry'> {{dueDate_in_Days this.dueDate}} </div> 
                 <div class='data-entry'> {{this.title}} </div>
                 <!-- Todo (Optional): importance needs to be displayed as number of icons -->
                 <div class='data-entry'> {{this.importance}} </div>
