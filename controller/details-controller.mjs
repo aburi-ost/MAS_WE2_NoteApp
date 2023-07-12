@@ -22,10 +22,10 @@ export class DetailsController {
     detailsByID = async (req, res) => {
             // Todo: replace update with subcategory of details
         const readEntry = await noteEntryStore.getSingle(req.params.id)
-        if (readEntry.length === 0) {
+        if (!readEntry) {
             res.status(404).send('Entry not found.');
         } else {
-            res.render('update', {
+            res.render('details', {
                 data: readEntry,
                 dark: req.userSettings.darkMode,
             });
