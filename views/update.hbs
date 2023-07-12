@@ -25,6 +25,7 @@
             type='text'
             id='title'
             name='noteTitle'
+            maxlength='64'
             required
             value={{this.title}}
         />
@@ -62,10 +63,7 @@
 
 
         <label for='description'>Description:</label>
-        <textarea
-            id='description'
-            name='noteDescription'
-        >{{this.description}}</textarea>
+        <input type="text" id='description' name='noteDescription' maxlength="256" value='{{this.description}}'>
 
         <!--------------------------------------------------------------------------------------------------------------------->
         <input type='submit' name='update_button' value='Update' />
