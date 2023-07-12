@@ -35,7 +35,7 @@ export class DetailsController {
             req.body.noteState,
             req.body.noteDescription
         )
-        this.redirect(req,res, retVal._id);
+        this.redirect(req, res, retVal._id);
     }
     setEntryCompleted = async (req, res) => {
         // Todo implement functionality (delete & reload) and add appropriate redirection

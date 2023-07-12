@@ -6,7 +6,7 @@ import { EntryState } from '../const/EntryState.mjs'
 export class NoteEntry {
     constructor(dueDate, title, importance, state, description) {
         this.creationDate = new Date();
-        this.dueDate = isNaN(dueDate) ? '' : dueDate;
+        this.dueDate = isNaN(new Date(dueDate)) ? '' : dueDate;
         this.title = title;
         this.importance = importance;
         this.state = (state === EntryState.Completed) ? EntryState.Completed : EntryState.Open;

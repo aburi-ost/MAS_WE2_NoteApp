@@ -22,10 +22,14 @@ export const helpers = {
                 return 'a day ago'
             case daysUntilDueDate === 1:
                 return 'in a day'
-            case daysUntilDueDate > 1:
+            case daysUntilDueDate > 1 && daysUntilDueDate <= 7:
                 return `in ${daysUntilDueDate} days`
-            case daysUntilDueDate < 1:
+            case daysUntilDueDate > 7 :
+                return `in > 7 days`
+            case daysUntilDueDate < 0 && daysUntilDueDate >= -7 :
                 return `${Math.abs(daysUntilDueDate)} days ago`
+            case daysUntilDueDate < -7 :
+                return `> 7 days ago`
             default:
                 return 'Someday'
         }
