@@ -8,7 +8,9 @@
     text-align: center; word-break: break-all;} .data-entry-left { text-align:
     left;} .data-entry-right { text-align: right;} .button-container { }
     .checkbox-container { display: flex; align-items: center; justify-content:
-    flex-start; } input[type="checkbox"] { margin-left: 0; margin-right: 5px; }
+    flex-start; } input[type="checkbox"] { margin-left: 0; margin-right: 5px;
+    }.sortIconVisible { visibility: visible; } .sortIconInvisible { visibility:
+    hidden; } .filterButtonBold { font-weight: bold; }
 </style>
 
 <div class='mainButtonTable'>
@@ -32,14 +34,26 @@
     <div class='button-container'>
         <form action='/index' method='GET'>
             <input type='hidden' name='orderBy' value='title' />
-            <button id='orderByName' type='submit'> By Name </button>
+            <button id='orderByName' type='submit'>
+                By Name
+                <span class='{{get_orderDirection_visibility "title" orderBy}}'>
+                    {{get_orderDirection_icon orderDirection}}
+                </span>
+            </button>
         </form>
     </div>
 
     <div class='button-container'>
         <form action='/index' method='GET'>
             <input type='hidden' name='orderBy' value='dueDate' />
-            <button id='orderByDueDate' type='submit'> By Due Date </button>
+            <button id='orderByDueDate' type='submit'>
+                By Due Date
+                <span
+                    class='{{get_orderDirection_visibility "dueDate" orderBy}}'
+                >
+                    {{get_orderDirection_icon orderDirection}}
+                </span>
+            </button>
         </form>
     </div>
 
@@ -48,6 +62,14 @@
             <input type='hidden' name='orderBy' value='creationDate' />
             <button id='orderCreationDate' type='submit'>
                 By Creation Date
+                <span
+                    class='{{get_orderDirection_visibility
+                            "creationDate"
+                            orderBy
+                        }}'
+                >
+                    {{get_orderDirection_icon orderDirection}}
+                </span>
             </button>
         </form>
     </div>
@@ -57,6 +79,14 @@
             <input type='hidden' name='orderBy' value='importance' />
             <button id='orderByImportance' type='submit'>
                 By Importance
+                <span
+                    class='{{get_orderDirection_visibility
+                            "importance"
+                            orderBy
+                        }}'
+                >
+                    {{get_orderDirection_icon orderDirection}}
+                </span>
             </button>
         </form>
     </div>
@@ -65,7 +95,9 @@
         <form action='/index' method='GET'>
             <input type='hidden' name='filterCompleted' value='true' />
             <button id='filterCompleted' type='submit'>
-                Filter Completed
+                <span class='{{get_filterCompleted_boldness filterCompleted}}'>
+                    Filter Completed
+                </span>
             </button>
         </form>
     </div>

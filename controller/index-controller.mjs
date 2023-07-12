@@ -6,6 +6,9 @@ export class IndexController {
         res.render('index', {
             data: await noteEntryStore.getAll(req.userSettings),
             dark: req.userSettings.darkMode,
+            orderBy: req.userSettings.orderBy,
+            orderDirection: req.userSettings.orderDirection,
+            filterCompleted: req.userSettings.filterCompleted
         })
     }
 }
