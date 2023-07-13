@@ -12,8 +12,8 @@ export const sessionUserSettings = (req, res, next) => {
     // reject GET requests - only POSTs are allowed to alter session
     if (req.method === 'POST') {
         const {orderBy, orderDirection, filterCompleted, darkMode} = req.body
+
         if (orderBy) {
-            //userSettings.orderBy = orderBy
             if (currentUserSettings.orderBy === orderBy) {
                 currentUserSettings.orderDirection = (currentUserSettings.orderDirection === OrderDirection.Ascending) ? OrderDirection.Descending : OrderDirection.Ascending;
             } else {
@@ -21,9 +21,11 @@ export const sessionUserSettings = (req, res, next) => {
                 currentUserSettings.orderDirection = OrderDirection.Ascending; // reset order direction on change of order criteria
             }
         }
+
         if (filterCompleted) {
             currentUserSettings.filterCompleted = !currentUserSettings.filterCompleted;
         }
+
         if (darkMode) {
             currentUserSettings.darkMode = !currentUserSettings.darkMode
         }

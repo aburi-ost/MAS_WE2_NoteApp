@@ -16,8 +16,8 @@ export class NoteEntry {
 
 export class NoteEntryStore {
     // Helper functions
-    // Todo move helper functions to a dedicated file if necessary (or adjust visibility)
     //--------------------------------------
+    // Todo move helper functions to a dedicated file if necessary (or adjust visibility)
     filterCompleted = (DataBaseEntries, orderDirection) => {
         return DataBaseEntries.filter((entry) => entry.state !== EntryState.Completed)
     }
@@ -66,7 +66,7 @@ export class NoteEntryStore {
     }
 
     async add(dueDate, title, importance, state, description) {
-        // Create temporary note entry to enforce constructor invaraince
+        // Create temporary note entry to enforce constructor invariance
         let newNoteEntry = new NoteEntry(
             dueDate,
             title,
