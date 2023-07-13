@@ -43,7 +43,7 @@ export const helpers = {
             return 'Invalid value';
         }
          */
-        return '🗲'.repeat(value);
+        return '\u26A1'.repeat(value);
     },
     get_orderDirection_icon : function (orderDirection) {
         if (orderDirection === OrderDirection.Ascending) {
