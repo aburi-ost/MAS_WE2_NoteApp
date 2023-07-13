@@ -6,7 +6,7 @@ import { EntryState } from '../const/EntryState.mjs'
 export class NoteEntry {
     constructor(dueDate, title, importance, state, description) {
         this.creationDate = new Date();
-        this.dueDate = dueDate;
+        this.dueDate = isNaN(new Date(dueDate)) ? '' : dueDate;
         this.title = title;
         this.importance = importance;
         this.state = (state === EntryState.Completed) ? EntryState.Completed : EntryState.Open;
@@ -115,6 +115,7 @@ export class NoteEntryStore {
             dataBaseEntries = this.filterCompleted(dataBaseEntries, userSettings.orderDirection)
         }
 
+        // Todo: Wenn die letzte anfrage eine query zur anpassung der filterung war (z.B. filtern nach titel) dann wird beim drücken von f5 die selbe anfrage erneug esendet und die sortierrichtung geändert. scheint als müssten wir sicherstellen dass die anfrage über einen button kommt. Alternative: Anfrage via POST statt via GET
         if (userSettings.orderBy === OrderBy.Title) {
             this.orderByTitle(dataBaseEntries, userSettings.orderDirection)
         } else if (userSettings.orderBy === OrderBy.Importance) {
