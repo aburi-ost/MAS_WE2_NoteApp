@@ -106,39 +106,22 @@
 <div class='mainTable'>
     {{#each data}}
         <!-- Iterate over each entry in the data array -->
-        {{#if_eq this.state (get_EntryState_Completed)}}
-            <div class='data-container grayed-out'>
-                <div class='data-entry-left'>
-                    {{dueDate_in_Days this.dueDate}}
-                </div>
-                <div class='data-entry-center'> {{this.title}} </div>
-                <div class='data-entry-right'>
-                    {{get_importance_icons this.importance}}
-                </div>
-                <div class='checkbox-container'>
-                    <input type='checkbox' disabled checked />
-                    <label for='state'>Completed</label>
-                </div>
-                <div class='data-entry-center'> {{this.description}} </div>
-                <div class='data-entry-center'> </div>
+        <div class='data-container {{#if_eq this.state (get_EntryState_Completed)}} grayed-out {{else}}  {{/if_eq}}'>
+            <div class='data-entry-left'>
+                {{dueDate_in_Days this.dueDate}}
             </div>
-        {{else}}
-            <div class='data-container'>
-                <div class='data-entry-left'>
-                    {{dueDate_in_Days this.dueDate}}
-                </div>
-                <div class='data-entry-center'> {{this.title}} </div>
-                <div class='data-entry-right'>
-                    {{get_importance_icons this.importance}}
-                </div>
-                <div class='checkbox-container'>
-                    <input type='checkbox' disabled />
-                    <label for='state'>Open</label>
-                </div>
-                <div class='data-entry-center'> {{this.description}} </div>
-                <div class='data-entry-center'> </div>
+            <div class='data-entry-center'> {{this.title}} </div>
+            <div class='data-entry-right'>
+                {{get_importance_icons this.importance}}
             </div>
-        {{/if_eq}}
+            <div class='checkbox-container'>
+                <input type='checkbox' disabled {{#if_eq this.state (get_EntryState_Completed)}} checked {{else}}  {{/if_eq}} />
+				
+                <label for='state'>{{#if_eq this.state (get_EntryState_Completed)}} Completed {{else}} Open {{/if_eq}}</label>
+            </div>
+            <div class='data-entry-center'> {{this.description}} </div>
+            <div class='data-entry-center'> </div>
+        </div>
         <div class='button-container'>
             <form id='editForm' action='/details/{{_id}}' method='GET'>
                 <button type='submit'>Edit</button>
