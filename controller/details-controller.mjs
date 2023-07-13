@@ -2,7 +2,7 @@ import { noteEntryStore } from '../services/noteEntry-store.mjs'
 
 export class DetailsController {
 
-    redirect = (req, res, id) => {
+    redirectRequest = (req, res, id) => {
             if ('update_overview_button' in req.body || 'create_overview_button' in req.body) {
                 res.redirect('/')
             } else if ('update_button' in req.body || 'create_button' in req.body) {
@@ -39,7 +39,7 @@ export class DetailsController {
             req.body.noteState,
             req.body.noteDescription
         )
-        this.redirect(req, res, retVal._id);
+        this.redirectRequest(req, res, retVal._id);
     }
 
     updateEntry = async (req, res) => {
@@ -51,7 +51,7 @@ export class DetailsController {
             req.body.noteState,
             req.body.noteDescription
         )
-        this.redirect(req,res, req.params.id);
+        this.redirectRequest(req,res, req.params.id);
     }
 }
 
