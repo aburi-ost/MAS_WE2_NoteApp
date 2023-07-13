@@ -45,13 +45,6 @@ export const helpers = {
          */
         return '🗲'.repeat(value);
     },
-    get_orderDirection_visibility: function (buttonIdentifier, orderBy) {
-        if (buttonIdentifier !== orderBy) {
-            return 'sortIconInvisible'
-        } else {
-            return 'sortIconVisible'
-        }
-    },
     get_orderDirection_icon : function (orderDirection) {
         if (orderDirection === OrderDirection.Ascending) {
             return '\u25B2'
@@ -61,11 +54,4 @@ export const helpers = {
             return ' '
         }
      },
-    get_filterCompleted_boldness: function (filterCompleted) {
-        if (filterCompleted === true) {
-            return 'filterButtonBold'
-        } else {
-            return ''
-        }
-    }
 }

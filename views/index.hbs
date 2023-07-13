@@ -1,24 +1,25 @@
 <style>
-    div { border: 1px solid red; padding: 8px; } .mainButtonTable { display:
-    grid; grid-template-columns: auto 1fr auto; } .orderFilterButtonTable {
-    display: grid; grid-template-columns: auto auto auto auto 1fr auto; } .noTable { display: grid; grid-template-columns: 1fr; background-color: lightblue; margin-top: 20px; margin-bottom: 20px; }
+    div { border: 1px solid red; padding: 8px; }
+    .mainButtonTable { display: grid; grid-template-columns: auto 1fr auto; }
+    .orderFilterButtonTable { display: grid; grid-template-columns: auto auto auto auto 1fr auto; }
+    .noTable { display: grid; grid-template-columns: 1fr; background-color: lightblue; margin-top: 20px; margin-bottom: 20px; }
     .mainTable { display: grid; grid-template-columns: 1fr auto; }
     .data-container { display: grid; grid-template-columns: 7em 1fr 7em; }
-    .grayed-out { background-color: #888; opacity: 0.5; } .data-entry-center {
-    text-align: center; word-break: break-all;} .data-entry-left { text-align:
-    left;} .data-entry-right { text-align: right;} .button-container { }
-    .checkbox-container { display: flex; align-items: center; justify-content:
-    flex-start; } input[type="checkbox"] { margin-left: 0; margin-right: 5px;
-    }.sortIconVisible { visibility: visible; } .sortIconInvisible { visibility:
-    hidden; } .filterButtonBold { font-weight: bold; }
+    .grayed-out { background-color: #888; opacity: 0.5; }
+    .data-entry-center { text-align: center; word-break: break-all; }
+    .data-entry-left { text-align: left; }
+    .data-entry-right { text-align: right; }
+    .button-container { }
+    .checkbox-container { display: flex; align-items: center; justify-content: flex-start; }
+    .sortIconVisible { visibility: visible; }
+    .sortIconInvisible { visibility: hidden; }
 </style>
 
 <div class='mainButtonTable'>
     <div class='button-container'>
-        <form action='/details' method='GET'><input
-                type='submit'
-                value='Create new Todo'
-            /></form>
+        <form action='/details' method='GET'>
+            <button id='createButton' type='submit'>Create new Todo </button>
+        </form>
     </div>
     <div class='button-container'> </div>
     <div class='button-container'>
@@ -34,9 +35,10 @@
     <div class='button-container'>
         <form action='/index' method='GET'>
             <input type='hidden' name='orderBy' value='title' />
-            <button id='orderByName' type='submit'>
+
+            <button {{#if_eq "title" orderBy}} class='button-selected' {{/if_eq}} id='orderByName' type='submit'>
                 By Name
-                <span class='{{get_orderDirection_visibility "title" orderBy}}'>
+                <span class='{{#if_eq "title" orderBy}} sortIconVisible {{else}} sortIconInvisible {{/if_eq}}'>
                     {{get_orderDirection_icon orderDirection}}
                 </span>
             </button>
@@ -46,11 +48,9 @@
     <div class='button-container'>
         <form action='/index' method='GET'>
             <input type='hidden' name='orderBy' value='dueDate' />
-            <button id='orderByDueDate' type='submit'>
+            <button {{#if_eq "dueDate" orderBy}} class='button-selected' {{/if_eq}} id='orderByDueDate' type='submit'>
                 By Due Date
-                <span
-                    class='{{get_orderDirection_visibility "dueDate" orderBy}}'
-                >
+                <span class='{{#if_eq "dueDate" orderBy}} sortIconVisible {{else}} sortIconInvisible {{/if_eq}}'>
                     {{get_orderDirection_icon orderDirection}}
                 </span>
             </button>
@@ -60,14 +60,9 @@
     <div class='button-container'>
         <form action='/index' method='GET'>
             <input type='hidden' name='orderBy' value='creationDate' />
-            <button id='orderCreationDate' type='submit'>
+            <button {{#if_eq "creationDate" orderBy}} class='button-selected' {{/if_eq}} id='orderCreationDate' type='submit'>
                 By Creation Date
-                <span
-                    class='{{get_orderDirection_visibility
-                            "creationDate"
-                            orderBy
-                        }}'
-                >
+                <span class='{{#if_eq "creationDate" orderBy}} sortIconVisible {{else}} sortIconInvisible {{/if_eq}}'>
                     {{get_orderDirection_icon orderDirection}}
                 </span>
             </button>
@@ -77,14 +72,9 @@
     <div class='button-container'>
         <form action='/index' method='GET'>
             <input type='hidden' name='orderBy' value='importance' />
-            <button id='orderByImportance' type='submit'>
+            <button {{#if_eq "importance" orderBy}} class='button-selected' {{/if_eq}} id='orderByImportance' type='submit'>
                 By Importance
-                <span
-                    class='{{get_orderDirection_visibility
-                            "importance"
-                            orderBy
-                        }}'
-                >
+                <span class='{{#if_eq "importance" orderBy}} sortIconVisible {{else}} sortIconInvisible {{/if_eq}}'>
                     {{get_orderDirection_icon orderDirection}}
                 </span>
             </button>
@@ -94,10 +84,8 @@
     <div class='button-container'>
         <form action='/index' method='GET'>
             <input type='hidden' name='filterCompleted' value='true' />
-            <button id='filterCompleted' type='submit'>
-                <span class='{{get_filterCompleted_boldness filterCompleted}}'>
+            <button {{#if_eq true filterCompleted}} class='button-selected' {{/if_eq}} id='filterCompleted' type='submit'>
                     Filter Completed
-                </span>
             </button>
         </form>
     </div>
