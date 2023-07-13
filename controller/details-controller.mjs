@@ -33,11 +33,11 @@ export class DetailsController {
 
     createEntry = async (req, res) => {
         let retVal = await noteEntryStore.add(
-            req.body.noteDueDate,
-            req.body.noteTitle,
-            req.body.noteImportance,
-            req.body.noteState,
-            req.body.noteDescription
+            req.body.dueDate,
+            req.body.title,
+            req.body.importance,
+            req.body.state,
+            req.body.description
         )
         this.redirectRequest(req, res, retVal._id);
     }
@@ -45,11 +45,11 @@ export class DetailsController {
     updateEntry = async (req, res) => {
         await noteEntryStore.update(
             req.params.id,
-            req.body.noteDueDate,
-            req.body.noteTitle,
-            req.body.noteImportance,
-            req.body.noteState,
-            req.body.noteDescription
+            req.body.dueDate,
+            req.body.title,
+            req.body.importance,
+            req.body.state,
+            req.body.description
         )
         this.redirectRequest(req,res, req.params.id);
     }
