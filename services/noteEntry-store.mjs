@@ -47,7 +47,9 @@ export class NoteEntryStore {
 
     orderByDueDate = (DataBaseEntries, orderDirection) => {
         DataBaseEntries.sort((a, b) => {
-            return this.orderLogic(a.dueDate,  b.dueDate, orderDirection)
+            const dateA = (a.dueDate === '') ? new Date(9999, 11, 31) : new Date(a.dueDate)
+            const dateB = (b.dueDate === '') ? new Date(9999, 11, 31) : new Date(b.dueDate)
+            return this.orderLogic(dateA,  dateB, orderDirection)
         })
     }
     orderByCreationDate = (DataBaseEntries, orderDirection) => {
