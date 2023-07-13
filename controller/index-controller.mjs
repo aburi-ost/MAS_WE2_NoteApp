@@ -11,6 +11,10 @@ export class IndexController {
             filterCompleted: req.userSettings.filterCompleted
         })
     }
+
+    reorderIndex = async(req,res) => {
+        res.redirect("/index")
+    }
 }
 
 export const indexController = new IndexController()
