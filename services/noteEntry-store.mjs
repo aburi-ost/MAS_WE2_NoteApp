@@ -74,16 +74,11 @@ export class NoteEntryStore {
             state,
             description
         )
-        // TODO: checken ob es hier kein await braucht
         return this.db.insert(newNoteEntry)
     }
 
-    async delete(id) {
-        await this.db.update({ _id: id }, { $set: { state: EntryState.Completed } })
-    }
-
     async update(id, dueDate, title, importance, state, description) {
-        // Create temporary note entry to enforce constructor invaraince
+        // Create temporary note entry to enforce constructor invariance
         const tempNoteEntry = new NoteEntry(
             dueDate,
             title,
@@ -106,7 +101,6 @@ export class NoteEntryStore {
     }
 
     async getSingle(id) {
-        //Todo: This await was redundant --> needs to be placed on function call or make method sync instead of async
         return this.db.findOne({ _id: id })
     }
 
