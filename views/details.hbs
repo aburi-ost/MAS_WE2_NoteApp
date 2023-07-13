@@ -1,14 +1,9 @@
 <style>
     form { display: flex; flex-direction: column; align-items: flex-start;
-        margin: 20px; } label { width: 100%; } input[type="checkbox"] { margin-left: 0; } input, textarea { width: 100%; } button { margin-top: 10px; }  .checkbox-container {
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-    }
-    input[type="checkbox"] {
-        margin-left: 0;
-        margin-right: 5px;
-    }
+        margin: 20px; }
+        label { width: 100%; }
+        input, textarea { width: 100%; }
+        .checkbox-container { display: flex; align-items: center; justify-content: flex-start; }
 </style>
 
     <form id='updateEntryForm' action='/details{{#if data}}/{{data._id}}{{/if}}' method='post'>
@@ -46,7 +41,7 @@
 
 		<div class='checkbox-container'>
 			{{#if data}}
-                <input type='checkbox' id='state' name='noteState' value='{{get_EntryState_Completed}}' {{#if_eq this.state (get_EntryState_Completed)}} checked  {{/if_eq}} />
+                <input type='checkbox' id='state' name='noteState' value='{{get_EntryState_Completed}}' {{#if_eq data.state (get_EntryState_Completed)}} checked {{/if_eq}} />
 			{{else}}
 				<input type='checkbox' id='state' name='noteState' value='{{get_EntryState_Completed}}' />
 			{{/if}}
@@ -57,23 +52,22 @@
         <input type="text" id='description' name='noteDescription' maxlength="256" {{#if data}} value='{{data.description}}'  {{/if}}>
 
         {{#if data}} 
-        	<input type='submit' name='update_button' value='Update' />
-        	<input
-            type='submit'
-            name='update_overview_button'
-            value='Update & Overview'
-        	/>
+        	<button type='submit' name='update_button'> Update </button>
+                <button type='submit'
+                name='update_overview_button'
+                > Update & Overview
+        	</button>
         {{else}}
-			<input type='submit' name='create_button' value='Create' />
-			<input
+			<button type='submit' name='create_button'> Create </button>
+			<button
 				type='submit'
 				name='create_overview_button'
-				value='Create & Overview'
-			/>
+				> Create & Overview
+			</button>
         {{/if}}
     </form>
 <!--------------------------------------------------------------------------------------------------------------------->
 <form id='overviewForm' action='/index' method='GET'>
-    <input type='submit' value='Overview'>
+    <button type='submit'> Overview </button>
 </form>
 
