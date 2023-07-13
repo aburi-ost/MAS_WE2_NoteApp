@@ -1,7 +1,7 @@
 <style>
     div { border: 1px solid red; padding: 8px; } .mainButtonTable { display:
     grid; grid-template-columns: auto 1fr auto; } .orderFilterButtonTable {
-    display: grid; grid-template-columns: auto auto auto auto 1fr auto; }
+    display: grid; grid-template-columns: auto auto auto auto 1fr auto; } .noTable { display: grid; grid-template-columns: 1fr; background-color: lightblue; margin-top: 20px; margin-bottom: 20px; }
     .mainTable { display: grid; grid-template-columns: 1fr auto; }
     .data-container { display: grid; grid-template-columns: 7em 1fr 7em; }
     .grayed-out { background-color: #888; opacity: 0.5; } .data-entry-center {
@@ -104,10 +104,10 @@
 </div>
 
 <div class='mainTable'>
-    {{#each data}}
-        <!-- Iterate over each entry in the data array -->
-        {{#if_eq this.state (get_EntryState_Completed)}}
-            <div class='data-container grayed-out'>
+    {{#if data}}
+        {{#each data}}
+            <!-- Iterate over each entry in the data array -->
+            <div class='data-container {{#if_eq this.state (get_EntryState_Completed)}} grayed-out {{/if_eq}}'>
                 <div class='data-entry-left'>
                     {{dueDate_in_Days this.dueDate}}
                 </div>
@@ -116,33 +116,20 @@
                     {{get_importance_icons this.importance}}
                 </div>
                 <div class='checkbox-container'>
-                    <input type='checkbox' disabled checked />
-                    <label for='state'>Completed</label>
+                    <input type='checkbox' disabled {{#if_eq this.state (get_EntryState_Completed)}} checked {{/if_eq}} />
+
+                    <label for='state'>{{#if_eq this.state (get_EntryState_Completed)}} Completed {{else}} Open {{/if_eq}}</label>
                 </div>
                 <div class='data-entry-center'> {{this.description}} </div>
                 <div class='data-entry-center'> </div>
             </div>
-        {{else}}
-            <div class='data-container'>
-                <div class='data-entry-left'>
-                    {{dueDate_in_Days this.dueDate}}
-                </div>
-                <div class='data-entry-center'> {{this.title}} </div>
-                <div class='data-entry-right'>
-                    {{get_importance_icons this.importance}}
-                </div>
-                <div class='checkbox-container'>
-                    <input type='checkbox' disabled />
-                    <label for='state'>Open</label>
-                </div>
-                <div class='data-entry-center'> {{this.description}} </div>
-                <div class='data-entry-center'> </div>
+            <div class='button-container'>
+                <form id='editForm' action='/details/{{_id}}' method='GET'>
+                    <button type='submit'>Edit</button>
+                </form>
             </div>
-        {{/if_eq}}
-        <div class='button-container'>
-            <form id='editForm' action='/details/{{_id}}' method='GET'>
-                <button type='submit'>Edit</button>
-            </form>
-        </div>
-    {{/each}}
+        {{/each}}
+    {{else}}
+        <div class='noTable'> Keine Todo gefunden!? </div>
+    {{/if}}
 </div>
