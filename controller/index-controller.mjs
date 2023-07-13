@@ -12,7 +12,7 @@ export class IndexController {
         })
     }
 
-    reorderIndex = async(req,res) => {
+    redirectPost = async(req,res) => {
         res.redirect("/index")
     }
 }
