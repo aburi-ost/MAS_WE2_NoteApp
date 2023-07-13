@@ -3,9 +3,9 @@ import { noteEntryStore } from '../services/noteEntry-store.mjs'
 export class DetailsController {
 
     redirect = (req, res, id) => {
-        if (req.body.update_overview_button === 'Update & Overview' || req.body.create_overview_button === 'Create & Overview' ) {
+            if ('update_overview_button' in req.body || 'create_overview_button' in req.body) {
                 res.redirect('/')
-            } else if (req.body.update_button === 'Update' || req.body.create_button === 'Create') {
+            } else if ('update_button' in req.body || 'create_button' in req.body) {
                 res.redirect(`/details/${id}`)
             } else {
                 // Todo: default case may interfere with error middle ware -> check
@@ -21,10 +21,15 @@ export class DetailsController {
 
     detailsByID = async (req, res) => {
             // Todo: replace update with subcategory of details
+        const readEntry = await noteEntryStore.getSingle(req.params.id)
+        if (readEntry.length === 0) {
+            res.status(404).send('Entry not found.');
+        } else {
             res.render('update', {
-                data: await noteEntryStore.getSingle(req.params.id),
+                data: readEntry,
                 dark: req.userSettings.darkMode,
             });
+        }
     }
 
     createEntry = async (req, res) => {
@@ -35,10 +40,11 @@ export class DetailsController {
             req.body.noteState,
             req.body.noteDescription
         )
-        this.redirect(req,res, retVal._id);
+        this.redirect(req, res, retVal._id);
     }
     setEntryCompleted = async (req, res) => {
         // Todo implement functionality (delete & reload) and add appropriate redirection
+        // Todo: Check weether functionality is even needed
         await noteEntryStore.delete(req.params.id)
     }
 
