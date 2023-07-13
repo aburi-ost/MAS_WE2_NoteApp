@@ -22,6 +22,7 @@ export class NoteEntryStore {
         return DataBaseEntries.filter((entry) => entry.state !== EntryState.Completed)
     }
 
+    // TODO: Renaming Vorschlag: orderDirection. Achtung: Impact auf Unit-Test
     orderLogic = (nameA, nameB, orderDirection) => {
         if (nameA < nameB) {
             return (orderDirection === OrderDirection.Ascending) ? -1 : 1
