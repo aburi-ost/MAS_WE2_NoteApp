@@ -107,7 +107,6 @@ export class NoteEntryStore {
 
     async getSingle(id) {
         //Todo: This await was redundant --> needs to be placed on function call or make method sync instead of async
-        // return await this.db.find({ _id: id })
         return this.db.findOne({ _id: id })
     }
 

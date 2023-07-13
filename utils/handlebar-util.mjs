@@ -37,12 +37,6 @@ export const helpers = {
         }
     },
     get_importance_icons: function (value) {
-        /*
-        // Todo: Some sort of safety check?
-        if (typeof value !== 'number' || isNaN(value)) {
-            return 'Invalid value';
-        }
-         */
         return '\u26A1'.repeat(value);
     },
     get_orderDirection_icon : function (orderDirection) {
