@@ -21,12 +21,6 @@ export const sessionUserSettings = (req, res, next) => {
                 currentUserSettings.orderDirection = OrderDirection.Ascending; // reset order direction on change of order criteria
             }
         }
-        // Todo: This seems not to be handled as there is no direct option for the user to manipulate it
-        /*
-        if (orderDirection) {
-            currentUserSettings.orderDirection = orderDirection
-        }
-         */
         if (filterCompleted) {
             currentUserSettings.filterCompleted = !currentUserSettings.filterCompleted;
         }
