@@ -14,9 +14,9 @@
 </style>
 
 <!-- Todo: clean up -->
-    <form id='updateEntryForm' action='/details{{#if data}} /{{data._id}} {{else}} {{/if_eq}}' method='post'>
+    <form id='updateEntryForm' action='/details{{#if data}} /{{data._id}}  {{/if}}' method='post'>
 
-		{{#if data}} <input type='hidden' name='_method' value='put'> {{else}} {{/if_eq}}
+		{{#if data}} <input type='hidden' name='_method' value='put'>  {{/if}}
 
         <label for='title'>Title:</label>
         <input
@@ -25,7 +25,7 @@
 			name='noteTitle'
 			maxlength='64'
 			required
-			{{#if data}} value='{{data.title}}' {{else}} {{/if_eq}}
+			{{#if data}} value='{{data.title}}'  {{/if}}
         />
 
         <label for='importance'>Importance (1-5):</label>
@@ -36,7 +36,7 @@
                 min='1'
                 max='5'
                 required
-                {{#if data}} value='{{data.importance}}' {{else}} {{/if_eq}}
+                {{#if data}} value='{{data.importance}}'  {{/if}}
         />
 
         <label for='date'>Due Date:</label>
@@ -44,20 +44,20 @@
 			type='date'
 			id='date'
 			name='noteDueDate'
-            {{#if data}} value='{{data.dueDate}}' {{else}} {{/if_eq}}
+            {{#if data}} value='{{data.dueDate}}'  {{/if}}
         />
 
 		<div class='checkbox-container'>
 			{{#if data}} 
-				<input type='checkbox' id='state' name='noteState' value='{{get_EntryState_Completed}}' {{#if_eq this.state (get_EntryState_Completed)}} checked {{else}} {{/if_eq}} />
+				<input type='checkbox' id='state' name='noteState' value='{{get_EntryState_Completed}}' {{#if_eq this.state (get_EntryState_Completed)}} checked  {{/if_eq}} />
 			{{else}}
 				<input type='checkbox' id='state' name='noteState' value='{{get_EntryState_Completed}}' />
-			{{/if_eq}}
+			{{/if}}
 			<label for='state'>Finished</label>
 		</div>
 
         <label for='description'>Description:</label>
-        <input type="text" id='description' name='noteDescription' maxlength="256" {{#if data}} value='{{data.description}}' {{else}} {{/if_eq}}>
+        <input type="text" id='description' name='noteDescription' maxlength="256" {{#if data}} value='{{data.description}}'  {{/if}}>
 
         {{#if data}} 
         	<input type='submit' name='update_button' value='Update' />
@@ -73,7 +73,7 @@
 				name='create_overview_button'
 				value='Create & Overview'
 			/>
-        {{/if_eq}}
+        {{/if}}
     </form>
 <!--------------------------------------------------------------------------------------------------------------------->
 <form id='overviewForm' action='/index' method='GET'>

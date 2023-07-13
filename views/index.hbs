@@ -106,7 +106,7 @@
 <div class='mainTable'>
     {{#each data}}
         <!-- Iterate over each entry in the data array -->
-        <div class='data-container {{#if_eq this.state (get_EntryState_Completed)}} grayed-out {{else}}  {{/if_eq}}'>
+        <div class='data-container {{#if_eq this.state (get_EntryState_Completed)}} grayed-out {{/if_eq}}'>
             <div class='data-entry-left'>
                 {{dueDate_in_Days this.dueDate}}
             </div>
@@ -115,7 +115,7 @@
                 {{get_importance_icons this.importance}}
             </div>
             <div class='checkbox-container'>
-                <input type='checkbox' disabled {{#if_eq this.state (get_EntryState_Completed)}} checked {{else}}  {{/if_eq}} />
+                <input type='checkbox' disabled {{#if_eq this.state (get_EntryState_Completed)}} checked {{/if_eq}} />
 				
                 <label for='state'>{{#if_eq this.state (get_EntryState_Completed)}} Completed {{else}} Open {{/if_eq}}</label>
             </div>
