@@ -16,7 +16,6 @@ export const helpers = {
         }
         const today = new Date().setUTCHours(0, 0, 0, 0)
         const daysUntilDueDate = (inputDate - today) / (1000 * 60 * 60 * 24)
-
         switch (true) {
             case daysUntilDueDate === 0:
                 return 'now'

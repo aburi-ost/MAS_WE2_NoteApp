@@ -16,8 +16,8 @@ export class NoteEntry {
 
 export class NoteEntryStore {
     // Helper functions
-    // Todo move helper functions to a dedicated file if necessary (or adjust visibility)
     //--------------------------------------
+    // Todo move helper functions to a dedicated file if necessary (or adjust visibility)
     filterCompleted = (DataBaseEntries, orderDirection) => {
         return DataBaseEntries.filter((entry) => entry.state !== EntryState.Completed)
     }
@@ -66,7 +66,7 @@ export class NoteEntryStore {
     }
 
     async add(dueDate, title, importance, state, description) {
-        // Create temporary note entry to enforce constructor invaraince
+        // Create temporary note entry to enforce constructor invariance
         let newNoteEntry = new NoteEntry(
             dueDate,
             title,
@@ -74,16 +74,11 @@ export class NoteEntryStore {
             state,
             description
         )
-        // TODO: checken ob es hier kein await braucht
         return this.db.insert(newNoteEntry)
     }
 
-    async delete(id) {
-        await this.db.update({ _id: id }, { $set: { state: EntryState.Completed } })
-    }
-
     async update(id, dueDate, title, importance, state, description) {
-        // Create temporary note entry to enforce constructor invaraince
+        // Create temporary note entry to enforce constructor invariance
         const tempNoteEntry = new NoteEntry(
             dueDate,
             title,
@@ -106,7 +101,6 @@ export class NoteEntryStore {
     }
 
     async getSingle(id) {
-        //Todo: This await was redundant --> needs to be placed on function call or make method sync instead of async
         return this.db.findOne({ _id: id })
     }
 
@@ -117,7 +111,6 @@ export class NoteEntryStore {
             dataBaseEntries = this.filterCompleted(dataBaseEntries, userSettings.orderDirection)
         }
 
-        // Todo: Wenn die letzte anfrage eine query zur anpassung der filterung war (z.B. filtern nach titel) dann wird beim drücken von f5 die selbe anfrage erneug esendet und die sortierrichtung geändert. scheint als müssten wir sicherstellen dass die anfrage über einen button kommt. Alternative: Anfrage via POST statt via GET
         if (userSettings.orderBy === OrderBy.Title) {
             this.orderByTitle(dataBaseEntries, userSettings.orderDirection)
         } else if (userSettings.orderBy === OrderBy.Importance) {

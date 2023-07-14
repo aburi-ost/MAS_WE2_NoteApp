@@ -14,7 +14,7 @@
         <input
 			type='text'
 			id='title'
-			name='noteTitle'
+			name='title'
 			maxlength='64'
 			required
 			{{#if data}} value='{{data.title}}'  {{/if}}
@@ -24,7 +24,7 @@
         <input
             type='number'
             id='importance'
-            name='noteImportance'
+            name='importance'
             min='1'
             max='5'
             required
@@ -35,21 +35,21 @@
         <input
 			type='date'
 			id='date'
-			name='noteDueDate'
+			name='dueDate'
             {{#if data}} value='{{data.dueDate}}'  {{/if}}
         />
 
 		<div class='checkbox-container'>
 			{{#if data}}
-                <input type='checkbox' id='state' name='noteState' value='{{get_EntryState_Completed}}' {{#if_eq data.state (get_EntryState_Completed)}} checked {{/if_eq}} />
+                <input type='checkbox' id='state' name='state' value='{{get_EntryState_Completed}}' {{#if_eq data.state (get_EntryState_Completed)}} checked {{/if_eq}} />
 			{{else}}
-				<input type='checkbox' id='state' name='noteState' value='{{get_EntryState_Completed}}' />
+				<input type='checkbox' id='state' name='state' value='{{get_EntryState_Completed}}' />
 			{{/if}}
 			<label for='state'>Finished</label>
 		</div>
 
         <label for='description'>Description:</label>
-        <input type="text" id='description' name='noteDescription' maxlength="256" {{#if data}} value='{{data.description}}'  {{/if}}>
+        <input type="text" id='description' name='description' maxlength="256" {{#if data}} value='{{data.description}}'  {{/if}}>
 
         {{#if data}} 
         	<button type='submit' name='update_button'> Update </button>

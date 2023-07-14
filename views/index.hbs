@@ -23,7 +23,7 @@
     </div>
     <div class='button-container'> </div>
     <div class='button-container'>
-        <form action='/index' method='GET'>
+        <form action='/index' method='POST'>
             <input type='hidden' name='darkMode' value='true' />
             <button id='toggleStyle' type='submit'>Toggle Style</button>
         </form>
@@ -32,9 +32,8 @@
 <!-- Note: For this project, the newly sorted table can be displayed through a re-render. Using AJAX is not necessary -->
 <div class='orderFilterButtonTable'>
     <div class='button-container'>
-        <form action='/index' method='GET'>
+        <form action='/index' method='POST'>
             <input type='hidden' name='orderBy' value='title' />
-
             <button {{#if_eq "title" orderBy}} class='button-selected' {{/if_eq}} id='orderByName' type='submit'>
                 By Name
                 <span class='{{#if_eq "title" orderBy}} sortIconVisible {{else}} sortIconInvisible {{/if_eq}}'>
@@ -45,7 +44,7 @@
     </div>
 
     <div class='button-container'>
-        <form action='/index' method='GET'>
+        <form action='/index' method='POST'>
             <input type='hidden' name='orderBy' value='dueDate' />
             <button {{#if_eq "dueDate" orderBy}} class='button-selected' {{/if_eq}} id='orderByDueDate' type='submit'>
                 By Due Date
@@ -57,7 +56,7 @@
     </div>
 
     <div class='button-container'>
-        <form action='/index' method='GET'>
+        <form action='/index' method='POST'>
             <input type='hidden' name='orderBy' value='creationDate' />
             <button {{#if_eq "creationDate" orderBy}} class='button-selected' {{/if_eq}} id='orderCreationDate' type='submit'>
                 By Creation Date
@@ -69,7 +68,7 @@
     </div>
 
     <div class='button-container'>
-        <form action='/index' method='GET'>
+        <form action='/index' method='POST'>
             <input type='hidden' name='orderBy' value='importance' />
             <button {{#if_eq "importance" orderBy}} class='button-selected' {{/if_eq}} id='orderByImportance' type='submit'>
                 By Importance
@@ -81,7 +80,7 @@
     </div>
     <div class='button-container'> </div>
     <div class='button-container'>
-        <form action='/index' method='GET'>
+        <form action='/index' method='POST'>
             <input type='hidden' name='filterCompleted' value='true' />
             <button {{#if_eq true filterCompleted}} class='button-selected' {{/if_eq}} id='filterCompleted' type='submit'>
                     Filter Completed
@@ -103,8 +102,7 @@
                     {{get_importance_icons this.importance}}
                 </div>
                 <div class='checkbox-container'>
-                    <input type='checkbox' disabled {{#if_eq this.state (get_EntryState_Completed)}} checked {{/if_eq}} />
-
+                    <input type='checkbox' id="state" disabled {{#if_eq this.state (get_EntryState_Completed)}} checked {{/if_eq}} />
                     <label for='state'>{{#if_eq this.state (get_EntryState_Completed)}} Completed {{else}} Open {{/if_eq}}</label>
                 </div>
                 <div class='data-entry-center'> {{this.description}} </div>

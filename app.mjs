@@ -33,9 +33,9 @@ app.use(
         saveUninitialized: true,
     })
 )
-app.use(sessionUserSettings)
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
+app.use(sessionUserSettings)
 app.use(overrideMiddleware)
 
 app.use('/', indexRoutes)
