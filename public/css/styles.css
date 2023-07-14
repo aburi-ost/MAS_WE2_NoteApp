@@ -1,118 +1,21 @@
+body {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 70px auto auto auto auto auto auto 1fr 60px;
+}
+
 div {
     border: 1px solid red;
     padding: 8px;
 }
 
-.mainButtonTable {
-    display: grid;
-    grid-template-columns: auto 1fr auto;
-}
-
-.orderFilterButtonTable {
-    display: grid;
-    grid-template-columns: auto auto auto auto 1fr auto;
-}
-
-.noTable {
-    display: grid;
-    grid-template-columns: 1fr;
-    background-color: lightblue;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
-.mainTable {
-    display: grid;
-    grid-template-columns: 1fr auto;
-}
-
-.data-container {
-    display: grid;
-    grid-template-columns: 8em 1fr 8em;
-}
-
-.grayed-out {
-    background-color: #888;
-    opacity: 0.5;
-}
-
-.data-entry-center {
+h1 {
     text-align: center;
-    word-break: break-all;
-}
-
-.data-entry-left {
-    text-align: left;
-}
-
-.data-entry-right {
-    text-align: right;
-}
-
-.button-container {
-}
-
-.checkbox-container {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
-    color: grey;
-}
-
-.sortIconVisible {
-    visibility: visible;
-}
-
-.sortIconInvisible {
-    visibility: hidden;
-}
-
-button {
-    background-color: dodgerblue;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-}
-
-button:active,
-button:focus {
-    background-color: blue;
-    box-shadow: 0 0 5px dodgerblue;
-    outline: none;
-}
-
-.button-selected {
-    font-weight: bold;
-    background-color: blue;
-}
-
-header {
-    padding: 10px;
-}
-
-footer {
-    padding: 10px;
-}
-
-.content {
-    flex: 1;
-    padding: 10px;
-}
-
-body {
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    background: black;
-    color: white;
+    grid-row-start: 1;
+    grid-row-end: 1;
 }
 
 form {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
     margin: 20px;
 }
 
@@ -120,13 +23,166 @@ label {
     width: 100%;
 }
 
-input,
-textarea {
-    width: 100%;
+input {
+    width: 285px;
 }
 
 .checkbox-container {
     display: flex;
     align-items: center;
-    justify-content: flex-start;
+    padding: 0px;
+}
+
+.checkbox {
+    width: auto;
+    margin: 3px 3px 3px 0px;
+}
+
+.titleSection {
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+
+.importanceSection {
+    grid-row-start: 3;
+    grid-row-end: 3;
+}
+
+.dueDateSection {
+    grid-row-start: 4;
+    grid-row-end: 4;
+}
+
+.finishedSection {
+    grid-row-start: 5;
+    grid-row-end: 5;
+}
+
+.descriptionSection {
+    grid-row-start: 6;
+    grid-row-end: 6;
+}
+
+textarea {
+    width: 285px;
+}
+
+.buttonSection {
+    grid-row-start: 7;
+    grid-row-end: 7;
+}
+
+button {
+    background-color: dodgerblue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    width: 285px;
+    margin-top: 3px;
+}
+
+button:active,
+button:focus {
+    background-color: blue;
+    box-shadow: 0 0 5px dodgerblue;
+    outline: none;
+    width: 285px
+}
+
+footer {
+    padding: 10px;
+    grid-row-start: 10;
+    grid-row-end: 10;
+}
+
+/*body {*/
+/*    margin: 0;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    min-height: 100vh;*/
+/*    background: black;*/
+/*    color: white;*/
+/*}*/
+
+/*.content {*/
+/*    flex: 1;*/
+/*    padding: 10px;*/
+/*}*/
+
+
+/*.checkbox-container {*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: flex-start;*/
+/*}*/
+
+
+/*.mainButtonTable {*/
+/*    display: grid;*/
+/*    grid-template-columns: auto 1fr auto;*/
+/*}*/
+
+/*.orderFilterButtonTable {*/
+/*    display: grid;*/
+/*    grid-template-columns: auto auto auto auto 1fr auto;*/
+/*}*/
+
+/*.noTable {*/
+/*    display: grid;*/
+/*    grid-template-columns: 1fr;*/
+/*    background-color: lightblue;*/
+/*    margin-top: 20px;*/
+/*    margin-bottom: 20px;*/
+/*}*/
+
+/*.mainTable {*/
+/*    display: grid;*/
+/*    grid-template-columns: 1fr auto;*/
+/*}*/
+
+/*.data-container {*/
+/*    display: grid;*/
+/*    grid-template-columns: 8em 1fr 8em;*/
+/*}*/
+
+/*.grayed-out {*/
+/*    background-color: #888;*/
+/*    opacity: 0.5;*/
+/*}*/
+
+/*.data-entry-center {*/
+/*    text-align: center;*/
+/*    word-break: break-all;*/
+/*}*/
+
+/*.data-entry-left {*/
+/*    text-align: left;*/
+/*}*/
+
+/*.data-entry-right {*/
+/*    text-align: right;*/
+/*}*/
+
+/*.button-container {*/
+/*}*/
+
+
+
+/*.sortIconVisible {*/
+/*    visibility: visible;*/
+/*}*/
+
+/*.sortIconInvisible {*/
+/*    visibility: hidden;*/
+/*}*/
+
+
+/*.button-selected {*/
+/*    font-weight: bold;*/
+/*    background-color: blue;*/
+/*}*/
+
+@media screen and (min-width: 360px) {
+    /*TODO: Implement desktop part here*/
 }

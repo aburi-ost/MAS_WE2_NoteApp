@@ -1,67 +1,75 @@
 <form id='updateEntryForm' action='/details{{#if data}}/{{data._id}}{{/if}}' method='post'>
-
     {{#if data}} <input type='hidden' name='_method' value='put'>  {{/if}}
-
-    <label for='title'>Title:</label>
-    <input
-            type='text'
-            id='title'
-            name='title'
-            maxlength='64'
-            required
-        {{#if data}} value='{{data.title}}'  {{/if}}
-    />
-
-    <label for='importance'>Importance (1-5):</label>
-    <input
-            type='number'
-            id='importance'
-            name='importance'
-            min='1'
-            max='5'
-            required
-        {{#if data}} value='{{data.importance}}'  {{/if}}
-    />
-
-    <label for='date'>Due Date:</label>
-    <input
-            type='date'
-            id='date'
-            name='dueDate'
-        {{#if data}} value='{{data.dueDate}}'  {{/if}}
-    />
-    <div class='checkbox-container'>
-        {{#if data}}
-            <input type='checkbox' id='state' name='state' value='{{get_EntryState_Completed}}' {{#if_eq data.state
-                                                                                                             (get_EntryState_Completed)}}
-                   checked {{/if_eq}} />
-        {{else}}
-            <input type='checkbox' id='state' name='state' value='{{get_EntryState_Completed}}'/>
-        {{/if}}
-        <label for='state'>Finished</label>
+    <div>
+        <label for='title'>Title:</label>
+        <input
+                type='text'
+                id='title'
+                name='title'
+                maxlength='64'
+                required
+            {{#if data}}
+                value='{{data.title}}'
+            {{/if}}
+        />
     </div>
-
-    <label for='description'>Description:</label>
-    <input type="text" id='description' name='description' maxlength="256" {{#if data}}
-           value='{{data.description}}'  {{/if}}>
-
-    {{#if data}}
-        <button type='submit' name='update_button'> Update</button>
-        <button type='submit'
-                name='update_overview_button'
-        > Update & Overview
-        </button>
-    {{else}}
-        <button type='submit' name='create_button'> Create</button>
-        <button
-                type='submit'
-                name='create_overview_button'
-        > Create & Overview
-        </button>
-    {{/if}}
+    <div class="importanceSection">
+        <label for='importance'>Importance (1-5):</label>
+        <input
+                type='number'
+                id='importance'
+                name='importance'
+                min='1'
+                max='5'
+                required
+            {{#if data}}
+                value='{{data.importance}}'
+            {{/if}}
+        />
+    </div>
+    <div class="dueDateSection">
+        <label for='date'>Due Date:</label>
+        <input
+                type='date'
+                id='date'
+                name='dueDate'
+            {{#if data}}
+                value='{{data.dueDate}}'
+            {{/if}}
+        />
+    </div>
+    <div class="finishedSection">
+        <div class='checkbox-container'>
+            {{#if data}}
+                <input type='checkbox' class="checkbox" id='state' name='state'
+                       value='{{get_EntryState_Completed}}' {{#if_eq data.state
+                                                                     (get_EntryState_Completed)}}
+                       checked {{/if_eq}} />
+            {{else}}
+                <input type='checkbox' class="checkbox" id='state' name='state' value='{{get_EntryState_Completed}}'/>
+            {{/if}}
+            <label for='state'>Finished</label>
+        </div>
+    </div>
+    <div class="descriptionSection">
+        <label for='description'>Description:</label>
+        <textarea id='description' name='description' rows="4" maxlength="256">{{#if data}}{{data.description}}{{/if}}</textarea>
+    </div>
+    <div class="buttonSection">
+        {{#if data}}
+            <button type='submit' name='update_button'>Update</button>
+            <button type='submit'
+                    name='update_overview_button'
+            > Update & Overview
+            </button>
+        {{else}}
+            <button type='submit' name='create_button'>Create</button>
+            <button
+                    type='submit'
+                    name='create_overview_button'
+            > Create & Overview
+            </button>
+        {{/if}}
+        <button type='submit' name='overview_button'>Overview</button>
+    </div>
 </form>
-<!--------------------------------------------------------------------------------------------------------------------->
-<form id='overviewForm' action='/index' method='GET'>
-    <button type='submit'> Overview</button>
-</form>
-

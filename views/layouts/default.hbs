@@ -6,27 +6,23 @@
             content='width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0'
         />
         <meta http-equiv='X-UA-Compatible' content='ie=edge' />
-        <title>Todo</title>
+        <title>Note App</title>
         <link rel='stylesheet' href='../css/styles.css' />
-        {{#if dark}}
-            <style>
+        <style>
+            {{#if dark}}
                 body { background: black; color: white; }
-            </style>
-        {{else}}
-            <style>
+            {{else}}
                 body { background: white; color: black; }
-            </style>
-        {{/if}}
+            {{/if}}
+        </style>
     </head>
     <body>
         <header>
-            <h1>ToDo App</h1>
+            <h1>Note App</h1>
         </header>
-        <div class='content'>
             {{{body}}}
-        </div>
         <footer>
-            <p>MAS22/24_WE2: Note App, Alain Buri & Sven Zoller, 2023</p>
+            <p>MAS22/24_WE2: Alain Buri & Sven Zoller, 2023</p>
         </footer>
     </body>
 </html>
