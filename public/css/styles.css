@@ -24,7 +24,7 @@ label {
 }
 
 input {
-    width: 285px;
+    width: 100%;
 }
 
 .checkbox-container {
@@ -64,7 +64,7 @@ input {
 }
 
 textarea {
-    width: 285px;
+    width: 100%;
 }
 
 .buttonSection {
@@ -78,7 +78,7 @@ button {
     border: none;
     border-radius: 5px;
     padding: 10px;
-    width: 285px;
+    width: 100%;
     margin-top: 3px;
 }
 
@@ -87,7 +87,6 @@ button:focus {
     background-color: blue;
     box-shadow: 0 0 5px dodgerblue;
     outline: none;
-    width: 285px
 }
 
 footer {
