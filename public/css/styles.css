@@ -82,12 +82,14 @@ button:focus {
     display: grid;
     align-items: center;
     grid-template-columns: 40% 40% 20%;
+    overflow-wrap: break-word;
 }
 
 .checkbox-state-description-index {
     display: grid;
     align-items: center;
-    grid-template-columns: 40% 1fr;
+    grid-template-columns: 40% 60%;
+    overflow-wrap: break-word;
 }
 
 .flash-index {
