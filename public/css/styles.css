@@ -19,14 +19,8 @@ form {
     margin-block-end: 0em;
 }
 
-input {
-    width: 100%;
-}
-
-label {
-    width: 100%;
-}
-
+input,
+label,
 textarea {
     width: 100%;
 }
