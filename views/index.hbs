@@ -1,5 +1,5 @@
 <body class="body-index">
-<div class="content-margin">
+<div>
     <div class='main-button-section-index section-margin'>
         <form action='/details' method='GET'>
             <button id='createButton' type='submit'>Create new Todo</button>
@@ -12,18 +12,20 @@
     <div class='order-filter-button-section-index section-margin'>
         <form action='/index' method='POST'>
             <input type='hidden' name='orderBy' value='title'/>
-            <button {{#if_eq "title" orderBy}} class='button-selected' {{/if_eq}} id='orderByName' type='submit'>
+            <button {{#if_eq "title" orderBy}} class='button-selected-index' {{/if_eq}} id='orderByName' type='submit'>
                 By Name
-                <span class='{{#if_eq "title" orderBy}} sortIconVisible {{else}} sortIconInvisible {{/if_eq}}'>
+                <span class='{{#if_eq "title"
+                                      orderBy}} sort-icon-visible-index {{else}} sort-icon-invisible-index {{/if_eq}}'>
                     {{get_orderDirection_icon orderDirection}}
                 </span>
             </button>
         </form>
         <form action='/index' method='POST'>
             <input type='hidden' name='orderBy' value='dueDate'/>
-            <button {{#if_eq "dueDate" orderBy}} class='button-selected' {{/if_eq}} id='orderByDueDate' type='submit'>
+            <button {{#if_eq "dueDate" orderBy}} class='button-selected-index' {{/if_eq}} id='orderByDueDate' type='submit'>
                 By Due Date
-                <span class='{{#if_eq "dueDate" orderBy}} sortIconVisible {{else}} sortIconInvisible {{/if_eq}}'>
+                <span class='{{#if_eq "dueDate"
+                                      orderBy}} sort-icon-visible-index {{else}} sort-icon-invisible-index {{/if_eq}}'>
                     {{get_orderDirection_icon orderDirection}}
                 </span>
             </button>
@@ -31,9 +33,10 @@
         <form action='/index' method='POST'>
             <input type='hidden' name='orderBy' value='creationDate'/>
             <button {{#if_eq "creationDate" orderBy}}
-            class='button-selected' {{/if_eq}} id='orderCreationDate' type='submit'>
+            class='button-selected-index' {{/if_eq}} id='orderCreationDate' type='submit'>
                 By Creation Date
-                <span class='{{#if_eq "creationDate" orderBy}} sortIconVisible {{else}} sortIconInvisible {{/if_eq}}'>
+                <span class='{{#if_eq "creationDate"
+                                      orderBy}} sort-icon-visible-index {{else}} sort-icon-invisible-index {{/if_eq}}'>
                     {{get_orderDirection_icon orderDirection}}
                 </span>
             </button>
@@ -41,9 +44,10 @@
         <form action='/index' method='POST'>
             <input type='hidden' name='orderBy' value='importance'/>
             <button {{#if_eq "importance" orderBy}}
-            class='button-selected' {{/if_eq}} id='orderByImportance' type='submit'>
+            class='button-selected-index' {{/if_eq}} id='orderByImportance' type='submit'>
                 By Importance
-                <span class='{{#if_eq "importance" orderBy}} sortIconVisible {{else}} sortIconInvisible {{/if_eq}}'>
+                <span class='{{#if_eq "importance"
+                                      orderBy}} sort-icon-visible-index {{else}} sort-icon-invisible-index {{/if_eq}}'>
                     {{get_orderDirection_icon orderDirection}}
                 </span>
             </button>
@@ -53,7 +57,7 @@
         <form action='/index' method='POST'>
             <input type='hidden' name='filterCompleted' value='true'/>
             <button {{#if_eq true filterCompleted}}
-            class='button-selected' {{/if_eq}} id='filterCompleted' type='submit'>
+            class='button-selected-index' {{/if_eq}} id='filterCompleted' type='submit'>
                 Filter Completed
             </button>
         </form>
@@ -61,14 +65,14 @@
     <div class='main-table-index'>
         {{#if data}}
             {{#each data}}
-                <div class="seperator">
+                <div class="seperator-index">
                     <div class='{{#if_eq this.state (get_EntryState_Completed)}} grayed-out {{/if_eq}}'>
                         <div class="day-titel-importance-index section-margin">
                             <div>
                                 {{dueDate_in_Days this.dueDate}}
                             </div>
                             <div> {{this.title}} </div>
-                            <div class="flash">
+                            <div class="flash-index">
                                 {{get_importance_icons this.importance}}
                             </div>
                         </div>
@@ -78,10 +82,10 @@
                                 <label for='state'>{{#if_eq this.state (get_EntryState_Completed)}}
                                     Completed {{else}} Open {{/if_eq}}</label>
                             </div>
-                            <div class='data-entry-center'> {{this.description}} </div>
+                            <div> {{this.description}} </div>
                         </div>
                     </div>
-                    <div class='button-container section-margin'>
+                    <div class='section-margin'>
                         <form id='editForm' action='/details/{{_id}}' method='GET'>
                             <button type='submit'>Edit</button>
                         </form>
@@ -89,7 +93,7 @@
                 </div>
             {{/each}}
         {{else}}
-            <div class='noTable'> Keine Todo gefunden!?</div>
+            <div class='noTable-index'> Keine Todo gefunden!?</div>
         {{/if}}
     </div>
 </div>

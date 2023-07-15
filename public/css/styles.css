@@ -1,15 +1,14 @@
-.body-detail {
-    font-size: 15px;
-    display: grid;
-    grid-template-columns: 100%;
-    grid-template-rows: 70px auto auto auto auto auto auto auto 1fr 60px;
+/*------------------------------ COMMON ---------------------------*/
+
+/*TODO: remove when design is finished*/
+div {
+    /*border: 1px solid red;*/
 }
 
-form {
-    margin-block-end: 0em;
-}
-div {
-    border: 1px solid red;
+body {
+    min-height: 100vh;
+    font-size: 15px;
+    display: grid;
 }
 
 h1 {
@@ -18,69 +17,20 @@ h1 {
     grid-row-end: 1;
 }
 
-/*.content-margin {*/
-/*    margin: 20px;*/
-/*}*/
-
-.section-margin {
-    padding: 8px;
-}
-
-label {
-    width: 100%;
+form {
+    margin-block-end: 0em;
 }
 
 input {
     width: 100%;
 }
 
-.checkbox-container {
-    display: flex;
-    align-items: center;
-}
-
-.checkbox {
-    width: auto;
-    margin: 3px 3px 3px 0px;
-}
-
-.titleSection {
-    grid-row-start: 2;
-    grid-row-end: 2;
-}
-
-.importanceSection {
-    grid-row-start: 3;
-    grid-row-end: 3;
-}
-
-.dueDateSection {
-    grid-row-start: 4;
-    grid-row-end: 4;
-}
-
-.finishedSection {
-    grid-row-start: 5;
-    grid-row-end: 5;
-}
-
-.descriptionSection {
-    grid-row-start: 6;
-    grid-row-end: 6;
+label {
+    width: 100%;
 }
 
 textarea {
     width: 100%;
-}
-
-.buttonSection {
-    grid-row-start: 7;
-    grid-row-end: 7;
-}
-
-.buttonSectionOverview {
-    grid-row-start: 8;
-    grid-row-end: 8;
 }
 
 button {
@@ -108,10 +58,23 @@ footer {
     grid-row-end: 10;
 }
 
-/*---------------------------------------------------------------------------*/
+.section-margin {
+    padding: 8px;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox {
+    width: auto;
+    margin: 3px 3px 3px 0px;
+}
+
+/*------------------------------ INDEX ---------------------------*/
 
 .body-index {
-    font-size: 15px;
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: 70px auto auto auto 1fr 60px;
@@ -148,100 +111,79 @@ footer {
     align-items: center;
     grid-template-columns: 40% 1fr;
 }
-.flash {
+
+.flash-index {
     font-size: 10px;
     justify-self: end;
 }
 
-.seperator {
+.seperator-index {
     border-top: solid 1px;
 }
 
-/*---------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------*/
-/*---------------------------------------------------------------------------*/
+.noTable-index {
+    background-color: lightblue;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.sort-icon-visible-index {
+    visibility: visible;
+}
+
+.sort-icon-invisible-index {
+    visibility: hidden;
+}
 
 
-/*body {*/
-/*    margin: 0;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    min-height: 100vh;*/
-/*    background: black;*/
-/*    color: white;*/
-/*}*/
+.button-selected-index {
+    font-weight: bold;
+    background-color: blue;
+}
 
-/*.content {*/
-/*    flex: 1;*/
-/*    padding: 10px;*/
-/*}*/
+/*------------------------------ DETAILS ---------------------------*/
 
+.body-details {
+    grid-template-columns: 100%;
+    grid-template-rows: 70px auto auto auto auto auto auto auto 1fr 60px;
+}
 
-/*.checkbox-container {*/
-/*    display: flex;*/
-/*    align-items: center;*/
-/*    justify-content: flex-start;*/
-/*}*/
+.title-section-details {
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
 
-/*.orderFilterButtonTable {*/
-/*    display: grid;*/
-/*    grid-template-columns: auto auto auto auto 1fr auto;*/
-/*}*/
+.importance-section-details {
+    grid-row-start: 3;
+    grid-row-end: 3;
+}
 
-/*.noTable {*/
-/*    display: grid;*/
-/*    grid-template-columns: 1fr;*/
-/*    background-color: lightblue;*/
-/*    margin-top: 20px;*/
-/*    margin-bottom: 20px;*/
-/*}*/
+.dueDate-section-details {
+    grid-row-start: 4;
+    grid-row-end: 4;
+}
 
-/*.mainTable {*/
-/*    display: grid;*/
-/*    grid-template-columns: 1fr auto;*/
-/*}*/
+.finished-section-details {
+    grid-row-start: 5;
+    grid-row-end: 5;
+}
 
-/*.data-container {*/
-/*    display: grid;*/
-/*    grid-template-columns: 8em 1fr 8em;*/
-/*}*/
+.description-section-details {
+    grid-row-start: 6;
+    grid-row-end: 6;
+}
 
-/*.grayed-out {*/
-/*    background-color: #888;*/
-/*    opacity: 0.5;*/
-/*}*/
+.button-section-details {
+    grid-row-start: 7;
+    grid-row-end: 7;
+}
 
-/*.data-entry-center {*/
-/*    text-align: center;*/
-/*    word-break: break-all;*/
-/*}*/
+.button-section-overview-details {
+    grid-row-start: 8;
+    grid-row-end: 8;
+}
 
-/*.data-entry-left {*/
-/*    text-align: left;*/
-/*}*/
-
-/*.data-entry-right {*/
-/*    text-align: right;*/
-/*}*/
-
-/*.button-container {*/
-/*}*/
-
-
-
-/*.sortIconVisible {*/
-/*    visibility: visible;*/
-/*}*/
-
-/*.sortIconInvisible {*/
-/*    visibility: hidden;*/
-/*}*/
-
-
-/*.button-selected {*/
-/*    font-weight: bold;*/
-/*    background-color: blue;*/
-/*}*/
+/*------------------------------ MEDIA ---------------------------*/
 
 @media screen and (min-width: 360px) {
     /*TODO: Implement desktop part here*/
