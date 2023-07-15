@@ -1,76 +1,84 @@
-<form class="detail" id='updateEntryForm' action='/details{{#if data}}/{{data._id}}{{/if}}' method='post'>
-    {{#if data}} <input type='hidden' name='_method' value='put'>  {{/if}}
-    <div class = "titleSection">
-        <label for='title'>Title:</label>
-        <input
-                type='text'
-                id='title'
-                name='title'
-                maxlength='64'
-                required
-            {{#if data}}
-                value='{{data.title}}'
-            {{/if}}
-        />
-    </div>
-    <div class="importanceSection">
-        <label for='importance'>Importance (1-5):</label>
-        <input
-                type='number'
-                id='importance'
-                name='importance'
-                min='1'
-                max='5'
-                required
-            {{#if data}}
-                value='{{data.importance}}'
-            {{/if}}
-        />
-    </div>
-    <div class="dueDateSection">
-        <label for='date'>Due Date:</label>
-        <input
-                type='date'
-                id='date'
-                name='dueDate'
-            {{#if data}}
-                value='{{data.dueDate}}'
-            {{/if}}
-        />
-    </div>
-    <div class="finishedSection">
-        <div class='checkbox-container'>
-            {{#if data}}
-                <input type='checkbox' class="checkbox" id='state' name='state'
-                       value='{{get_EntryState_Completed}}' {{#if_eq data.state
-                                                                     (get_EntryState_Completed)}}
-                       checked {{/if_eq}} />
-            {{else}}
-                <input type='checkbox' class="checkbox" id='state' name='state' value='{{get_EntryState_Completed}}'/>
-            {{/if}}
-            <label for='state'>Finished</label>
+<body class="body-detail">
+<div class="content-margin">
+    <form id= action='/details{{#if data}}/{{data._id}}{{/if}}' method='post'>
+        {{#if data}} <input type='hidden' name='_method' value='put'>  {{/if}}
+        <div class="titleSection section-margin">
+            <label for='title'>Title:</label>
+            <input
+                    type='text'
+                    id='title'
+                    name='title'
+                    maxlength='64'
+                    required
+                {{#if data}}
+                    value='{{data.title}}'
+                {{/if}}
+            />
         </div>
-    </div>
-    <div class="descriptionSection">
-        <label for='description'>Description:</label>
-        <textarea id='description' name='description' rows="4" maxlength="256">{{#if
-                data}}{{data.description}}{{/if}}</textarea>
-    </div>
-    <div class="buttonSection">
-        {{#if data}}
-            <button type='submit' name='update_button'>Update</button>
-            <button type='submit'
-                    name='update_overview_button'
-            > Update & Overview
-            </button>
-        {{else}}
-            <button type='submit' name='create_button'>Create</button>
-            <button
-                    type='submit'
-                    name='create_overview_button'
-            > Create & Overview
-            </button>
-        {{/if}}
-        <button onclick="window.location.href='/'">Overview</button>
-    </div>
-</form>
+        <div class="importanceSection section-margin">
+            <label for='importance'>Importance (1-5):</label>
+            <input
+                    type='number'
+                    id='importance'
+                    name='importance'
+                    min='1'
+                    max='5'
+                    required
+                {{#if data}}
+                    value='{{data.importance}}'
+                {{/if}}
+            />
+        </div>
+        <div class="dueDateSection section-margin">
+            <label for='date'>Due Date:</label>
+            <input
+                    type='date'
+                    id='date'
+                    name='dueDate'
+                {{#if data}}
+                    value='{{data.dueDate}}'
+                {{/if}}
+            />
+        </div>
+        <div class="finishedSection section-margin">
+            <div class='checkbox-container'>
+                {{#if data}}
+                    <input type='checkbox' class="checkbox" id='state' name='state'
+                           value='{{get_EntryState_Completed}}' {{#if_eq data.state
+                                                                         (get_EntryState_Completed)}}
+                           checked {{/if_eq}} />
+                {{else}}
+                    <input type='checkbox' class="checkbox" id='state' name='state' value='{{get_EntryState_Completed}}'/>
+                {{/if}}
+                <label for='state'>Finished</label>
+            </div>
+        </div>
+        <div class="descriptionSection section-margin">
+            <label for='description'>Description:</label>
+            <textarea id='description' name='description' rows="4" maxlength="256">{{#if
+                    data}}{{data.description}}{{/if}}</textarea>
+        </div>
+        <div class="buttonSection section-margin">
+            {{#if data}}
+                <button type='submit' name='update_button'>Update</button>
+                <button type='submit'
+                        name='update_overview_button'
+                > Update & Overview
+                </button>
+            {{else}}
+                <button type='submit' name='create_button'>Create</button>
+                <button
+                        type='submit'
+                        name='create_overview_button'
+                > Create & Overview
+                </button>
+            {{/if}}
+        </div>
+    </form>
+    <form id='overviewForm' action='/index' method='GET'>
+        <div class="buttonSectionOverview section-margin">
+        <button type='submit'>Overview</button>
+        </div>
+    </form>
+</div>
+</body>

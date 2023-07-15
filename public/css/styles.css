@@ -1,11 +1,15 @@
-.detail {
+.body-detail {
+    font-size: 15px;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: auto auto auto auto auto auto 1fr;
+    grid-template-rows: 70px auto auto auto auto auto auto auto 1fr 60px;
 }
 
+form {
+    margin-block-end: 0em;
+}
 div {
-    padding: 1px;
+    border: 1px solid red;
 }
 
 h1 {
@@ -14,8 +18,12 @@ h1 {
     grid-row-end: 1;
 }
 
-form {
-    margin: 1px;
+/*.content-margin {*/
+/*    margin: 20px;*/
+/*}*/
+
+.section-margin {
+    padding: 8px;
 }
 
 label {
@@ -23,13 +31,12 @@ label {
 }
 
 input {
-    width: 285px;
+    width: 100%;
 }
 
 .checkbox-container {
     display: flex;
     align-items: center;
-    padding: 1px;
 }
 
 .checkbox {
@@ -63,12 +70,17 @@ input {
 }
 
 textarea {
-    width: 285px;
+    width: 100%;
 }
 
 .buttonSection {
     grid-row-start: 7;
     grid-row-end: 7;
+}
+
+.buttonSectionOverview {
+    grid-row-start: 8;
+    grid-row-end: 8;
 }
 
 button {
@@ -77,8 +89,9 @@ button {
     border: none;
     border-radius: 5px;
     padding: 10px;
-    width: 285px;
-    margin-top: 3px;
+    width: 100%;
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
 
 button:active,
@@ -86,12 +99,68 @@ button:focus {
     background-color: blue;
     box-shadow: 0 0 5px dodgerblue;
     outline: none;
-    width: 285px
+    width: 100%
 }
 
 footer {
     padding: 10px;
+    grid-row-start: 10;
+    grid-row-end: 10;
 }
+
+/*---------------------------------------------------------------------------*/
+
+.body-index {
+    font-size: 15px;
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: 70px auto auto auto 1fr 60px;
+}
+
+.main-button-section-index {
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+
+.order-filter-button-section-index {
+    grid-row-start: 3;
+    grid-row-end: 3;
+}
+
+.completed-button-section-index {
+    grid-row-start: 4;
+    grid-row-end: 4;
+}
+
+.main-table-index {
+    grid-row-start: 5;
+    grid-row-end: 5;
+}
+
+.day-titel-importance-index {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 40% 40% 20%;
+}
+
+.checkbox-state-description-index {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 40% 1fr;
+}
+.flash {
+    font-size: 10px;
+    justify-self: end;
+}
+
+.seperator {
+    border-top: solid 1px;
+}
+
+/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+
 
 /*body {*/
 /*    margin: 0;*/
@@ -112,12 +181,6 @@ footer {
 /*    display: flex;*/
 /*    align-items: center;*/
 /*    justify-content: flex-start;*/
-/*}*/
-
-
-/*.mainButtonTable {*/
-/*    display: grid;*/
-/*    grid-template-columns: auto 1fr auto;*/
 /*}*/
 
 /*.orderFilterButtonTable {*/
@@ -209,5 +272,3 @@ footer {
 @media screen and (min-width: 360px) {
     /*TODO: Implement desktop part here*/
 }
-
-
