@@ -1,5 +1,5 @@
 <div class="content-margin">
-<form class="body-detail" id='updateEntryForm' action='/details{{#if data}}/{{data._id}}{{/if}}' method='post'>
+<form class="detail" id='updateEntryForm' action='/details{{#if data}}/{{data._id}}{{/if}}' method='post'>
         {{#if data}} <input type='hidden' name='_method' value='put'>  {{/if}}
         <div class="titleSection section-margin">
             <label for='title'>Title:</label>
