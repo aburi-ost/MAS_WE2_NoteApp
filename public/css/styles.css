@@ -169,8 +169,8 @@ footer {
 }
 
 /*------------------------------ MEDIA ---------------------------*/
-
-/* Todo: Hinweis bezüglich 361 pixel damit smartphones 360 und darunter ansicht switchen*/
+/* Wir haben uns für eine min-width von 361-pixel statt 360 entschieden, damit bei
+   Smartphones mit einer Breite von <= 360px die mobile version angezeigt wird.  */
 @media screen and (min-width: 361px) {
     .buttonSection {
         display: inline-flex;
