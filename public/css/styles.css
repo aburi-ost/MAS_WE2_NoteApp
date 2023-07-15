@@ -5,7 +5,6 @@ body {
 }
 
 div {
-    border: 1px solid red;
     padding: 8px;
 }
 
@@ -127,13 +126,6 @@ footer {
 /*    grid-template-columns: auto auto auto auto 1fr auto;*/
 /*}*/
 
-/*.noTable {*/
-/*    display: grid;*/
-/*    grid-template-columns: 1fr;*/
-/*    background-color: lightblue;*/
-/*    margin-top: 20px;*/
-/*    margin-bottom: 20px;*/
-/*}*/
 
 /*.mainTable {*/
 /*    display: grid;*/
@@ -145,10 +137,7 @@ footer {
 /*    grid-template-columns: 8em 1fr 8em;*/
 /*}*/
 
-/*.grayed-out {*/
-/*    background-color: #888;*/
-/*    opacity: 0.5;*/
-/*}*/
+
 
 /*.data-entry-center {*/
 /*    text-align: center;*/
@@ -166,22 +155,52 @@ footer {
 /*.button-container {*/
 /*}*/
 
+/*
+.noTable {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: lightblue;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
 
+.grayed-out {
+    background-color: #888;
+    opacity: 0.5;
+}
 
-/*.sortIconVisible {*/
-/*    visibility: visible;*/
-/*}*/
+.sortIconVisible {
+    visibility: visible;
+}
 
-/*.sortIconInvisible {*/
-/*    visibility: hidden;*/
-/*}*/
+.sortIconInvisible {
+    visibility: hidden;
+}
 
+.button-selected {
+    font-weight: bold;
+    background-color: blue;
+}
+ */
 
-/*.button-selected {*/
-/*    font-weight: bold;*/
-/*    background-color: blue;*/
-/*}*/
-
-@media screen and (min-width: 360px) {
+@media screen and (min-width: 361px) {
     /*TODO: Implement desktop part here*/
+    /* Todo: was macht dieses grid-row */
+    .buttonSection {
+/*        grid-row-start: 7;
+        grid-row-end: 7;*/
+        display: inline-flex;
+    }
+
+    button {
+        background-color: dodgerblue;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        margin-top: 3px;
+        margin-right: 5px;
+        white-space: nowrap;
+    }
+
 }
