@@ -2,12 +2,10 @@
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: auto auto auto auto auto auto 1fr;
-    border: 2px solid green;
 }
 
 div {
-    border: 1px solid red;
-    padding: 8px;
+    padding: 1px;
 }
 
 h1 {
@@ -17,7 +15,7 @@ h1 {
 }
 
 form {
-    margin: 20px;
+    margin: 1px;
 }
 
 label {
@@ -31,7 +29,7 @@ input {
 .checkbox-container {
     display: flex;
     align-items: center;
-    padding: 0px;
+    padding: 1px;
 }
 
 .checkbox {
@@ -71,7 +69,6 @@ textarea {
 .buttonSection {
     grid-row-start: 7;
     grid-row-end: 7;
-    border: 2px black solid;
 }
 
 button {
@@ -94,8 +91,6 @@ button:focus {
 
 footer {
     padding: 10px;
-    grid-row-start: 10;
-    grid-row-end: 10;
 }
 
 /*body {*/
@@ -187,7 +182,7 @@ footer {
 
 body {
     display: grid;
-    min-height: 100vh;
+    min-height: 98vh;   <!-- Todo: this feels a bit like cheating. at 100vh the body area is larger than the displayed section -->
     grid-template-rows: auto 1fr auto;
     justify-content: center;
     grid-template-columns: 100%;
@@ -195,21 +190,20 @@ body {
         "appHeader"
         "appContent"
         "appFooter";
-    border: 1px solid blue;
 }
 
 header {
     grid-area: appHeader;
-    border: 1px solid blue;
+    border: 1px solid black;
 }
 .content {
     grid-area: appContent;
-    border: 1px solid green;
+    border: 1px solid black;
 }
 
 footer {
     grid-area: appFooter;
-    border: 1px solid blue;
+    border: 1px solid black;
 }
 
 @media screen and (min-width: 360px) {
