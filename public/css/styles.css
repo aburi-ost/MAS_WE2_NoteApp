@@ -2,7 +2,7 @@
     font-size: 15px;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: auto auto auto auto auto auto auto auto 1fr;
+    grid-template-rows: auto auto auto auto auto auto auto;
 }
 
 form {
@@ -10,12 +10,6 @@ form {
 }
 div {
     border: 1px solid red;
-}
-
-h1 {
-    text-align: center;
-    grid-row-start: 1;
-    grid-row-end: 1;
 }
 
 .section-margin {
@@ -41,28 +35,28 @@ input {
 }
 
 .titleSection {
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+
+.importanceSection {
     grid-row-start: 2;
     grid-row-end: 2;
 }
 
-.importanceSection {
+.dueDateSection {
     grid-row-start: 3;
     grid-row-end: 3;
 }
 
-.dueDateSection {
+.finishedSection {
     grid-row-start: 4;
     grid-row-end: 4;
 }
 
-.finishedSection {
+.descriptionSection {
     grid-row-start: 5;
     grid-row-end: 5;
-}
-
-.descriptionSection {
-    grid-row-start: 6;
-    grid-row-end: 6;
 }
 
 textarea {
@@ -70,19 +64,13 @@ textarea {
 }
 
 .buttonSection {
-    grid-row-start: 7;
-    grid-row-end: 7;
+    grid-row-start: 6;
+    grid-row-end: 6;
 }
 
 .buttonSectionOverview {
-    grid-row-start: 8;
-    grid-row-end: 8;
-}
-
-/* Todo: May want to move the 1fr formatting buttonSectionOverview and delete div details-bottom-filler */
-.details-bottom-filler {
-    grid-row-start: 9;
-    grid-row-end: 9;
+    grid-row-start: 7;
+    grid-row-end: 7;
 }
 
 button {
@@ -104,11 +92,6 @@ button:focus {
     width: 100%
 }
 
-footer {
-    padding: 10px;
-    grid-row-start: 10;
-    grid-row-end: 10;
-}
 
 /*---------------------------------------------------------------------------*/
 
@@ -116,7 +99,8 @@ footer {
     font-size: 15px;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: auto auto auto auto 1fr;
+    /*grid-template-rows: auto auto auto auto 1fr;*/
+    grid-template-rows: auto auto auto auto;
 }
 
 .main-button-section-index {
@@ -138,12 +122,6 @@ footer {
     grid-row-start: 4;
     grid-row-end: 4;
 }
-/* Todo: May want to move the 1fr formatting main-table-index and delete div index-bottom-filler */
-.index-bottom-filler {
-    grid-row-start: 5;
-    grid-row-end: 5;
-}
-
 
 .day-titel-importance-index {
     display: grid;
@@ -265,6 +243,10 @@ body {
 
 header {
     grid-area: appHeader;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 36px
 }
 .content {
     grid-area: appContent;
@@ -272,6 +254,7 @@ header {
 
 footer {
     grid-area: appFooter;
+    padding: 10px;
 }
 
 @media screen and (min-width: 360px) {
