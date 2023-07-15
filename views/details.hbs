@@ -43,8 +43,9 @@
             {{#if data}}
                 <input type='checkbox' class="checkbox" id='state' name='state' value='{{get_EntryState_Completed}}'
                     {{#if_eq data.state (get_EntryState_Completed)}}
-                        checked
-                    {{/if_eq}} />
+                       checked
+                    {{/if_eq}}
+                />
             {{else}}
                 <input type='checkbox' class="checkbox" id='state' name='state' value='{{get_EntryState_Completed}}'/>
             {{/if}}

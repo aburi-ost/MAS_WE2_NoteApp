@@ -1,21 +1,19 @@
-body {
+.body-detail {
+    font-size: 15px;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 70px auto auto auto auto auto auto 1fr 60px;
-}
-
-div {
-    padding: 8px;
-}
-
-h1 {
-    text-align: center;
-    grid-row-start: 1;
-    grid-row-end: 1;
+    grid-template-rows: auto auto auto auto auto auto auto;
 }
 
 form {
-    margin: 20px;
+    margin-block-end: 0em;
+}
+div {
+    border: 1px solid red;
+}
+
+.section-margin {
+    padding: 8px;
 }
 
 label {
@@ -29,7 +27,6 @@ input {
 .checkbox-container {
     display: flex;
     align-items: center;
-    padding: 0px;
 }
 
 .checkbox {
@@ -38,28 +35,28 @@ input {
 }
 
 .titleSection {
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+
+.importanceSection {
     grid-row-start: 2;
     grid-row-end: 2;
 }
 
-.importanceSection {
+.dueDateSection {
     grid-row-start: 3;
     grid-row-end: 3;
 }
 
-.dueDateSection {
+.finishedSection {
     grid-row-start: 4;
     grid-row-end: 4;
 }
 
-.finishedSection {
+.descriptionSection {
     grid-row-start: 5;
     grid-row-end: 5;
-}
-
-.descriptionSection {
-    grid-row-start: 6;
-    grid-row-end: 6;
 }
 
 textarea {
@@ -67,6 +64,11 @@ textarea {
 }
 
 .buttonSection {
+    grid-row-start: 6;
+    grid-row-end: 6;
+}
+
+.buttonSectionOverview {
     grid-row-start: 7;
     grid-row-end: 7;
 }
@@ -78,7 +80,8 @@ button {
     border-radius: 5px;
     padding: 10px;
     width: 100%;
-    margin-top: 3px;
+    margin-top: 2px;
+    margin-bottom: 2px;
 }
 
 button:active,
@@ -86,13 +89,64 @@ button:focus {
     background-color: blue;
     box-shadow: 0 0 5px dodgerblue;
     outline: none;
+    width: 100%
 }
 
-footer {
-    padding: 10px;
-    grid-row-start: 10;
-    grid-row-end: 10;
+
+/*---------------------------------------------------------------------------*/
+
+.body-index {
+    font-size: 15px;
+    display: grid;
+    grid-template-columns: 100%;
+    /*grid-template-rows: auto auto auto auto 1fr;*/
+    grid-template-rows: auto auto auto auto;
 }
+
+.main-button-section-index {
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+
+.order-filter-button-section-index {
+    grid-row-start: 2;
+    grid-row-end: 2;
+}
+
+.completed-button-section-index {
+    grid-row-start: 3;
+    grid-row-end: 3;
+}
+
+.main-table-index {
+    grid-row-start: 4;
+    grid-row-end: 4;
+}
+
+.day-titel-importance-index {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 40% 40% 20%;
+}
+
+.checkbox-state-description-index {
+    display: grid;
+    align-items: center;
+    grid-template-columns: 40% 1fr;
+}
+.flash {
+    font-size: 10px;
+    justify-self: end;
+}
+
+.seperator {
+    border-top: solid 1px;
+}
+
+/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+/*---------------------------------------------------------------------------*/
+
 
 /*body {*/
 /*    margin: 0;*/
@@ -115,17 +169,18 @@ footer {
 /*    justify-content: flex-start;*/
 /*}*/
 
-
-/*.mainButtonTable {*/
-/*    display: grid;*/
-/*    grid-template-columns: auto 1fr auto;*/
-/*}*/
-
 /*.orderFilterButtonTable {*/
 /*    display: grid;*/
 /*    grid-template-columns: auto auto auto auto 1fr auto;*/
 /*}*/
 
+/*.noTable {*/
+/*    display: grid;*/
+/*    grid-template-columns: 1fr;*/
+/*    background-color: lightblue;*/
+/*    margin-top: 20px;*/
+/*    margin-bottom: 20px;*/
+/*}*/
 
 /*.mainTable {*/
 /*    display: grid;*/
@@ -182,6 +237,34 @@ footer {
     background-color: blue;
 }
  */
+
+body {
+    display: grid;
+    min-height: 98vh;   /* Todo: this feels a bit like cheating. at 100vh the body area is larger than the displayed section */
+    grid-template-rows: auto 1fr auto;
+    justify-content: center;
+    grid-template-columns: 100%;
+    grid-template-areas:
+        "appHeader"
+        "appContent"
+        "appFooter";
+}
+
+header {
+    grid-area: appHeader;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 36px
+}
+.content {
+    grid-area: appContent;
+}
+
+footer {
+    grid-area: appFooter;
+    padding: 10px;
+}
 
 /* Todo: Hinweis bezüglich 361 pixel damit smartphones 360 und darunter ansicht switchen*/
 @media screen and (min-width: 361px) {
