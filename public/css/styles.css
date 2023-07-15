@@ -29,6 +29,7 @@ textarea {
 .checkbox-container {
     display: flex;
     align-items: center;
+    opacity: 0.5;
 }
 
 .checkbox {
