@@ -2,7 +2,7 @@
 
 /*TODO: remove when design is finished*/
 div {
-    /*border: 1px solid red;*/
+    border: 1px solid red;
 }
 
 header {
@@ -149,16 +149,24 @@ footer {
 @media screen and (min-width: 361px) {
 
 /*------------------------------ COMMON ---------------------------*/
-
     button {
         width: fit-content;
         margin-right: 5px;
         white-space: nowrap;
     }
 
-/*------------------------------ DETAILS ---------------------------*/
+/*------------------------------ INDEX ---------------------------*/
 
-    .buttonSection {
+    .button-section-index {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .order-button-section-index {
+    }
+
+/*------------------------------ DETAILS ---------------------------*/
+    .button-section-details {
         display: inline-flex;
     }
 }
