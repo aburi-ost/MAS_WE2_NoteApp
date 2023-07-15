@@ -182,7 +182,7 @@ footer {
 
 body {
     display: grid;
-    min-height: 98vh;   <!-- Todo: this feels a bit like cheating. at 100vh the body area is larger than the displayed section -->
+    min-height: 98vh;   /* Todo: this feels a bit like cheating. at 100vh the body area is larger than the displayed section */
     grid-template-rows: auto 1fr auto;
     justify-content: center;
     grid-template-columns: 100%;
