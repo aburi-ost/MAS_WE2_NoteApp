@@ -1,20 +1,15 @@
-<div class='mainButtonTable'>
-    <div class='button-container'>
+<body class="body-index">
+<div class="content-margin">
+    <div class='main-button-section-index section-margin'>
         <form action='/details' method='GET'>
             <button id='createButton' type='submit'>Create new Todo</button>
         </form>
-    </div>
-    <div class='button-container'></div>
-    <div class='button-container'>
         <form action='/index' method='POST'>
             <input type='hidden' name='darkMode' value='true'/>
             <button id='toggleStyle' type='submit'>Toggle Style</button>
         </form>
     </div>
-</div>
-<!-- Note: For this project, the newly sorted table can be displayed through a re-render. Using AJAX is not necessary -->
-<div class='orderFilterButtonTable'>
-    <div class='button-container'>
+    <div class='order-filter-button-section-index section-margin'>
         <form action='/index' method='POST'>
             <input type='hidden' name='orderBy' value='title'/>
             <button {{#if_eq "title" orderBy}} class='button-selected' {{/if_eq}} id='orderByName' type='submit'>
@@ -24,9 +19,6 @@
                 </span>
             </button>
         </form>
-    </div>
-
-    <div class='button-container'>
         <form action='/index' method='POST'>
             <input type='hidden' name='orderBy' value='dueDate'/>
             <button {{#if_eq "dueDate" orderBy}} class='button-selected' {{/if_eq}} id='orderByDueDate' type='submit'>
@@ -36,9 +28,6 @@
                 </span>
             </button>
         </form>
-    </div>
-
-    <div class='button-container'>
         <form action='/index' method='POST'>
             <input type='hidden' name='orderBy' value='creationDate'/>
             <button {{#if_eq "creationDate" orderBy}}
@@ -49,9 +38,6 @@
                 </span>
             </button>
         </form>
-    </div>
-
-    <div class='button-container'>
         <form action='/index' method='POST'>
             <input type='hidden' name='orderBy' value='importance'/>
             <button {{#if_eq "importance" orderBy}}
@@ -63,8 +49,7 @@
             </button>
         </form>
     </div>
-    <div class='button-container'></div>
-    <div class='button-container'>
+    <div class='completed-button-section-index section-margin'>
         <form action='/index' method='POST'>
             <input type='hidden' name='filterCompleted' value='true'/>
             <button {{#if_eq true filterCompleted}}
@@ -73,36 +58,39 @@
             </button>
         </form>
     </div>
+    <div class='main-table-index'>
+        {{#if data}}
+            {{#each data}}
+                <div class="seperator">
+                    <div class='{{#if_eq this.state (get_EntryState_Completed)}} grayed-out {{/if_eq}}'>
+                        <div class="day-titel-importance-index section-margin">
+                            <div>
+                                {{dueDate_in_Days this.dueDate}}
+                            </div>
+                            <div> {{this.title}} </div>
+                            <div class="flash">
+                                {{get_importance_icons this.importance}}
+                            </div>
+                        </div>
+                        <div class="checkbox-state-description-index section-margin">
+                            <div class='entry-row-index checkbox-container'>
+                                <input type='checkbox' class="checkbox" id="state" disabled {{#if_eq this.state (get_EntryState_Completed)}}checked{{/if_eq}} />
+                                <label for='state'>{{#if_eq this.state (get_EntryState_Completed)}}
+                                    Completed {{else}} Open {{/if_eq}}</label>
+                            </div>
+                            <div class='data-entry-center'> {{this.description}} </div>
+                        </div>
+                    </div>
+                    <div class='button-container section-margin'>
+                        <form id='editForm' action='/details/{{_id}}' method='GET'>
+                            <button type='submit'>Edit</button>
+                        </form>
+                    </div>
+                </div>
+            {{/each}}
+        {{else}}
+            <div class='noTable'> Keine Todo gefunden!?</div>
+        {{/if}}
+    </div>
 </div>
-
-<div class='mainTable'>
-    {{#if data}}
-        {{#each data}}
-            <!-- Iterate over each entry in the data array -->
-            <div class='data-container {{#if_eq this.state (get_EntryState_Completed)}} grayed-out {{/if_eq}}'>
-                <div class='data-entry-left'>
-                    {{dueDate_in_Days this.dueDate}}
-                </div>
-                <div class='data-entry-center'> {{this.title}} </div>
-                <div class='data-entry-right'>
-                    {{get_importance_icons this.importance}}
-                </div>
-                <div class='checkbox-container'>
-                    <input type='checkbox' id="state" disabled {{#if_eq this.state (get_EntryState_Completed)}}
-                           checked {{/if_eq}} />
-                    <label for='state'>{{#if_eq this.state (get_EntryState_Completed)}}
-                        Completed {{else}} Open {{/if_eq}}</label>
-                </div>
-                <div class='data-entry-center'> {{this.description}} </div>
-                <div class='data-entry-center'></div>
-            </div>
-            <div class='button-container'>
-                <form id='editForm' action='/details/{{_id}}' method='GET'>
-                    <button type='submit'>Edit</button>
-                </form>
-            </div>
-        {{/each}}
-    {{else}}
-        <div class='noTable'> Keine Todo gefunden!?</div>
-    {{/if}}
-</div>
+</body>
