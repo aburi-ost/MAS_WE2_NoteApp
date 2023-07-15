@@ -11,18 +11,31 @@ body {
     display: grid;
 }
 
-h1 {
-    text-align: center;
-}
-
 form {
     margin-block-end: 0em;
+}
+div {
+    border: 1px solid red;
+}
+
+.section-margin {
+    padding: 8px;
 }
 
 input,
 label,
 textarea {
     width: 100%;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+}
+
+.checkbox {
+    width: auto;
+    margin: 3px 3px 3px 0px;
 }
 
 button {
@@ -44,11 +57,6 @@ button:focus {
     width: 100%
 }
 
-footer {
-    padding: 10px;
-    grid-row-start: 10;
-    grid-row-end: 10;
-}
 
 .section-margin {
     padding: 8px;
@@ -68,7 +76,8 @@ footer {
 
 .body-index {
     grid-template-columns: 100%;
-    grid-template-rows: 70px auto auto auto 1fr 60px;
+    /*grid-template-rows: auto auto auto auto 1fr;*/
+    grid-template-rows: auto auto auto auto;
 }
 
 .day-titel-importance-index {
@@ -92,12 +101,6 @@ footer {
     border-top: solid 1px;
 }
 
-.noTable-index {
-    background-color: lightblue;
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
-
 .sort-icon-visible-index {
     visibility: visible;
 }
@@ -113,13 +116,80 @@ footer {
 
 /*------------------------------ DETAILS ---------------------------*/
 
-.body-details {
+
+
+/*.sortIconVisible {*/
+/*    visibility: visible;*/
+/*}*/
+
+/*.sortIconInvisible {*/
+/*    visibility: hidden;*/
+/*}*/
+
+
+/*.button-selected {*/
+/*    font-weight: bold;*/
+/*    background-color: blue;*/
+/*}*/
+
+.body-detail {
+    font-size: 15px;
+    display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 70px auto auto auto auto auto auto auto 1fr 60px;
+    grid-template-rows: auto auto auto auto auto auto auto;
+}
+
+
+body {
+    display: grid;
+    min-height: 98vh;   /* Todo: this feels a bit like cheating. at 100vh the body area is larger than the displayed section */
+    grid-template-rows: auto 1fr auto;
+    justify-content: center;
+    grid-template-columns: 100%;
+    grid-template-areas:
+        "appHeader"
+        "appContent"
+        "appFooter";
+}
+
+header {
+    grid-area: appHeader;
+    text-align: center;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 36px
+}
+.content {
+    grid-area: appContent;
+}
+
+footer {
+    grid-area: appFooter;
+    padding: 10px;
 }
 
 /*------------------------------ MEDIA ---------------------------*/
 
-@media screen and (min-width: 360px) {
-    /*TODO: Implement desktop part here*/
+/* Todo: Hinweis bezüglich 361 pixel damit smartphones 360 und darunter ansicht switchen*/
+@media screen and (min-width: 361px) {
+    .buttonSection {
+        display: inline-flex;
+    }
+
+    button {
+        width: fit-content;
+        margin-right: 5px;
+        white-space: nowrap;
+    }
 }
+
+/*.titleSection {*/
+/*    grid-row-start: 1;*/
+/*    grid-row-end: 1;*/
+/*}*/
+
+/*.body-details {*/
+/*    grid-template-columns: 100%;*/
+/*    grid-template-rows: 70px auto auto auto auto auto auto auto 1fr 60px;*/
+/*}*/
+

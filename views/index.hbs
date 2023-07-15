@@ -1,5 +1,4 @@
-<body class="body-index">
-<div>
+<div class="body-index">
     <div class='main-button-section-index section-margin'>
         <form action='/details' method='GET'>
             <button id='createButton' type='submit'>Create new Todo</button>
@@ -62,6 +61,7 @@
             </button>
         </form>
     </div>
+
     <div class='main-table-index'>
         {{#if data}}
             {{#each data}}
@@ -93,8 +93,7 @@
                 </div>
             {{/each}}
         {{else}}
-            <div class='noTable-index'> Keine Todo gefunden!?</div>
+            <div class='noTable-index'>No todos found</div>
         {{/if}}
     </div>
 </div>
-</body>
