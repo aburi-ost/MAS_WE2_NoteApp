@@ -13,8 +13,6 @@ body {
 
 h1 {
     text-align: center;
-    grid-row-start: 1;
-    grid-row-end: 1;
 }
 
 form {
@@ -80,26 +78,6 @@ footer {
     grid-template-rows: 70px auto auto auto 1fr 60px;
 }
 
-.main-button-section-index {
-    grid-row-start: 2;
-    grid-row-end: 2;
-}
-
-.order-filter-button-section-index {
-    grid-row-start: 3;
-    grid-row-end: 3;
-}
-
-.completed-button-section-index {
-    grid-row-start: 4;
-    grid-row-end: 4;
-}
-
-.main-table-index {
-    grid-row-start: 5;
-    grid-row-end: 5;
-}
-
 .day-titel-importance-index {
     display: grid;
     align-items: center;
@@ -135,7 +113,6 @@ footer {
     visibility: hidden;
 }
 
-
 .button-selected-index {
     font-weight: bold;
     background-color: blue;
@@ -146,41 +123,6 @@ footer {
 .body-details {
     grid-template-columns: 100%;
     grid-template-rows: 70px auto auto auto auto auto auto auto 1fr 60px;
-}
-
-.title-section-details {
-    grid-row-start: 2;
-    grid-row-end: 2;
-}
-
-.importance-section-details {
-    grid-row-start: 3;
-    grid-row-end: 3;
-}
-
-.dueDate-section-details {
-    grid-row-start: 4;
-    grid-row-end: 4;
-}
-
-.finished-section-details {
-    grid-row-start: 5;
-    grid-row-end: 5;
-}
-
-.description-section-details {
-    grid-row-start: 6;
-    grid-row-end: 6;
-}
-
-.button-section-details {
-    grid-row-start: 7;
-    grid-row-end: 7;
-}
-
-.button-section-overview-details {
-    grid-row-start: 8;
-    grid-row-end: 8;
 }
 
 /*------------------------------ MEDIA ---------------------------*/
