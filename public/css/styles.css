@@ -183,24 +183,16 @@ footer {
 }
  */
 
+/* Todo: Hinweis bezüglich 361 pixel damit smartphones 360 und darunter ansicht switchen*/
 @media screen and (min-width: 361px) {
-    /*TODO: Implement desktop part here*/
-    /* Todo: was macht dieses grid-row */
+
     .buttonSection {
-/*        grid-row-start: 7;
-        grid-row-end: 7;*/
         display: inline-flex;
     }
 
     button {
-        background-color: dodgerblue;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        padding: 10px;
-        margin-top: 3px;
+        width: fit-content;
         margin-right: 5px;
         white-space: nowrap;
     }
-
 }
