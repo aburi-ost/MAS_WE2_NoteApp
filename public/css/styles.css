@@ -14,9 +14,7 @@ body {
 form {
     margin-block-end: 0em;
 }
-div {
-    border: 1px solid red;
-}
+
 
 .section-margin {
     padding: 8px;
@@ -54,7 +52,6 @@ button:focus {
     background-color: blue;
     box-shadow: 0 0 5px dodgerblue;
     outline: none;
-    width: 100%
 }
 
 
