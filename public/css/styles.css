@@ -163,6 +163,12 @@ footer {
     }
 
     .order-button-section-index {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .flex-item-index {
+        margin-left: auto;
     }
 
 /*------------------------------ DETAILS ---------------------------*/

@@ -51,9 +51,7 @@
                 </span>
             </button>
         </form>
-    </div>
-    <div class='section-margin'>
-        <form action='/index' method='POST'>
+        <form class="flex-item-index" action='/index' method='POST'>
             <input type='hidden' name='filterCompleted' value='true'/>
             <button {{#if_eq true filterCompleted}}
             class='button-selected-index' {{/if_eq}} id='filterCompleted' type='submit'>
