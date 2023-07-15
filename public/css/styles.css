@@ -1,7 +1,8 @@
 .detail {
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 70px auto auto auto auto auto auto 1fr 60px;
+    grid-template-rows: auto auto auto auto auto auto 1fr;
+    border: 2px solid green;
 }
 
 div {
@@ -70,6 +71,7 @@ textarea {
 .buttonSection {
     grid-row-start: 7;
     grid-row-end: 7;
+    border: 2px black solid;
 }
 
 button {
@@ -183,6 +185,35 @@ footer {
 /*    background-color: blue;*/
 /*}*/
 
+body {
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    justify-content: center;
+    grid-template-columns: 100%;
+    grid-template-areas:
+        "appHeader"
+        "appContent"
+        "appFooter";
+    border: 1px solid blue;
+}
+
+header {
+    grid-area: appHeader;
+    border: 1px solid blue;
+}
+.content {
+    grid-area: appContent;
+    border: 1px solid green;
+}
+
+footer {
+    grid-area: appFooter;
+    border: 1px solid blue;
+}
+
 @media screen and (min-width: 360px) {
     /*TODO: Implement desktop part here*/
 }
+
+
