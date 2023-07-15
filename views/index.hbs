@@ -59,35 +59,35 @@
             </button>
         </form>
     </div>
-    <div class='main-table-index'>
+    <!-------------------------------------------------------------------------------------------------->
+    <div class="main-table-index">
         {{#if data}}
             {{#each data}}
-                <div class="seperator-index">
-                    <div class='{{#if_eq this.state (get_EntryState_Completed)}} grayed-out {{/if_eq}}'>
-                        <div class="day-titel-importance-index section-margin">
-                            <div>
-                                {{dueDate_in_Days this.dueDate}}
-                            </div>
-                            <div> {{this.title}} </div>
-                            <div class="flash-index">
-                                {{get_importance_icons this.importance}}
-                            </div>
-                        </div>
-                        <div class="checkbox-state-description-index section-margin">
-                            <div class='entry-row-index checkbox-container'>
-                                <input type='checkbox' class="checkbox" id="state" disabled {{#if_eq this.state (get_EntryState_Completed)}}checked{{/if_eq}} />
-                                <label for='state'>{{#if_eq this.state (get_EntryState_Completed)}}
-                                    Completed {{else}} Open {{/if_eq}}</label>
-                            </div>
-                            <div> {{this.description}} </div>
-                        </div>
-                    </div>
-                    <div class='section-margin'>
-                        <form id='editForm' action='/details/{{_id}}' method='GET'>
-                            <button type='submit'>Edit</button>
-                        </form>
+            <div class='main-table-entry'>
+                <div class="main-table-date section-margin">
+                    <div>
+                        {{dueDate_in_Days this.dueDate}}
                     </div>
                 </div>
+                <div class="main-table-title section-margin"> {{this.title}} </div>
+                <div class="main-table-importance section-margin">
+                        {{get_importance_icons this.importance}}
+                </div>
+                <div class="main-table-state section-margin">
+                    <div class='checkbox-container'>
+                        <input type='checkbox' class="checkbox" id="state" disabled {{#if_eq this.state (get_EntryState_Completed)}}checked{{/if_eq}} />
+                        <label for='state'>{{#if_eq this.state (get_EntryState_Completed)}} Completed {{else}} Open {{/if_eq}}</label>
+                    </div>
+                </div>
+                <div class="main-table-description section-margin">
+                    <div> {{this.description}} </div>
+                </div>
+                <div class='main-table-button section-margin'>
+                    <form id='editForm' action='/details/{{_id}}' method='GET'>
+                        <button type='submit'>Edit</button>
+                    </form>
+                </div>
+            </div>
             {{/each}}
         {{else}}
             <div class='noTable-index'>No todos found</div>

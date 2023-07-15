@@ -2,7 +2,7 @@
 
 /*TODO: remove when design is finished*/
 div {
-    border: 1px solid red;
+    /* border: 1px solid red; */
 }
 
 header {
@@ -80,32 +80,54 @@ footer {
 
 /*------------------------------ INDEX ---------------------------*/
 
-.index {
-    grid-template-columns: 100%;
-    grid-template-rows: auto auto auto auto;
+.main-table-index {
+
 }
 
-.day-titel-importance-index {
+.main-table-entry {
     display: grid;
+    grid-template-rows: auto auto auto;
+    grid-template-columns: 10em 1fr 10em auto;
+    grid-template-areas:
+        "tableDate tableTitle tableTitle tableImportance"
+        "tableState tableDescription tableDescription tableDescription"
+        "tableButton tableButton tableButton tableButton";
+    font-size: 15px;
+    border: 2px solid black;
+}
+
+.main-table-date {
+    grid-area: tableDate;
+    border: 2px solid green;
+}
+
+.main-table-title {
+    grid-area: tableTitle;
+    border: 2px solid purple;
+}
+
+.main-table-importance {
+    grid-area: tableImportance;
+    text-align: right;
+    border: 2px solid red;
+}
+
+.main-table-state {
+    grid-area: tableState;
+    border: 2px solid orange;
+}
+
+.main-table-description {
+    grid-area: tableDescription;
+    border: 2px solid yellow;
+}
+
+.main-table-button {
+    grid-area: tableButton;
+    display: flex;
     align-items: center;
-    grid-template-columns: 40% 40% 20%;
-    overflow-wrap: break-word;
-}
-
-.checkbox-state-description-index {
-    display: grid;
-    align-items: center;
-    grid-template-columns: 40% 60%;
-    overflow-wrap: break-word;
-}
-
-.flash-index {
-    font-size: 10px;
-    justify-self: end;
-}
-
-.seperator-index {
-    border-top: solid 1px;
+    justify-content: center;
+    border: 2px solid blue;
 }
 
 .sort-icon-visible-index {
@@ -156,6 +178,24 @@ footer {
     }
 
 /*------------------------------ INDEX ---------------------------*/
+
+    .main-table-entry {
+        display: grid;
+        grid-template-rows: auto auto auto;
+        grid-template-columns: 10em 1fr 10em auto;
+        grid-template-areas:
+        "tableDate tableTitle tableImportance tableButton"
+        "tableState tableDescription tableDescription tableButton"
+        "tableState tableDescription tableDescription tableButton";
+        font-size: 15px;
+        border: 2px solid black;
+    }
+
+    .index {
+        display: grid;
+        grid-template-columns: 100%;
+        grid-template-rows: auto auto auto;
+    }
 
     .button-section-index {
         display: flex;
