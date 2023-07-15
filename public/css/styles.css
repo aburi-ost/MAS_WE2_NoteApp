@@ -2,7 +2,7 @@
     font-size: 15px;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 70px auto auto auto auto auto auto auto 1fr 60px;
+    grid-template-rows: auto auto auto auto auto auto auto auto 1fr;
 }
 
 form {
@@ -17,10 +17,6 @@ h1 {
     grid-row-start: 1;
     grid-row-end: 1;
 }
-
-/*.content-margin {*/
-/*    margin: 20px;*/
-/*}*/
 
 .section-margin {
     padding: 8px;
@@ -83,6 +79,12 @@ textarea {
     grid-row-end: 8;
 }
 
+/* Todo: May want to move the 1fr formatting buttonSectionOverview and delete div details-bottom-filler */
+.details-bottom-filler {
+    grid-row-start: 9;
+    grid-row-end: 9;
+}
+
 button {
     background-color: dodgerblue;
     color: white;
@@ -114,28 +116,34 @@ footer {
     font-size: 15px;
     display: grid;
     grid-template-columns: 100%;
-    grid-template-rows: 70px auto auto auto 1fr 60px;
+    grid-template-rows: auto auto auto auto 1fr;
 }
 
 .main-button-section-index {
+    grid-row-start: 1;
+    grid-row-end: 1;
+}
+
+.order-filter-button-section-index {
     grid-row-start: 2;
     grid-row-end: 2;
 }
 
-.order-filter-button-section-index {
+.completed-button-section-index {
     grid-row-start: 3;
     grid-row-end: 3;
 }
 
-.completed-button-section-index {
+.main-table-index {
     grid-row-start: 4;
     grid-row-end: 4;
 }
-
-.main-table-index {
+/* Todo: May want to move the 1fr formatting main-table-index and delete div index-bottom-filler */
+.index-bottom-filler {
     grid-row-start: 5;
     grid-row-end: 5;
 }
+
 
 .day-titel-importance-index {
     display: grid;
@@ -257,16 +265,13 @@ body {
 
 header {
     grid-area: appHeader;
-    border: 1px solid black;
 }
 .content {
     grid-area: appContent;
-    border: 1px solid black;
 }
 
 footer {
     grid-area: appFooter;
-    border: 1px solid black;
 }
 
 @media screen and (min-width: 360px) {

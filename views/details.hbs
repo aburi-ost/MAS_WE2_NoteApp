@@ -1,6 +1,4 @@
-<body class="body-detail">
-<div class="content-margin">
-    <form id= action='/details{{#if data}}/{{data._id}}{{/if}}' method='post'>
+    <form class="body-detail" id= action='/details{{#if data}}/{{data._id}}{{/if}}' method='post'>
         {{#if data}} <input type='hidden' name='_method' value='put'>  {{/if}}
         <div class="titleSection section-margin">
             <label for='title'>Title:</label>
@@ -80,5 +78,4 @@
         <button type='submit'>Overview</button>
         </div>
     </form>
-</div>
-</body>
+    <div class="details-bottom-filler"></div>
