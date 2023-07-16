@@ -206,14 +206,12 @@ footer {
    Smartphones mit einer Breite von <= 360px die mobile version angezeigt wird.  */
 @media screen and (min-width: 361px) {
 
-/*------------------------------ COMMON ---------------------------*/
     button {
         width: fit-content;
         margin-right: 5px;
         white-space: nowrap;
     }
 
-/*------------------------------ INDEX ---------------------------*/
     .button-section-index {
         display: flex;
         justify-content: space-between;
