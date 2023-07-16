@@ -6,11 +6,11 @@ import exphbs from 'express-handlebars'
 
 import { indexRoutes } from './routes/index-routes.mjs'
 import { detailsRoutes } from './routes/details-routes.mjs'
-import { helpers } from './utils/handlebar-util.mjs'
-import { sessionUserSettings } from './utils/session-middleware.mjs'
-import { overrideMiddleware } from './utils/method-override.mjs'
-import { notFound } from './utils/not-found-middleware.mjs'
-import { errorHandler } from './utils/error-handler-middleware.mjs'
+import { helpers } from './utils/helper/handlebar-util.mjs'
+import { sessionUserSettings } from './utils/middleware/session-middleware.mjs'
+import { overrideMiddleware } from './utils/middleware/method-override-middleware.mjs'
+import { notFound } from './utils/middleware/not-found-middleware.mjs'
+import { errorHandler } from './utils/middleware/error-handler-middleware.mjs'
 
 export const app = express()
 const hbs = exphbs.create({

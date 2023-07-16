@@ -1,5 +1,5 @@
-import { OrderBy } from '../const/order-by.mjs'
-import { OrderDirection } from '../const/order-direction.mjs'
+import { OrderBy } from '../../const/order-by.mjs'
+import { OrderDirection } from '../../const/order-direction.mjs'
 
 export const sessionUserSettings = (req, res, next) => {
     const currentUserSettings = req.session?.userSettings || {

@@ -1,4 +1,4 @@
-import {helpers} from "../../utils/handlebar-util.mjs";
+import {helpers} from "../../utils/helper/handlebar-util.mjs";
 import {expect} from "chai";
 
 describe('helpers', function() {
