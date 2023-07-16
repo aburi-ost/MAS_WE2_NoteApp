@@ -1,5 +1,5 @@
 <div class="index">
-    <div class='section-margin button-section-index'>
+    <div class='button-section-index section-margin'>
         <form action='/details' method='GET'>
             <button id='createButton' type='submit'>Create new Todo</button>
         </form>
@@ -8,7 +8,8 @@
             <button id='toggleStyle' type='submit'>Toggle Style</button>
         </form>
     </div>
-    <div class='section-margin order-button-section-index'>
+    <!-------------------------------------------------------------------------------------------------->
+    <div class='order-button-section-index section-margin'>
         <form action='/index' method='POST'>
             <input type='hidden' name='orderBy' value='title'/>
             <button {{#if_eq "title" orderBy}} class='button-selected-index' {{/if_eq}} id='orderByName' type='submit'>

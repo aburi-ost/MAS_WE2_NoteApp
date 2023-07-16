@@ -80,7 +80,26 @@ footer {
 
 /*------------------------------ INDEX ---------------------------*/
 
+.index {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+        "buttonSection"
+        "orderButtonSection"
+        "mainTable"
+}
+
+.button-section-index {
+    grid-area: buttonSection;
+}
+
+.order-button-section-index {
+    grid-area: orderButtonSection;
+}
+
 .main-table-index {
+    grid-area: mainTable;
     font-size: 15px;
 }
 
@@ -176,14 +195,18 @@ footer {
     }
 
 /*------------------------------ INDEX ---------------------------*/
-    .index {
-        display: grid;
-        grid-template-columns: 100%;
-        grid-template-rows: auto auto auto;
+    .button-section-index {
+        display: flex;
+        justify-content: space-between;
     }
 
-    .main-table-index {
-        font-size: 15px;
+    .order-button-section-index {
+        display: flex;
+        justify-content: flex-start;
+    }
+
+    .flex-item-index {
+        margin-left: auto;
     }
 
     .main-table-entry {
@@ -201,20 +224,6 @@ footer {
         display: flex;
         align-items: center;
         justify-content: center;
-    }
-
-    .button-section-index {
-        display: flex;
-        justify-content: space-between;
-    }
-
-    .order-button-section-index {
-        display: flex;
-        justify-content: flex-start;
-    }
-
-    .flex-item-index {
-        margin-left: auto;
     }
 
 /*------------------------------ DETAILS ---------------------------*/
