@@ -13,12 +13,14 @@ const expect = chai.expect
 process.env.NODE_ENV = 'testing'
 dotenv.config({ path: `.env-testing` })
 
-// load app after env
 const app = (await import('../../app.mjs')).app
 
 describe('GET /', () => {
-    it('should return 404 page', async () => {
-        const response = await chai.request(app).get('/details/wrong_id')
-        response.should.have.status(404)
+    it('should return index page', async () => {
+        const response = await chai.request(app).get('/')
+        response.should.have.status(200)
+
+        const dom = new jsdom.JSDOM(response.text)
+        expect(dom.window.document.body.innerHTML).contain('ToDo App')
     })
 })

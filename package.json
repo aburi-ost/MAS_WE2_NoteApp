@@ -1,14 +1,15 @@
 {
-    "name": "demo",
+    "name": "mas_we2_note_app",
     "version": "1.0.0",
-    "description": "Vorlage",
+    "description": "MAS WE2 NoteApp",
     "main": "index.mjs",
     "scripts": {
         "start": "node index.mjs",
-        "test": "mocha tests/*.test.mjs"
+        "integrationtests": "mocha tests/integrationtests/*.test.mjs",
+        "unittests": "mocha tests/unittests/*.test.mjs"
     },
     "type": "module",
-    "author": "mgfeller",
+    "author": "Alain Buri & Sven Zoller",
     "license": "ISC",
     "dependencies": {
         "body-parser": "^1.19.0",

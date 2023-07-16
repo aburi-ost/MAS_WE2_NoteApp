@@ -1,7 +1,6 @@
 <div class="content-margin">
 <form class="detail" id='updateEntryForm' action='/details{{#if data}}/{{data._id}}{{/if}}' method='post'>
         {{#if data}} <input type='hidden' name='_method' value='put'>  {{/if}}
-
         <div class="details-title-section section-margin">
             <label for='title'>Title:</label>
             <input
@@ -32,6 +31,7 @@
         <div class="details-dueDate-section section-margin">
             <label for='date'>Due Date:</label>
             <input
+                    class="font-family-details"
                     type='date'
                     id='date'
                     name='dueDate'
@@ -55,7 +55,7 @@
         </div>
         <div class="details-description-section section-margin">
             <label for='description'>Description:</label>
-            <textarea id='description' name='description' rows="4" maxlength="256">{{#if
+            <textarea class="font-family-details" id='description' name='description' rows="4" maxlength="256">{{#if
                     data}}{{data.description}}{{/if}}</textarea>
         </div>
         <div class="button-section-details section-margin">
@@ -76,9 +76,7 @@
             <button form='overviewForm' type='submit'>Overview</button>
         </div>
     </form>
-
 </div>
-
 <form id='overviewForm' action='/index' method='GET'>
     <div class="buttonSectionOverview section-margin">
     </div>

@@ -1,41 +1,46 @@
 import Datastore from 'nedb-promises'
-import { OrderBy } from '../const/OrderBy.mjs'
-import { OrderDirection } from '../const/OrderDirection.mjs'
-import { EntryState } from '../const/EntryState.mjs'
+import { OrderBy } from '../const/order-by.mjs'
+import { OrderDirection } from '../const/order-direction.mjs'
+import { EntryState } from '../const/entry-state.mjs'
 
 export class NoteEntry {
     constructor(dueDate, title, importance, state, description) {
-        this.creationDate = new Date();
-        this.dueDate = isNaN(new Date(dueDate)) ? '' : dueDate;
-        this.title = title;
-        this.importance = importance;
-        this.state = (state === EntryState.Completed) ? EntryState.Completed : EntryState.Open;
-        this.description = description;
+        this.creationDate = new Date()
+        this.dueDate = isNaN(new Date(dueDate)) ? '' : dueDate
+        this.title = title
+        this.importance = importance
+        this.state =
+            state === EntryState.Completed
+                ? EntryState.Completed
+                : EntryState.Open
+        this.description = description
     }
 }
 
 export class NoteEntryStore {
-    // Helper functions
-    //--------------------------------------
-    // Todo move helper functions to a dedicated file if necessary (or adjust visibility)
-    filterCompleted = (DataBaseEntries, orderDirection) => {
-        return DataBaseEntries.filter((entry) => entry.state !== EntryState.Completed)
+    filterCompleted = (DataBaseEntries) => {
+        return DataBaseEntries.filter(
+            (entry) => entry.state !== EntryState.Completed
+        )
     }
 
-    // TODO: Renaming Vorschlag: orderDirection. Achtung: Impact auf Unit-Test
     orderLogic = (nameA, nameB, orderDirection) => {
         if (nameA < nameB) {
-            return (orderDirection === OrderDirection.Ascending) ? -1 : 1
+            return orderDirection === OrderDirection.Ascending ? -1 : 1
         }
         if (nameA > nameB) {
-            return (orderDirection === OrderDirection.Ascending) ? 1 : -1
+            return orderDirection === OrderDirection.Ascending ? 1 : -1
         }
         return 0
     }
 
     orderByTitle = (DataBaseEntries, orderDirection) => {
         DataBaseEntries.sort((a, b) => {
-            return this.orderLogic(a.title.toUpperCase(), b.title.toUpperCase(), orderDirection)
+            return this.orderLogic(
+                a.title.toUpperCase(),
+                b.title.toUpperCase(),
+                orderDirection
+            )
         })
     }
 
@@ -47,14 +52,20 @@ export class NoteEntryStore {
 
     orderByDueDate = (DataBaseEntries, orderDirection) => {
         DataBaseEntries.sort((a, b) => {
-            const dateA = (a.dueDate === '') ? new Date(9999, 11, 31) : new Date(a.dueDate)
-            const dateB = (b.dueDate === '') ? new Date(9999, 11, 31) : new Date(b.dueDate)
-            return this.orderLogic(dateA,  dateB, orderDirection)
+            const dateA =
+                a.dueDate === '' ? new Date(9999, 11, 31) : new Date(a.dueDate)
+            const dateB =
+                b.dueDate === '' ? new Date(9999, 11, 31) : new Date(b.dueDate)
+            return this.orderLogic(dateA, dateB, orderDirection)
         })
     }
     orderByCreationDate = (DataBaseEntries, orderDirection) => {
         DataBaseEntries.sort((a, b) => {
-            return this.orderLogic(a.creationDate, b.creationDate, orderDirection)
+            return this.orderLogic(
+                a.creationDate,
+                b.creationDate,
+                orderDirection
+            )
         })
     }
     //--------------------------
@@ -108,7 +119,10 @@ export class NoteEntryStore {
         let dataBaseEntries = await this.db.find({})
 
         if (userSettings.filterCompleted === true) {
-            dataBaseEntries = this.filterCompleted(dataBaseEntries, userSettings.orderDirection)
+            dataBaseEntries = this.filterCompleted(
+                dataBaseEntries,
+                userSettings.orderDirection
+            )
         }
 
         if (userSettings.orderBy === OrderBy.Title) {
@@ -118,7 +132,10 @@ export class NoteEntryStore {
         } else if (userSettings.orderBy === OrderBy.DueDate) {
             this.orderByDueDate(dataBaseEntries, userSettings.orderDirection)
         } else if (userSettings.orderBy === OrderBy.CreationDate) {
-            this.orderByCreationDate(dataBaseEntries, userSettings.orderDirection)
+            this.orderByCreationDate(
+                dataBaseEntries,
+                userSettings.orderDirection
+            )
         }
         return dataBaseEntries
     }

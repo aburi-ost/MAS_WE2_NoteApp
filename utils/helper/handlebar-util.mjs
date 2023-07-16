@@ -1,5 +1,5 @@
-import { EntryState } from '../const/EntryState.mjs'
-import { OrderDirection } from '../const/OrderDirection.mjs'
+import { EntryState } from '../../const/entry-state.mjs'
+import { OrderDirection } from '../../const/order-direction.mjs'
 
 export const helpers = {
     if_eq: function (a, b, opts) {
@@ -12,7 +12,7 @@ export const helpers = {
     dueDate_in_Days: function (dueDate) {
         const inputDate = new Date(dueDate).setUTCHours(0, 0, 0, 0)
         if (isNaN(inputDate)) {
-            return 'Someday';
+            return 'Someday'
         }
         const today = new Date().setUTCHours(0, 0, 0, 0)
         const daysUntilDueDate = (inputDate - today) / (1000 * 60 * 60 * 24)
@@ -25,20 +25,20 @@ export const helpers = {
                 return 'in a day'
             case daysUntilDueDate > 1 && daysUntilDueDate <= 7:
                 return `in ${daysUntilDueDate} days`
-            case daysUntilDueDate > 7 :
+            case daysUntilDueDate > 7:
                 return `in > 7 days`
-            case daysUntilDueDate < 0 && daysUntilDueDate >= -7 :
+            case daysUntilDueDate < 0 && daysUntilDueDate >= -7:
                 return `${Math.abs(daysUntilDueDate)} days ago`
-            case daysUntilDueDate < -7 :
+            case daysUntilDueDate < -7:
                 return `> 7 days ago`
             default:
                 return 'Someday'
         }
     },
     get_importance_icons: function (value) {
-        return '\u26A1'.repeat(value);
+        return '\u26A1'.repeat(value)
     },
-    get_orderDirection_icon : function (orderDirection) {
+    get_orderDirection_icon: function (orderDirection) {
         if (orderDirection === OrderDirection.Ascending) {
             return '\u25B2'
         } else if (orderDirection === OrderDirection.Descending) {
@@ -46,5 +46,5 @@ export const helpers = {
         } else {
             return ' '
         }
-     },
+    },
 }
