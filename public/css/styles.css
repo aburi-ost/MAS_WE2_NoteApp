@@ -173,11 +173,13 @@ footer {
 
 /*------------------------------ DETAILS ---------------------------*/
 
+/* Todo: Consider adding grid-template-areas like in index */
 .detail {
     display: grid;
     grid-template-columns: 100%;
     grid-template-rows: auto auto auto auto auto auto auto;
 }
+
 
 /*----------------------------------------------------------------*/
 /*------------------------------ MEDIA ---------------------------*/
