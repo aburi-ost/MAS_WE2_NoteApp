@@ -1,14 +1,12 @@
 import chai from 'chai'
 import chaiHttp from 'chai-http'
 import chaiDom from 'chai-dom'
-import jsdom from 'jsdom'
 import dotenv from 'dotenv'
 
 chai.use(chaiHttp)
 chai.use(chaiDom)
 
 const should = chai.should()
-const expect = chai.expect
 
 process.env.NODE_ENV = 'testing'
 dotenv.config({ path: `.env-testing` })

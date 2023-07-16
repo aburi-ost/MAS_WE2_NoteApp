@@ -1,7 +1,7 @@
 import Datastore from 'nedb-promises'
-import { OrderBy } from '../const/OrderBy.mjs'
-import { OrderDirection } from '../const/OrderDirection.mjs'
-import { EntryState } from '../const/EntryState.mjs'
+import { OrderBy } from '../const/order-by.mjs'
+import { OrderDirection } from '../const/order-direction.mjs'
+import { EntryState } from '../const/entry-state.mjs'
 
 export class NoteEntry {
     constructor(dueDate, title, importance, state, description) {

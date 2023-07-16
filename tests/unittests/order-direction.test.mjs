@@ -1,5 +1,5 @@
 import {expect} from "chai";
-import {noteEntryStore} from "../../services/noteEntry-store.mjs";
+import {noteEntryStore} from "../../services/note-entry-store.mjs";
 
 describe('noteEntry-store', function() {
     describe('#orderDirection', function() {

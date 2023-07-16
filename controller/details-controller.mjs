@@ -1,4 +1,4 @@
-import { noteEntryStore } from '../services/noteEntry-store.mjs'
+import { noteEntryStore } from '../services/note-entry-store.mjs'
 
 export class DetailsController {
 
