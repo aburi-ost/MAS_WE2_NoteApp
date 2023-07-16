@@ -63,7 +63,7 @@
     <div class="main-table-index">
         {{#if data}}
             {{#each data}}
-            <div class='main-table-entry'>
+            <div class='main-table-entry' style='border-bottom: 1px solid {{#if dark}} white {{else}} black {{/if}};'>
                 <div class="main-table-date section-margin">
                     <div>
                         {{dueDate_in_Days this.dueDate}}

@@ -92,7 +92,6 @@ footer {
         "tableDate tableTitle tableTitle tableImportance"
         "tableState tableDescription tableDescription tableDescription"
         "tableButton tableButton tableButton tableButton";
-    border-bottom: 1px solid black;
 }
 
 .main-table-date {
