@@ -101,6 +101,7 @@ footer {
 
 .main-table-title {
     grid-area: tableTitle;
+    overflow-wrap: break-word;
 /*    border: 2px solid purple;*/
 }
 
@@ -118,6 +119,7 @@ footer {
 
 .main-table-description {
     grid-area: tableDescription;
+    overflow-wrap: break-word;
 /*    border: 2px solid yellow;*/
 }
 
