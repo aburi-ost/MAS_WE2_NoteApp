@@ -70,7 +70,6 @@ footer {
 .checkbox-container {
     display: flex;
     align-items: center;
-    opacity: 0.5;
 }
 
 /*------------------------------ INDEX ---------------------------*/
@@ -163,6 +162,11 @@ footer {
     margin: 8px;
     font-weight: bold;
 }
+
+.opacity-index {
+    opacity: 0.5;
+}
+
 
 /*------------------------------ DETAILS ---------------------------*/
 

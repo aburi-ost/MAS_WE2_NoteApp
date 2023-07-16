@@ -72,7 +72,7 @@
                         {{get_importance_icons this.importance}}
                 </div>
                 <div class="main-table-state section-margin">
-                    <div class='checkbox-container'>
+                    <div class='checkbox-container opacity-index'>
                         <input type='checkbox' class="checkbox" id="state" disabled {{#if_eq this.state (get_EntryState_Completed)}}checked{{/if_eq}} />
                         <label for='state'>{{#if_eq this.state (get_EntryState_Completed)}} Completed {{else}} Open {{/if_eq}}</label>
                     </div>
