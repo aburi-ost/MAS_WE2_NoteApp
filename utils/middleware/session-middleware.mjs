@@ -10,19 +10,24 @@ export const sessionUserSettings = (req, res, next) => {
     }
 
     if (req.method === 'POST') {
-        const {orderBy, filterCompleted, darkMode} = req.body
+        const { orderBy, filterCompleted, darkMode } = req.body
 
         if (orderBy) {
             if (currentUserSettings.orderBy === orderBy) {
-                currentUserSettings.orderDirection = (currentUserSettings.orderDirection === OrderDirection.Ascending) ? OrderDirection.Descending : OrderDirection.Ascending;
+                currentUserSettings.orderDirection =
+                    currentUserSettings.orderDirection ===
+                    OrderDirection.Ascending
+                        ? OrderDirection.Descending
+                        : OrderDirection.Ascending
             } else {
                 currentUserSettings.orderBy = orderBy
-                currentUserSettings.orderDirection = OrderDirection.Ascending;
+                currentUserSettings.orderDirection = OrderDirection.Ascending
             }
         }
 
         if (filterCompleted) {
-            currentUserSettings.filterCompleted = !currentUserSettings.filterCompleted;
+            currentUserSettings.filterCompleted =
+                !currentUserSettings.filterCompleted
         }
 
         if (darkMode) {

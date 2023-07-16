@@ -7,12 +7,12 @@ export class IndexController {
             dark: req.userSettings.darkMode,
             orderBy: req.userSettings.orderBy,
             orderDirection: req.userSettings.orderDirection,
-            filterCompleted: req.userSettings.filterCompleted
+            filterCompleted: req.userSettings.filterCompleted,
         })
     }
 
-    redirectPost = async(req,res) => {
-        res.redirect("/index")
+    redirectPost = async (req, res) => {
+        res.redirect('/index')
     }
 }
 

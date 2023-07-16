@@ -1,4 +1,4 @@
-    export const EntryState = {
-        Completed: 'COMPLETED',
-        Open: 'OPEN',
-    }
+export const EntryState = {
+    Completed: 'COMPLETED',
+    Open: 'OPEN',
+}

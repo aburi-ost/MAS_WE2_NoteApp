@@ -1,9 +1,11 @@
 import { noteEntryStore } from '../services/note-entry-store.mjs'
 
 export class DetailsController {
-
     redirectRequest = (req, res, id) => {
-        if ('update_overview_button' in req.body || 'create_overview_button' in req.body) {
+        if (
+            'update_overview_button' in req.body ||
+            'create_overview_button' in req.body
+        ) {
             res.redirect('/')
         } else if ('update_button' in req.body || 'create_button' in req.body) {
             res.redirect(`/details/${id}`)
@@ -21,12 +23,12 @@ export class DetailsController {
     detailsByID = async (req, res) => {
         const readEntry = await noteEntryStore.getSingle(req.params.id)
         if (!readEntry) {
-            res.status(404).send('Entry not found.');
+            res.status(404).send('Entry not found.')
         } else {
             res.render('details', {
                 data: readEntry,
                 dark: req.userSettings.darkMode,
-            });
+            })
         }
     }
 
@@ -38,7 +40,7 @@ export class DetailsController {
             req.body.state,
             req.body.description
         )
-        this.redirectRequest(req, res, retVal._id);
+        this.redirectRequest(req, res, retVal._id)
     }
 
     updateEntry = async (req, res) => {
@@ -50,7 +52,7 @@ export class DetailsController {
             req.body.state,
             req.body.description
         )
-        this.redirectRequest(req,res, req.params.id);
+        this.redirectRequest(req, res, req.params.id)
     }
 }
 
