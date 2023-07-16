@@ -15,14 +15,10 @@ export class NoteEntry {
 }
 
 export class NoteEntryStore {
-    // Helper functions
-    //--------------------------------------
-    // Todo move helper functions to a dedicated file if necessary (or adjust visibility)
     filterCompleted = (DataBaseEntries) => {
         return DataBaseEntries.filter((entry) => entry.state !== EntryState.Completed)
     }
 
-    // TODO: Renaming Vorschlag: orderDirection. Achtung: Impact auf Unit-Test
     orderLogic = (nameA, nameB, orderDirection) => {
         if (nameA < nameB) {
             return (orderDirection === OrderDirection.Ascending) ? -1 : 1

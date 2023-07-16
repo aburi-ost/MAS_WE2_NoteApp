@@ -15,7 +15,8 @@ body {
         "appContent"
         "appFooter";
     justify-content: center;
-    min-height: 98vh;   /* Todo: this feels a bit like cheating. at 100vh the body area is larger than the displayed section */
+    /* 98vh weil bei 100vh im Firefox eine vertikale Scrollbar angzeigt wird */
+    min-height: 98vh;
     font-size: 15px;
 }
 
@@ -105,36 +106,30 @@ footer {
 
 .main-table-date {
     grid-area: tableDate;
-    /* border: 2px solid green; */
 }
 
 .main-table-title {
     grid-area: tableTitle;
     overflow-wrap: break-word;
-/*    border: 2px solid purple;*/
 }
 
 .main-table-importance {
     grid-area: tableImportance;
     font-size: 10px;
     text-align: right;
-/*    border: 2px solid red;*/
 }
 
 .main-table-state {
     grid-area: tableState;
-/*    border: 2px solid orange;*/
 }
 
 .main-table-description {
     grid-area: tableDescription;
     overflow-wrap: break-word;
-/*    border: 2px solid yellow;*/
 }
 
 .main-table-button {
     grid-area: tableButton;
-    /*    border: 2px solid blue;*/
 }
 
 .sort-icon-visible-index {
@@ -163,7 +158,6 @@ footer {
     opacity: 0.5;
 }
 
-/* Todo: Consider adding grid-template-areas like in index */
 .detail {
     display: grid;
     grid-template-columns: 100%;

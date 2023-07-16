@@ -11,7 +11,6 @@ const should = chai.should()
 process.env.NODE_ENV = 'testing'
 dotenv.config({ path: `.env-testing` })
 
-// load app after env
 const app = (await import('../../app.mjs')).app
 
 describe('GET /', () => {
