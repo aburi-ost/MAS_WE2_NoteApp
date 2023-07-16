@@ -18,7 +18,7 @@ export class NoteEntryStore {
     // Helper functions
     //--------------------------------------
     // Todo move helper functions to a dedicated file if necessary (or adjust visibility)
-    filterCompleted = (DataBaseEntries, orderDirection) => {
+    filterCompleted = (DataBaseEntries) => {
         return DataBaseEntries.filter((entry) => entry.state !== EntryState.Completed)
     }
 

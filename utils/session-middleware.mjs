@@ -11,7 +11,7 @@ export const sessionUserSettings = (req, res, next) => {
 
     // reject GET requests - only POSTs are allowed to alter session
     if (req.method === 'POST') {
-        const {orderBy, orderDirection, filterCompleted, darkMode} = req.body
+        const {orderBy, filterCompleted, darkMode} = req.body
 
         if (orderBy) {
             if (currentUserSettings.orderBy === orderBy) {
