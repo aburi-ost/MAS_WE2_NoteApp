@@ -53,8 +53,7 @@
         </form>
         <form class="flex-item-index" action='/index' method='POST'>
             <input type='hidden' name='filterCompleted' value='true'/>
-            <button {{#if_eq true filterCompleted}}
-            class='button-selected-index' {{/if_eq}} id='filterCompleted' type='submit'>
+            <button {{#if_eq true filterCompleted}} class='button-selected-index' {{/if_eq}} id='filterCompleted' type='submit'>
                 Filter Completed
             </button>
         </form>
@@ -63,7 +62,7 @@
     <div class="main-table-index">
         {{#if data}}
             {{#each data}}
-            <div class='main-table-entry' style='border-bottom: 1px solid {{#if dark}} white {{else}} black {{/if}};'>
+            <div class='main-table-entry' style='border-bottom: 1px solid {{#if ../dark}} white {{else}} black {{/if}};'>
                 <div class="main-table-date section-margin">
                     <div>
                         {{dueDate_in_Days this.dueDate}}
