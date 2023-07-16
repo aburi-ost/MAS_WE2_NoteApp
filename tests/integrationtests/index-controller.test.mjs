@@ -22,6 +22,6 @@ describe('GET /', () => {
         response.should.have.status(200)
 
         const dom = new jsdom.JSDOM(response.text)
-        expect(dom.window.document.body.innerHTML).contain('Note App')
+        expect(dom.window.document.body.innerHTML).contain('ToDo App')
     })
 })
