@@ -1,7 +1,8 @@
 <div class="content-margin">
 <form class="detail" id='updateEntryForm' action='/details{{#if data}}/{{data._id}}{{/if}}' method='post'>
         {{#if data}} <input type='hidden' name='_method' value='put'>  {{/if}}
-        <div class="titleSection section-margin">
+
+        <div class="details-title-section section-margin">
             <label for='title'>Title:</label>
             <input
                     type='text'
@@ -14,7 +15,7 @@
                 {{/if}}
             />
         </div>
-        <div class="importanceSection section-margin">
+        <div class="details-importance-section section-margin">
             <label for='importance'>Importance (1-5):</label>
             <input
                     type='number'
@@ -28,7 +29,7 @@
                 {{/if}}
             />
         </div>
-        <div class="dueDateSection section-margin">
+        <div class="details-dueDate-section section-margin">
             <label for='date'>Due Date:</label>
             <input
                     type='date'
@@ -39,7 +40,7 @@
                 {{/if}}
             />
         </div>
-        <div class="finishedSection section-margin">
+        <div class="details-status-section section-margin">
             <div class='checkbox-container'>
                 {{#if data}}
                     <input type='checkbox' class="checkbox" id='state' name='state'
@@ -52,7 +53,7 @@
                 <label for='state'>Finished</label>
             </div>
         </div>
-        <div class="descriptionSection section-margin">
+        <div class="details-description-section section-margin">
             <label for='description'>Description:</label>
             <textarea id='description' name='description' rows="4" maxlength="256">{{#if
                     data}}{{data.description}}{{/if}}</textarea>
